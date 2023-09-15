@@ -6,19 +6,22 @@
     <router-view></router-view>
     <TheCalender />
   </div>
+  <BottomNav />
+  <div style="width:500px;margin: auto;">Copyright © 2023 民視新聞網路部 社群中心</div>
 </template>
 <script >
+
 import { RouterLink, RouterView } from 'vue-router'
 import TheHeader from './components/TheHeader.vue'
 import TheCalender from './components/TheCalender.vue'
 import TheSidebar from './components/TheSidebar.vue'
-
+import BottomNav from './components/BottomNav.vue'
 export default {
   components: {
     TheHeader,
     TheCalender,
     TheSidebar,
-
+    BottomNav
   }
 }
 </script>
@@ -160,7 +163,6 @@ table {
 }
 
 p {
-  font-size: 1.4rem;
   line-height: 1.2
 }
 

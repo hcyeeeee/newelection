@@ -10,124 +10,21 @@
 
 
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-// import required modules
-import { Autoplay } from 'swiper/modules';
-import axios from 'axios';
 import sectionBanner from '../components/TheBanner.vue'
 import TheMarquee from '../components/TheMarquee.vue'
 import HomeLegis from '../components/HomeLegis.vue'
 import HomePresi from '../components/HomePresi.vue'
 import HomeVideo from '../components/HomeVideo.vue'
+
 export default {
   components: {
-    Swiper,
-    SwiperSlide,
+
     sectionBanner,
     TheMarquee,
     HomeLegis,
     HomePresi,
     HomeVideo,
-
   },
-  data() {
-    return {
-      news: [],
-      news2: [],
-      news3: [], // 初始化news为空数组,
-      modules: [Autoplay],
-      countdown: "",
-      isMobileMenuVisible: false,
-    };
-  },
-  methods: {
-    toggleMobileMenu() {
-      this.isMobileMenuVisible = !this.isMobileMenuVisible;
-    },
-    closeMenu() {
-      if (this.isMobileMenuVisible) {
-        this.isMobileMenuVisible = false;
-      }
-    },
-    getLocalUrl() {
-      let e = document.createElement('input'),
-        t = window.location.href + '?utm_source=2024election&utm_medium=copybutton'
-      document.body.appendChild(e),
-        (e.value = t),
-        e.select(),
-        document.execCommand('copy'),
-        document.body.removeChild(e),
-        alert('網址複製成功，立刻分享給你的好友吧!')
-    },
-  },
-  mounted() {
-
-    axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=總統大選&Page=1&sp=6")
-      .then((response) => {
-        this.news = response.data.ITEM;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=立委選戰&Page=1&sp=6")
-      .then((response) => {
-        this.news2 = response.data.ITEM;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get('https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=8')
-      .then((response) => {
-        this.news3 = response.data.ITEM;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.innerHTML = `
-      !function(e, i, n, s) {
-        var t = "InfogramEmbeds",
-            d = e.getElementsByTagName("script")[0];
-        if (window[t] && window[t].initialized)
-          window[t].process && window[t].process();
-        else if (!e.getElementById(n)) {
-          var o = e.createElement("script");
-          o.async = 1, o.id = n,
-          o.src = "https://e.infogram.com/js/dist/embed-loader-min.js",
-          d.parentNode.insertBefore(o, d);
-        }
-      }(document, 0, "infogram-async");
-    `;
-
-    document.head.appendChild(script);
-    const targetDate = new Date("2024/1/13").getTime();
-    const countdownInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const timeDifference = targetDate - now;
-
-      if (timeDifference <= 0) {
-        clearInterval(countdownInterval);
-        this.countdown = "1/13 到了！";
-      } else {
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        // const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        // const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        // const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-        // this.countdown = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-        this.countdown = `${days + 1} `;
-
-        let a = this.countdown.toString();
-        this.countdown = a
-        this.countdown2 = `${days + 1} `;
-      }
-    }, 1000);
-  }
 };
 
 </script>

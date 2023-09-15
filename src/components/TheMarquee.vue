@@ -20,39 +20,28 @@
         <p class="sss"> {{ countdown }}</p>
         <p class="wwww">天</p>
       </div>
-
     </div>
-
   </div>
 </template>
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
 
+import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
-
+import 'swiper/css/pagination';
 // import required modules
 import { Autoplay } from 'swiper/modules';
+import axios from 'axios';
 
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
-  }, setup() {
-    return {
-      modules: [Autoplay],
-    };
   },
   data() {
     return {
-      swiperOptions: {
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-      },
+      modules: [Autoplay],
       countdown: "",
       countdown2: "",
       news: [],
@@ -61,10 +50,11 @@ export default {
   methods: {
     get_hotnews() {
       // eslint-disable-next-line no-undef
-      this.axios
+      axios
         .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
         .then((response) => {
-          this.news = response.data.ITEM
+          this.news = response.data.ITEM;
+          console.log("this", this.news)
         })
         .catch((error) => {
           console.log("error" + error);
@@ -95,7 +85,18 @@ export default {
     }
   }, mounted() {
     this.startCountdown();
-    this.get_hotnews();
+
+    // eslint-disable-next-line no-undef
+    axios
+      .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
+      .then((response) => {
+        this.news = response.data.ITEM;
+        console.log("this", this.news)
+      })
+      .catch((error) => {
+        console.log("error" + error);
+      });
+
   },
 };
 </script>

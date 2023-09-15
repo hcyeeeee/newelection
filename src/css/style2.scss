@@ -53,6 +53,7 @@ body {
   .home {
     width: 90%;
     margin: 1rem;
+    margin-top: 5rem;
   }
   .navbar {
     display: none;
@@ -107,16 +108,20 @@ body {
   }
   .header {
     display: flex;
+    position: fixed;
     width: 100%;
     margin: auto;
     box-shadow: $whitebgShadow;
     background: $whiteBg;
+    z-index: 99;
+
     .header_inner {
       display: flex;
       justify-content: space-between;
       margin: auto;
       max-width: 1400px;
       width: 100%;
+      background: $whiteBg;
     }
     .logo {
       width: 13rem;
@@ -280,16 +285,9 @@ body {
       padding: 1rem;
     }
   }
-
-  .president {
-    background: $whiteBg;
-    box-shadow: $whitebgShadow;
-  }
 }
 
-.home-president,
-.home-Legis,
-.home-video {
+.layout {
   border-radius: 1.25rem;
   margin: 1.25rem auto;
   background: #fff;
@@ -298,5 +296,98 @@ body {
   box-shadow: $whitebgShadow;
   img {
     width: 100%;
+  }
+}
+
+.layout-president {
+  .president-navtab {
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-around;
+    margin: auto;
+    display: flex;
+    padding: 1rem;
+  }
+
+  .president {
+    display: flex;
+    flex-direction: column;
+
+    @include pad {
+      display: grid;
+      grid-template-columns: 4fr 3fr;
+      gap: 0.5rem;
+    }
+
+    .president-info {
+      display: flex;
+      flex-direction: column;
+
+      .up {
+        display: flex;
+      }
+
+      .president-info-pic {
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .president-exp {
+      padding-left: 2rem;
+      .tab {
+        display: flex;
+        gap: 1rem;
+      }
+      .content li {
+        list-style: disc;
+        line-height: 150%; /* 178.571% */
+      }
+    }
+
+    .president-news {
+      .out {
+        display: flex;
+        gap: 1rem;
+        .link {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          img {
+            width: 100%;
+            border-radius: 0.5rem;
+          }
+          .title {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+.president-relatednews {
+  .out {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+
+    .link {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      img {
+        width: 100%;
+        border-radius: 0.5rem;
+      }
+      .title {
+        font-size: 1rem;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="home-video">
+    <div class="home-video layout">
         <h2>新聞放大鏡</h2>
         <div>
             <div></div>
