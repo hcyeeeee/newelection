@@ -136,9 +136,8 @@ export default {
 
 
   @include pad {
-    width: 90%;
+    width: 100%;
     margin: auto auto 1rem;
-
     background: #fff9ee;
   }
 

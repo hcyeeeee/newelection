@@ -17,7 +17,7 @@
 }
 
 $orange: #f08308;
-$black: #181818;
+$black: #373535;
 $orangeLiner: (
   linear-gradient(115deg, #f07708 30.73%, #ff9823 32.81%, #f04e08 100%)
 );
@@ -27,7 +27,7 @@ $whitebgShadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
 body {
   margin: auto;
   background: #f3efe9;
-
+  color: $black;
   width: 100%;
   a {
     color: $black;
@@ -40,12 +40,14 @@ body {
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 95%;
+    justify-content: center;
+    width: 98%;
 
     @include pad {
-      max-width: 1400px;
+      max-width: 1200px;
       flex-direction: row;
-      width: 100%;
+      width: 90%;
+      margin: auto;
     }
   }
 
@@ -105,6 +107,44 @@ body {
         display: flex;
       }
     }
+    .calender-mb {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: $whiteBg;
+      box-shadow: $whitebgShadow;
+      width: 100%;
+      border-radius: 1.25rem;
+
+      @include pad {
+        display: none;
+      }
+      .title {
+        background: $orangeLiner;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        border-radius: 1rem 1rem 0rem 0rem;
+      }
+      .calender_content {
+        display: flex;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        gap: 0.25rem;
+        padding: 1.25rem 0;
+
+        div {
+          width: 10rem;
+          @include pad {
+            width: 10rem;
+            text-align: center;
+            padding: 0.25rem;
+          }
+        }
+      }
+    }
   }
   .header {
     display: flex;
@@ -159,10 +199,10 @@ body {
       padding: 1rem auto;
       position: fixed;
       top: 0rem;
+      padding: 1rem 0.8rem;
       right: 0rem;
       color: rgb(255, 255, 255);
       font-size: 1.5rem;
-      padding: 0.3rem;
       background: $orangeLiner;
       box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
       @include pad {
@@ -184,7 +224,6 @@ body {
 
       a {
         font-size: 1.2rem;
-        line-height: normal;
         color: $black;
         text-align: start;
       }
@@ -211,24 +250,22 @@ body {
   }
 
   .calender {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: fit-content;
-    height: fit-content;
-    background: $whiteBg;
-    box-shadow: $whitebgShadow;
-    width: 90%;
-    border-radius: 1.25rem;
-
+    display: none;
     @include pad {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      height: fit-content;
+      background: $whiteBg;
+      box-shadow: $whitebgShadow;
+      border-radius: 1.25rem;
       flex-direction: column;
       position: sticky;
       top: 0rem;
       padding: 0rem 0.5rem 1.25rem;
-      width: fit-content;
       top: 8%;
     }
+
     .title {
       background: $orangeLiner;
       color: #fff;
@@ -291,7 +328,7 @@ body {
   border-radius: 1.25rem;
   margin: 1.25rem auto;
   background: #fff;
-  padding: 1.25rem;
+  padding: 1rem;
   /* 用這個陰影 */
   box-shadow: $whitebgShadow;
   img {
@@ -307,6 +344,14 @@ body {
     margin: auto;
     display: flex;
     padding: 1rem;
+    li {
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid #d9d9d9;
+      &:hover,
+      &:active {
+        border-bottom: 2px solid $orange;
+      }
+    }
   }
 
   .president {
@@ -316,13 +361,13 @@ body {
     @include pad {
       display: grid;
       grid-template-columns: 4fr 3fr;
-      gap: 0.5rem;
+      gap: 1.25rem;
     }
 
     .president-info {
       display: flex;
       flex-direction: column;
-
+      line-height: 170%;
       .up {
         display: flex;
       }
@@ -344,10 +389,11 @@ body {
       }
       .content li {
         list-style: disc;
-        line-height: 150%; /* 178.571% */
       }
     }
-
+    .president-policy {
+      width: 100%;
+    }
     .president-news {
       .out {
         display: flex;
@@ -383,10 +429,133 @@ body {
 
       img {
         width: 100%;
+        object-fit: cover;
+        height: 150px;
         border-radius: 0.5rem;
       }
-      .title {
-        font-size: 1rem;
+    }
+  }
+}
+// BottomNav
+.bottom {
+  position: fixed;
+  bottom: 0px;
+  background: rgba(240, 131, 8, 0.85);
+  backdrop-filter: blur(2.5px);
+  z-index: 9999;
+  width: 100%;
+
+  @include pad {
+    display: none;
+  }
+  div {
+    display: flex;
+    margin: auto;
+    width: 90%;
+
+    a {
+      color: #fff;
+      margin: auto;
+      padding: 1rem;
+      &:hover {
+        color: #f9f5ef;
+        transition: 0.1s all;
+      }
+    }
+  }
+}
+
+.home-Legis {
+  h2 {
+    color: $orange;
+    padding-left: 1rem;
+    &::before {
+      font-family: FontAwesome;
+      content: "\f06d";
+    }
+  }
+  .banner {
+    width: 100%;
+  }
+  .out {
+    display: flex;
+    gap: 1rem;
+
+    .news {
+      display: flex;
+      margin: 1rem auto;
+      @include pad {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .link {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 0.5rem;
+        @include phone {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+        img {
+          width: 100%;
+          border-radius: 10px;
+        }
+        .inner {
+          .title {
+            max-height: 59px;
+            overflow-y: hidden;
+            text-align: justify;
+          }
+          .time {
+            margin-top: 0.2rem;
+            font-size: 7px;
+            text-align: end;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-president {
+  .out {
+    display: flex;
+    gap: 1rem;
+
+    .news {
+      display: flex;
+      margin: 1rem auto;
+      @include pad {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .link {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 0.5rem;
+
+        @include phone {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+        img {
+          width: 100%;
+          border-radius: 10px;
+        }
+        .inner {
+          .title {
+            max-height: 59px;
+            overflow-y: hidden;
+            text-align: justify;
+          }
+          .time {
+            margin-top: 0.2rem;
+            font-size: 7px;
+            text-align: end;
+            opacity: 0.5;
+          }
+        }
       }
     }
   }

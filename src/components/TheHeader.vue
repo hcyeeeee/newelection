@@ -23,7 +23,7 @@
     <div>
       <div class="empty" @click="closeMenu" :style="{ display: isMobileMenuVisible ? 'flex' : 'none' }"></div>
       <div class="mobile_nav">
-        <h3 class="bars" @click="toggleMobileMenu">
+        <h3 class="ba rs" @click="toggleMobileMenu">
           <i :class="'fa-solid' + (isMobileMenuVisible ? ' fa-xmark' : ' fa-bars')"></i>
         </h3>
       </div>

@@ -1,37 +1,69 @@
 <template>
     <div class="home-Legis layout">
         <h2>立委激戰區</h2>
-        <swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false,
-        }" :pagination="{
-    clickable: true,
-}" :modules="modules" class="mySwiper">
-            <swiper-slide><img src="../assets/fight1.png" alt=""></swiper-slide>
-            <swiper-slide><img src="../assets/fight2.png" alt=""></swiper-slide>
-            <swiper-slide><img src="../assets/fight3.png" alt=""></swiper-slide>
-
+        <swiper :spaceBetween="30" :centeredSlides="true" :pagination="{ clickable: true, }"
+            :autoplay="{ delay: 3000, disableOnInteraction: false, }" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="../assets/fight1.png" class="banner" alt="">
+                <div class="out">
+                    <div v-for="item in news" :key="item.id" class="news">
+                        <a class="link"
+                            :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
+                            target="_blank">
+                            <img :src="item.Image" class="img" alt="新聞照片">
+                            <div class="inner">
+                                <p class="title">
+                                    {{ item.Title.replace("快新聞／", "") }}
+                                </p>
+                                <div class="time">{{ item.CreateDate }}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide><img src="../assets/fight2.png" alt="" class="banner">
+                <div class="out">
+                    <div v-for="item in news" :key="item.id" class="news">
+                        <a class="link"
+                            :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
+                            target="_blank">
+                            <img :src="item.Image" class="img" alt="新聞照片">
+                            <div class="inner">
+                                <p class="title">
+                                    {{ item.Title.replace("快新聞／", "") }}
+                                </p>
+                                <div class="time">{{ item.CreateDate }}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide><img src="../assets/fight3.png" alt="" class="banner">
+                <div class="out">
+                    <div v-for="item in news" :key="item.id" class="news">
+                        <a class="link"
+                            :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
+                            target="_blank">
+                            <img :src="item.Image" class="img" alt="新聞照片">
+                            <div class="inner">
+                                <p class="title">
+                                    {{ item.Title.replace("快新聞／", "") }}
+                                </p>
+                                <div class="time">{{ item.CreateDate }}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </swiper-slide>
         </swiper>
-        <swiper :slidesPerView="1" :spaceBetween="10" :navigation="true" :pagination="{ clickable: true, }" :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-        }" :breakpoints="{
-    '640': {
-        slidesPerView: 1,
-        spaceBetween: 20,
-    },
-    '768': {
-        slidesPerView: 2,
-        spaceBetween: 40,
-    },
-    '1024': {
-        slidesPerView: 3,
-        spaceBetween: 50,
-    },
-}" :modules="modules" class="mySwiper">
-            <swiper-slide v-for="item in news" :key="item.id">{{ item.Title }}</swiper-slide>
-
-        </swiper>
+        <!-- <swiper :slidesPerView="3" :spaceBetween="10" :navigation="true" :pagination="{ clickable: true, }" :autoplay="{
+            delay: 2500, disableOnInteraction: false,
+        }" :modules="modules" class="mySwiper">
+            <swiper-slide v-for="item in news" :key="item.id" class="news">
+                <img :src="item.Image" :alt="item.Title" class="news-img">
+                <p class="news-title">{{ item.Title }}</p>
+                <p class="news-time">{{ item.CreateDate }}</p>
+            </swiper-slide>
+        </swiper> -->
     </div>
 </template>
 <script >
@@ -60,7 +92,7 @@ export default {
         }
     }, mounted() {
         axios
-            .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
+            .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=3")
             .then((response) => {
                 this.news = response.data.ITEM;
                 console.log("this", this.news)

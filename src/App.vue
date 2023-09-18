@@ -7,7 +7,7 @@
     <TheCalender />
   </div>
   <BottomNav />
-  <div style="width:500px;margin: auto;">Copyright © 2023 民視新聞網路部 社群中心</div>
+  <div style="width:fit-content;margin: auto;margin-bottom:5rem ;">Copyright © 2023 民視新聞網路部 社群中心</div>
 </template>
 <script >
 
@@ -168,16 +168,20 @@ p {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 * {
   scroll-behavior: smooth;
 }
 
-.all {
-  display: flex;
-  max-width: 1400px;
-  margin: auto;
+
+
+h2 {
+  font-size: 1.4rem;
+  color: #f08308;
+  margin-bottom: 1rem;
+
 }
 </style>
 

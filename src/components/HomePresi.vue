@@ -1,5 +1,5 @@
 <template>
-    <div class="layout">
+    <div class="layout ">
         <div class="home-president">
             總統
             <router-link to="/about">
@@ -10,21 +10,9 @@
             </router-link>
         </div>
         <swiper :slidesPerView="1" :spaceBetween="10" :navigation="true" :pagination="{ clickable: true, }" :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
+            delay: 2500, disableOnInteraction: false,
         }" :breakpoints="{
-    '640': {
-        slidesPerView: 1,
-        spaceBetween: 20,
-    },
-    '768': {
-        slidesPerView: 2,
-        spaceBetween: 40,
-    },
-    '1024': {
-        slidesPerView: 3,
-        spaceBetween: 50,
-    },
+    '768': { slidesPerView: 3, spaceBetween: 20, }, '1024': { slidesPerView: 3, spaceBetween: 20, },
 }" :modules="modules" class="mySwiper">
             <swiper-slide v-for="(item, index) in news2" :key="index" class="out">
                 <a class="link"

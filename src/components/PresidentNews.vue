@@ -1,12 +1,6 @@
 <template>
     <div class="president-relatednews layout">
-        <h2 class="title">總統大選焦點新聞</h2>
-        <ul>
-            <li>熱門議題關鍵字</li>
-            <li>熱門議題關鍵字</li>
-            <li>熱門議題關鍵字</li>
-            <li>熱門議題關鍵字</li>
-        </ul>
+        <h2 class="title"><i class="fa-solid fa-message"></i>&nbsp;總統大選焦點新聞</h2>
         <div class="out">
             <div v-for="(item, index) in news" :key="index">
                 <a class="link"
@@ -43,7 +37,7 @@ export default {
 
     },
     mounted() {
-        axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=賴清德&高虹安&Page=1&sp=6")
+        axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=總統大選&Page=1&sp=6")
             .then((response) => {
                 this.news = response.data.ITEM; // 将获取的新闻数据赋值给Vue实例的news属性
             })
