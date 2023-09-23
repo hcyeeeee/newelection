@@ -1,7 +1,7 @@
 <template>
-    <div class="layout ">
-        <div class="home-president">
-            總統
+    <div class="layout home-president">
+        <div class="">
+            <h2>總統激戰區</h2>
             <router-link to="/about">
                 <picture>
                     <source media="(min-width:768px)" srcset="../assets/123.gif">
@@ -9,10 +9,10 @@
                 </picture>
             </router-link>
         </div>
-        <swiper :slidesPerView="1" :spaceBetween="10" :navigation="true" :pagination="{ clickable: true, }" :autoplay="{
+        <swiper :slidesPerView="1" :pagination="{ clickable: true, }" :autoplay="{
             delay: 2500, disableOnInteraction: false,
         }" :breakpoints="{
-    '768': { slidesPerView: 3, spaceBetween: 20, }, '1024': { slidesPerView: 3, spaceBetween: 20, },
+    '768': { slidesPerView: 2, spaceBetween: 20, }, '1024': { slidesPerView: 3, spaceBetween: 20, },
 }" :modules="modules" class="mySwiper">
             <swiper-slide v-for="(item, index) in news2" :key="index" class="out">
                 <a class="link"

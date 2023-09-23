@@ -7,12 +7,11 @@
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
                     target="_blank">
                     <img :src="item.Image" class="img" alt="新聞照片">
-                    <div class="inner">
-                        <p class="title">
-                            {{ item.Title.replace("快新聞／", "") }}
-                        </p>
-                        <div class="time">{{ item.CreateDate }}</div>
-                    </div>
+
+                    <p class="title">
+                        {{ item.Title.replace("快新聞／", "") }}
+                    </p>
+                    <div class="time">{{ item.CreateDate }}</div>
                 </a>
             </div>
             <a href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞></a>

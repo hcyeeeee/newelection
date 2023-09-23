@@ -9,8 +9,10 @@
   <BottomNav />
   <div style="width:fit-content;margin: auto;margin-bottom:5rem ;">Copyright © 2023 民視新聞網路部 社群中心</div>
 </template>
-<script >
 
+<script >
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { RouterLink, RouterView } from 'vue-router'
 import TheHeader from './components/TheHeader.vue'
 import TheCalender from './components/TheCalender.vue'
@@ -22,9 +24,13 @@ export default {
     TheCalender,
     TheSidebar,
     BottomNav
+  },
+  created() {
+    AOS.init()
   }
 }
 </script>
+
 <style>
 html,
 body,
@@ -183,6 +189,16 @@ h2 {
   margin-bottom: 1rem;
 
 }
+
+hr {
+  height: 1px;
+  opacity: .5;
+}
+
+
+.mb {}
+
+.pc {}
 </style>
 
 

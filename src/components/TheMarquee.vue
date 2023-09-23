@@ -76,10 +76,6 @@ export default {
           // const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
           // this.countdown = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
           this.countdown = `${days + 1} `;
-
-          let a = this.countdown.toString();
-          this.countdown = a
-          this.countdown2 = `${days + 1} `;
         }
       }, 1000);
     }
@@ -120,15 +116,9 @@ export default {
   }
 }
 
-.s {
-  position: relative;
-  width: 100%;
-  margin: auto;
-}
-
 .marquee_layout {
-  width: 95%;
-  margin: auto;
+  width: 100%;
+  margin: 1rem auto;
   display: flex;
   max-width: 1400px;
   border-radius: 1rem;
@@ -141,33 +131,15 @@ export default {
     background: #fff9ee;
   }
 
-  // .mySwiper {
-  //   display: none;
-
-  //   @include pad {
-  //     display: flex;
-  //   }
-  // }
-
   .mySwiper {
     background: #FFDA92;
 
     @include pad {
-
-      border-radius: 0px;
+      border-radius: 0px 10px 10px 0;
     }
   }
-
 }
 
-p {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  flex-direction: row;
-  justify-content: center;
-}
 
 .count {
   background: #fff9ee;
@@ -179,16 +151,10 @@ p {
 
   @include phone {
     border-radius: 0px 1rem 1rem 0;
-    display: block;
   }
 
   @include pad {
-    gap: 1rem;
-    width: 300px;
-    border-radius: 0px 1rem 1rem 0;
-    padding: .5rem;
-    display: flex;
-    align-items: center;
+    display: none;
   }
 
   .sss {
@@ -208,37 +174,9 @@ p {
     }
   }
 
-  .www {
-    font-size: .9rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 80px;
-    border-radius: 1rem 0px 0px 1rem;
-
-    @include pad {
-      display: flex;
-      width: 80px;
-      font-size: 1.2rem;
-    }
-  }
-
-  .wwww {
-    font-size: .9rem;
-    justify-content: center;
-    flex-direction: row;
-    display: none;
-
-    @include pad {
-      display: flex;
-      font-size: 1.2rem;
-      width: 20px;
-    }
-  }
 }
 
 .marquee {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,17 +201,15 @@ p {
     -webkit-line-clamp: 2;
     margin: .3rem;
     font-size: 1.1rem;
-    font-weight: 400;
 
     @include phone {
       -webkit-line-clamp: 3;
-      padding: .5rem 1rem;
+      padding: .5rem .8rem;
       margin: 0rem;
-      font-size: 1.2rem;
     }
 
     @include pad {
-      padding: 1rem;
+      padding: .8rem;
     }
   }
 
@@ -281,16 +217,15 @@ p {
 }
 
 .marquee_title {
-  background: #FF7A00;
   color: #FFF;
   text-align: center;
   font-style: normal;
   font-weight: 400;
-  border-radius: 1rem 0px 0px 1rem;
+  border-radius: 15px 0 0 15px;
   font-size: 1rem;
+  background: linear-gradient(115deg, #f07708 30.73%, #ff9823 32.81%, #f04e08 100%);
 
   @include pad {
-    padding: .5rem;
     width: 5rem;
     display: flex;
     flex-direction: row;

@@ -23,35 +23,33 @@
     <div>
       <div class="empty" @click="closeMenu" :style="{ display: isMobileMenuVisible ? 'flex' : 'none' }"></div>
       <div class="mobile_nav">
-        <h3 class="ba rs" @click="toggleMobileMenu">
+        <h3 class="bars" @click="toggleMobileMenu">
           <i :class="'fa-solid' + (isMobileMenuVisible ? ' fa-xmark' : ' fa-bars')"></i>
         </h3>
       </div>
       <div class="mobile_menu" :style="{ display: isMobileMenuVisible ? 'flex' : 'none' }" alt="">
-       
-          <img src="../assets/fight2024.png" alt="fight2024">
-          <a href="#presidentnews" @click="closeMenu">總統大選</a>
-          <a href="#legislatornews" @click="closeMenu">立委選戰</a>
-          <a href="#infogram" @click="closeMenu">立委參選名單</a>
-          <a href="#news" @click="closeMenu">政治新聞</a>
-          <a href="#video" @click="closeMenu">新聞放大鏡</a>
-          <div class="mobile_share">
-            <a
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ftvnews.com.tw%2Ftopics%2F2023taiwantemple%2F&amp;src=sdkpreparse">
-              <img src="../assets/facebook.png" alt="fb" target="_blank">
-              Facebook
-            </a>
-            <a href="https://social-plugins.line.me/lineit/share?url=https://www.ftvnews.com.tw/topics/2023taiwantemple"
-              target="_blank">
-              <img src="../assets/line.png" alt="line">
-              官方Line
-            </a>
-            <a target="_blank" @click="getLocalUrl">
-              <img src="../assets/share.png" alt="link">
-              複製連結
-            </a>
-          </div>
-        
+
+        <img src="../assets/fight2024.png" alt="fight2024">
+        <router-link to="/" @click="closeMenu">回首頁</router-link>
+        <router-link to="/about" @click="closeMenu">總統大選</router-link>
+        <router-link to="/Legister" @click="closeMenu">立委選戰</router-link>
+        <div class="mobile_share">
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ftvnews.com.tw%2Ftopics%2F2023taiwantemple%2F&amp;src=sdkpreparse">
+            <img src="../assets/facebook.png" alt="fb" target="_blank">
+            Facebook
+          </a>
+          <a href="https://social-plugins.line.me/lineit/share?url=https://www.ftvnews.com.tw/topics/2023taiwantemple"
+            target="_blank">
+            <img src="../assets/line.png" alt="line">
+            官方Line
+          </a>
+          <a target="_blank" @click="getLocalUrl">
+            <img src="../assets/share.png" alt="link">
+            複製連結
+          </a>
+        </div>
+
       </div>
     </div>
   </div>
@@ -110,3 +108,7 @@ export default {
   },
 }
 </script>
+
+
+
+<style lang="scss"></style>

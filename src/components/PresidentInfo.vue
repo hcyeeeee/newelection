@@ -1,16 +1,24 @@
 <template>
     <div class="layout-president layout">
-        <ul class="president-navtab">
-            <li v-for="(candidate, index) in candidates" :key="index" @click="showCandidate(index)">
+        <ul class="president-navtab pc">
+            <li class="pc" v-for="(candidate, index) in candidates" :key="index" @click="showCandidate(index)">
                 {{ candidate.party }} {{ candidate.main.name }}/{{ candidate.sub.name }}</li>
         </ul>
+
+        <select @change="onCandidateSelect" v-model="selectedCandidate" class="mb">
+
+            <option value="none" selected disabled hidden>民進黨 賴清德</option>
+            <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">
+                {{ candidate.party }} {{ candidate.main.name }}/{{ candidate.sub.name }}
+            </option>
+        </select>
+
         <div class="president" v-for="(candidate, index) in  candidates " :key="index"
             v-show="selectedCandidateIndex === index">
             <div class="president-info">
                 <div class="up">
                     <div class="president-info-pic">
                         <img :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.main.name + '.png'" />
-
                     </div>
                 </div>
                 <div class="president-exp">
@@ -45,10 +53,10 @@
             </div>
 
         </div>
-        <div class="president-policy" v-for="(candidate, index) in  candidates " :key="index"
+        <div class="president-policy " v-for="(candidate, index) in  candidates " :key="index"
             v-show="selectedCandidateIndex === index">
             <h2 class=""><i class="fa-solid fa-book-open"></i>&nbsp;政見</h2>
-            <p>{{ candidate.main.policy }}</p>
+            <p class="animate__animated animate__fadeInRight">{{ candidate.main.policy }}</p>
         </div>
     </div>
 </template>
@@ -61,7 +69,6 @@ export default {
         return {
             news: [],
             activeTab: 'main',
-            selectedCandidateIndex: null,
             candidates: [
                 {
                     num: "1",
@@ -181,11 +188,32 @@ export default {
                     },
                 }
             ],
+            selectedCandidate: 0,// 存储所选的候选人
+            selectedCandidateIndex: 0, // 存储所选候选人的索引
+
         };
     }, methods: {
+        onCandidateSelect() {
+            // 当用户选择候选人时，更新索引
+            this.selectedCandidateIndex = this.candidates.indexOf(this.selectedCandidate);
+        },
         showCandidate(index) {
             this.selectedCandidateIndex = index;
-        }
+            this.fetchNews();
+        }, fetchNews() {
+            if (this.selectedCandidateIndex !== null) {
+                const candidateName = this.candidates[this.selectedCandidateIndex].main.name;
+                const url = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidateName}&Page=1&sp=6`;
+                axios
+                    .get(url)
+                    .then((response) => {
+                        this.news = response.data.ITEM;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
+        },
     },
     created() {
         this.showCandidate(0);
