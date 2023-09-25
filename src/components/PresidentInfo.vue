@@ -9,7 +9,8 @@
 
             <option value="none" selected disabled hidden>民進黨 賴清德</option>
             <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">
-                {{ candidate.party }} {{ candidate.main.name }}/{{ candidate.sub.name }}
+                {{ candidate.party }} {{ candidate.main.name }}
+                /{{ candidate.sub.name }}
             </option>
         </select>
 

@@ -9,25 +9,27 @@
                 </picture>
             </router-link>
         </div>
-        <swiper :slidesPerView="1" :pagination="{ clickable: true, }" :autoplay="{
-            delay: 2500, disableOnInteraction: false,
-        }" :breakpoints="{
-    '768': { slidesPerView: 2, spaceBetween: 20, }, '1024': { slidesPerView: 3, spaceBetween: 20, },
-}" :modules="modules" class="mySwiper">
-            <swiper-slide v-for="(item, index) in news2" :key="index" class="out">
-                <a class="link"
-                    :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
-                    target="_blank">
-                    <img :src="item.Image" class="img" alt="新聞照片">
-                    <div class="inner">
-                        <p class="title">
-                            {{ item.Title.replace("快新聞／", "") }}
-                        </p>
-                        <div class="time">{{ item.CreateDate }}</div>
-                    </div>
-                </a>
-            </swiper-slide>
-        </swiper>
+        <div class="ppink">
+            <swiper :slidesPerView="1" :spaceBetween="10" :pagination="{ clickable: true, }" :breakpoints="{
+
+                '768': {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            }" :modules="modules" class="mySwiper">
+                <swiper-slide class="out" v-for="item in news" :key="item.id"> <a
+                        :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
+                        <img :src="item.Image" :alt="item.ID">
+                        <div class="inner">
+                            <div class="title">{{ item.Title.replace("快新聞／", " ") }}</div>
+                            <div class="time">{{ item.CreateDate }}</div>
+                        </div>
+
+                    </a>
+                </swiper-slide>
+            </swiper>
+
+        </div>
         <a href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞></a>
     </div>
 </template>
@@ -53,14 +55,26 @@ export default {
         return {
             modules: [Autoplay, Pagination, Navigation],
             news2: [],
+            news: [],
         };
     },
     methods: {
-        toggleMobileMenu() {
-            axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=賴清德&Page=1&sp=6")
+        getNews() {
+            axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=總統大選&Page=1&sp=3")
                 .then((response) => {
                     this.news2 = response.data.ITEM;
-                    console.log("aaa", this.news2)// 将获取的新闻数据赋值给Vue实例的news属性
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        },
+        getNews2() {
+            axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=總統大選&Page=1&sp=9")
+                .then((response) => {
+                    this.news = response.data.ITEM;
+
                 })
                 .catch((error) => {
                     console.log(error);
@@ -68,7 +82,8 @@ export default {
 
         },
     }, mounted() {
-        this.toggleMobileMenu()
+        this.getNews();
+        this.getNews2()
     }
 
 }
@@ -76,4 +91,53 @@ export default {
 
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@mixin pad {
+    @media (min-width: 700px) {
+        @content;
+    }
+}
+
+
+
+.s {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination {
+    position: absolute;
+    color: orange;
+    font-size: 2rem;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    content: "";
+    color: orange;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: orange;
+}
+
+.ex {
+    position: relative;
+    font-size: 2rem;
+}
+
+
+
+select {
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+</style>

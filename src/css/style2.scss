@@ -4,12 +4,12 @@
   }
 }
 @mixin pad {
-  @media (min-width: 800px) {
+  @media (min-width: 700px) {
     @content;
   }
 }
 @mixin web {
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
@@ -357,7 +357,39 @@ body {
     width: 100%;
   }
 }
-
+.out {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem auto;
+  .link {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    @include pad {
+      grid-template-columns: 1fr;
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+      max-height: 110px;
+      border-radius: 0.5rem;
+      @include pad {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        max-height: 120px;
+      }
+      @include web {
+        max-height: 160px;
+      }
+    }
+    .time {
+      font-size: 0.8rem;
+      text-align: end;
+      opacity: 0.5;
+    }
+  }
+}
 .layout-president {
   .president-navtab {
     flex-direction: row;
@@ -388,6 +420,31 @@ body {
       gap: 1.25rem;
     }
 
+    .out {
+      margin: 0;
+      .link {
+        display: grid;
+        grid-template-columns: 3fr 5fr;
+        gap: 0.5rem;
+
+        margin-bottom: 1rem;
+        @include phone {
+          grid-template-columns: 2fr 3fr;
+        }
+      }
+      .title {
+        overflow: hidden;
+        align-items: start;
+        @include phone {
+          max-height: 60px;
+        }
+      }
+      .inner {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
     .president-info {
       display: flex;
       flex-direction: column;
@@ -409,6 +466,7 @@ body {
       .tab {
         display: flex;
         cursor: pointer;
+        margin-bottom: 1rem;
 
         li {
           background: #f3f3f3;
@@ -434,64 +492,16 @@ body {
       width: 100%;
     }
     .president-news {
-      .out {
-        display: flex;
-        gap: 1rem;
-        .link {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 0.5rem;
-          margin-bottom: 1rem;
-          img {
-            width: 100%;
-            border-radius: 0.5rem;
-            max-height: 7.25rem;
-            object-fit: cover;
-          }
-          .inner {
-            display: flex;
-            flex-direction: column;
-            .title {
-              font-size: 1rem;
-            }
-
-            .time {
-              font-size: 0.7rem;
-              text-align: end;
-              opacity: 0.5;
-            }
-          }
-        }
-        .more {
-          color: pink;
-        }
-      }
     }
   }
 }
 .president-relatednews {
   .out {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-
-    .link {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-
-      img {
-        width: 100%;
-        object-fit: cover;
-        height: 150px;
-        border-radius: 0.5rem;
-      }
-      .time {
-        font-size: 0.7rem;
-        text-align: end;
-        opacity: 0.5;
-      }
+    grid-template-columns: 1fr;
+    @include pad {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
     }
   }
 }
@@ -539,47 +549,9 @@ body {
   .out {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem 0;
     @include pad {
-      display: flex;
-    }
-
-    .news {
-      display: flex;
-      margin: auto;
-      @include pad {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-      .link {
-        display: grid;
-        grid-template-columns: 2fr 3fr;
-        gap: 0.5rem;
-        @include pad {
-          display: grid;
-          grid-template-columns: 1fr;
-        }
-        img {
-          width: 100%;
-          border-radius: 10px;
-        }
-        .inner {
-          display: flex;
-          flex-direction: column;
-          .title {
-            overflow-y: hidden;
-            text-align: justify;
-            line-height: 140%;
-            font-size: 1rem;
-          }
-          .time {
-            font-size: 5px;
-            text-align: end;
-            opacity: 0.5;
-          }
-        }
-      }
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 }
@@ -594,26 +566,22 @@ body {
     font-size: 1rem;
   }
   .out {
-    .link {
-      img {
-        width: 100%;
-        border-radius: 10px;
-      }
-      .inner {
-        display: flex;
-        flex-direction: column;
-        .title {
-          max-height: 59px;
-          overflow-y: hidden;
-          text-align: justify;
-        }
-        .time {
-          margin-top: 0.2rem;
-          font-size: 0.5rem;
-          text-align: end;
-          opacity: 0.5;
-        }
-      }
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .mb {
+    display: grid;
+    @include pad {
+      display: none;
+    }
+  }
+
+  .pc {
+    display: grid;
+    display: none;
+    @include pad {
+      display: grid;
     }
   }
 }
@@ -640,51 +608,6 @@ body {
       &:hover,
       &:active {
         border-bottom: 2px solid $orange;
-      }
-    }
-  }
-}
-
-.Legislator-layout {
-  .out {
-    display: flex;
-    gap: 1rem;
-
-    .news {
-      display: flex;
-      margin: 1rem auto;
-      overflow: hidden;
-      @include pad {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-      .link {
-        display: grid;
-        grid-template-columns: 2fr 3fr;
-        gap: 0.5rem;
-
-        @include phone {
-          display: grid;
-          grid-template-columns: 1fr;
-        }
-        img {
-          width: 100%;
-          border-radius: 10px;
-          height: 10rem;
-          object-fit: cover;
-        }
-
-        .title {
-          max-height: 59px;
-          overflow-y: hidden;
-          text-align: justify;
-        }
-        .time {
-          margin-top: 0.2rem;
-          font-size: 0.5rem;
-          text-align: end;
-          opacity: 0.5;
-        }
       }
     }
   }
@@ -834,26 +757,4 @@ p {
       width: 20px;
     }
   }
-}
-.mb {
-  display: flex;
-  @include pad {
-    display: none;
-  }
-}
-
-.pc {
-  display: none;
-  @include pad {
-    display: flex;
-  }
-}
-
-select {
-  background: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  width: 100%;
-  text-align: center;
-  font-weight: 600;
 }

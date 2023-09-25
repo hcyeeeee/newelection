@@ -1,0 +1,281 @@
+electionData: {
+    "北部地區": {
+        "Taipei": [
+            {
+                "distrist": 1,
+                "party": "民進黨",
+                "name": "吳思瑤"
+            },
+            {
+                "distrist": 1,
+                "party": "國民黨",
+                "name": "張斯綱"
+            },
+            {
+                "distrist": 2,
+                "party": "民進黨",
+                "name": "王世堅"
+            },
+            {
+                "distrist": 2,
+                "party": "國民黨",
+                "name": "游淑慧"
+            },
+            {
+                "distrist": 3,
+                "party": "民進黨",
+                "name": "謝佩芬"
+            },
+            {
+                "distrist": 3,
+                "party": "國民黨",
+                "name": "王鴻薇"
+            },
+            {
+                "distrist": 4,
+                "party": "民進黨",
+                "name": "高嘉瑜"
+            },
+            {
+                "distrist": 4,
+                "party": "國民黨",
+                "name": "李彥秀"
+            },
+            {
+                "distrist": 5,
+                "party": "民進黨",
+                "name": "吳沛憶"
+            },
+            {
+                "distrist": 6,
+                "party": "社民黨",
+                "name": "苗博雅"
+            },
+            {
+                "distrist": 6,
+                "party": "國民黨",
+                "name": "羅智強"
+            },
+            {
+                "distrist": 7,
+                "party": "民進黨",
+                "name": "許淑華"
+            },
+            {
+                "distrist": 7,
+                "party": "國民黨",
+                "name": "徐巧芯"
+            },
+            {
+                "distrist": 8,
+                "party": "民進黨",
+                "name": "王閔生"
+            },
+            {
+                "distrist": 8,
+                "party": "國民黨",
+                "name": "賴士葆"
+            },
+            {
+                "distrist": 8,
+                "party": "民眾黨",
+                "name": "張其祿"
+            }
+        ],
+        "NewTaipei": [
+            {
+                "distrist": 1,
+                "party": "民進黨",
+                "name": "何博文"
+            },
+            {
+                "distrist": 1,
+                "party": "國民黨",
+                "name": "洪孟楷"
+            },
+            {
+                "distrist": 2,
+                "party": "民進黨",
+                "name": "林淑芬"
+            },
+            {
+                "distrist": 3,
+                "party": "民進黨",
+                "name": "李坤城"
+            },
+            {
+                "distrist": 3,
+                "party": "國民黨",
+                "name": "蔡明堂"
+            },
+            {
+                "distrist": 4,
+                "party": "民進黨",
+                "name": "吳秉叡"
+            },
+            {
+                "distrist": 4,
+                "party": "國民黨",
+                "name": "蔡欣璋"
+            },
+            {
+                "distrist": 5,
+                "party": "民進黨",
+                "name": "蘇巧慧"
+            },
+            {
+                "distrist": 5,
+                "party": "國民黨",
+                "name": "洪佳君"
+            },
+            {
+                "distrist": 6,
+                "party": "民進黨",
+                "name": "張宏陸"
+            },
+            {
+                "distrist": 6,
+                "party": "國民黨",
+                "name": "林國春"
+            },
+            {
+                "distrist": 7,
+                "party": "民進黨",
+                "name": "羅致政"
+            },
+            {
+                "distrist": 7,
+                "party": "國民黨",
+                "name": "葉元之"
+            },
+            {
+                "distrist": 8,
+                "party": "民進黨",
+                "name": "吳崢"
+            },
+            {
+                "distrist": 8,
+                "party": "國民黨",
+                "name": "張智倫"
+            },
+            {
+                "distrist": 8,
+                "party": "民眾黨",
+                "name": "邱臣遠"
+            },
+            {
+                "distrist": 9,
+                "party": "民進黨",
+                "name": "莊銘淵"
+            },
+            {
+                "distrist": 9,
+                "party": "國民黨",
+                "name": "林德福"
+            },
+            {
+                "distrist": 10,
+                "party": "民進黨",
+                "name": "吳琪銘"
+            },
+            {
+                "distrist": 10,
+                "party": "國民黨",
+                "name": "林金結"
+            },
+            {
+                "distrist": 11,
+                "party": "民進黨",
+                "name": "曾柏瑜"
+            },
+            {
+                "distrist": 11,
+                "party": "國民黨",
+                "name": "羅明才"
+            },
+            {
+                "distrist": 12,
+                "party": "民進黨",
+                "name": "賴品妤"
+            },
+            {
+                "distrist": 12,
+                "party": "國民黨",
+                "name": "廖先翔"
+            }
+        ],
+    },
+    "中部地區": {
+        "台中": [
+            {
+                "distrist": 1,
+                "party": "民進黨",
+                "name": "蔡其昌"
+            },
+            {
+                "distrist": 1,
+                "party": "國民黨",
+                "name": "劉燈鐘"
+            },
+            {
+                "distrist": 3,
+                "party": "民進黨",
+                "name": "謝子涵"
+            },
+            {
+                "distrist": 3,
+                "party": "國民黨",
+                "name": "楊瓊瓔"
+            },
+            {
+                "distrist": 4,
+                "party": "民進黨",
+                "name": "張廖萬堅"
+            },
+            {
+                "distrist": 4,
+                "party": "國民黨",
+                "name": "廖偉翔"
+            },
+            {
+                "distrist": 5,
+                "party": "民進黨",
+                "name": "莊競程"
+            },
+            {
+                "distrist": 5,
+                "party": "國民黨",
+                "name": "黃健豪"
+            },
+            {
+                "distrist": 6,
+                "party": "民進黨",
+                "name": "江肇國"
+            },
+        ]
+    },
+    "南部地區": {
+        "台南": [
+            {
+                "distrist": 1,
+                "party": "民進黨",
+                "name": "蔡其昌"
+            },
+            {
+                "distrist": 1,
+                "party": "國民黨",
+                "name": "劉燈鐘"
+            },
+            {
+                "distrist": 3,
+                "party": "民進黨",
+                "name": "謝子涵"
+            },
+            {
+                "distrist": 3,
+                "party": "國民黨",
+                "name": "楊瓊瓔"
+            }
+        ]
+    }
+}

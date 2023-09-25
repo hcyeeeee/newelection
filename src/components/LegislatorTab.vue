@@ -1,31 +1,62 @@
 <template>
-    <div class="layout Legislator-layout">
+    <div class="layout">
         <div class="Legislator">
             <ul class="navtab">
                 <li v-for="candidate in candidates" :key="candidate.index" @click="selectCandidate(candidate)">
                     {{ candidate.name.blue + candidate.name.green + candidate.name.other }}
-
                 </li>
             </ul>
         </div>
-        <div class="out">
-            <div v-if="selectedCandidate" v-for="item in selectedCandidate.responseData" :key="item.index" class="news">
-                <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
-                    <img :src="item.Image" :alt="item.ID">
-                    <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
-                    <div class="time">{{ item.CreateDate }}</div>
-                </a>
-            </div>
+        <div>
+            <swiper v-if="selectedCandidate" :slidesPerView="1" :spaceBetween="10" :pagination="{ clickable: true, }"
+                :breakpoints="{
+                    '640': {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    '768': {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    '1024': {
+                        slidesPerView: 5,
+                        spaceBetween: 20,
+                    },
+                }" :modules="modules" class="mySwiper">
+                <swiper-slide class="out" v-for="item in selectedCandidate.responseData" :key="item.index"> <a
+                        :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
+                        <img :src="item.Image" :alt="item.ID">
+                        <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
+                        <div class="time">{{ item.CreateDate }}</div>
+                    </a>
+                </swiper-slide>
+            </swiper>
+
         </div>
     </div>
 </template>
   
 <script>
 import axios from 'axios';
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
+
 
 export default {
+    components: {
+        Swiper,
+        SwiperSlide,
+    },
     data() {
         return {
+            modules: [Autoplay, Pagination, Navigation],
             candidates: [
                 {
                     index: "1",
@@ -97,7 +128,7 @@ export default {
     methods: {
         selectCandidate(candidate) {
             // 根据选中的候选人动态生成 API URL
-            const apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=3`;
+            const apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=9`;
             // 使用 axios 发送请求，并将响应数据存储在相应的 candidate.responseData 中
             axios.get(apiUrl)
                 .then(response => {

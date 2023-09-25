@@ -25,11 +25,6 @@
 <script>
 import axios from 'axios';
 export default {
-    computed: {
-        assetsImg() {
-            return '/1.png'
-        },
-    },
     data() {
         return {
             news: [],
