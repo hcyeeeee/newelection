@@ -1,25 +1,22 @@
 <template>
     <div class="president-relatednews layout">
-        <h2 class="title"><i class="fa-solid fa-message"></i>&nbsp;總統大選焦點新聞</h2>
+        <h2><i class="fa-solid fa-message"></i>&nbsp;總統大選焦點新聞</h2>
         <div class="out">
             <div v-for="(item, index) in news" :key="index">
                 <a class="link"
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
                     target="_blank">
                     <img :src="item.Image" class="img" alt="新聞照片">
-
-                    <p class="title">
-                        {{ item.Title.replace("快新聞／", "") }}
-                    </p>
-                    <div class="time">{{ item.CreateDate }}</div>
-
+                    <div class="inner">
+                        <p class="title">
+                            {{ item.Title.replace("快新聞／", "") }}
+                        </p>
+                        <div class="time">{{ item.CreateDate }}</div>
+                    </div>
                 </a>
             </div>
-            <div class="more">
-                <a href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞></a>
-            </div>
-
         </div>
+        <a class="more" href="https://www.ftvnews.com.tw/tag/總統大選">看更多相關新聞></a>
     </div>
 </template>
 <script>

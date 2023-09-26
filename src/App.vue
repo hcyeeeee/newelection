@@ -137,12 +137,11 @@ section {
 }
 
 body {
-  line-height: 1;
-
+  line-height: 150%;
   font-family: "Noto Sans TC", sans-serif, 思源黑體, 微軟正黑體, 蘋方體, 黑體,
     sans-serif, serif;
   scroll-behavior: smooth;
-
+  color: rgb(35, 35, 35);
 }
 
 ol,
@@ -169,7 +168,8 @@ table {
 }
 
 p {
-  line-height: 1.2
+  font-size: 1.1rem;
+  line-height: 150%
 }
 
 a {
@@ -184,9 +184,12 @@ a {
 
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #f08308;
   margin-bottom: 1rem;
+  margin: 1rem auto;
+  font-weight: 450;
+  letter-spacing: .1rem;
 
 }
 

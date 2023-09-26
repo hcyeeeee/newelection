@@ -1,14 +1,18 @@
 <template>
     <div class="calender">
-        <div class="title">行事曆 </div>
+        <div class="title">
+            <i class="fa-regular fa-calendar-check"></i> 行事曆
+        </div>
         <div class="calender_content">
             <div v-for="item in calender" :key="item.id" class="">
-                <div style="margin-bottom: .3rem;font-weight: 300;font-size: 0.875rem;" data-aos="fade-up"
-                    data-aos-delay="50" data-aos-duration="1000" data-aos-once="false">{{
+                <div style="margin-bottom: .3rem;font-weight: 300;font-size: 0.9rem;" data-aos="fade-up" data-aos-delay="50"
+                    data-aos-duration="1000" data-aos-once="false">
+
+                    {{
                         item.startDate
-                    }}{{
-    item.endDate }}</div>
-                <div style="font-weight: 400;font-size: .9rem;line-height: 130%;">{{ item.DayEvent }}</div>
+                    }}{{ item.endDate }}
+                </div>
+                <div style="font-weight: 400;font-size: 1rem;line-height: 130%;">{{ item.DayEvent }}</div>
                 <hr>
             </div>
         </div>

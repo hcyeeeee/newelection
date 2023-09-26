@@ -28,11 +28,13 @@
         </h3>
       </div>
       <div class="mobile_menu" :style="{ display: isMobileMenuVisible ? 'flex' : 'none' }" alt="">
-
-        <img src="../assets/fight2024.png" alt="fight2024">
+        <router-link to="/" @click="closeMenu">
+          <img src="../assets/fight2024.png" alt="fight2024">
+        </router-link>
         <router-link to="/" @click="closeMenu">回首頁</router-link>
         <router-link to="/about" @click="closeMenu">總統大選</router-link>
         <router-link to="/Legister" @click="closeMenu">立委選戰</router-link>
+        <router-link to="/policy" @click="closeMenu">政策牛肉</router-link>
         <div class="mobile_share">
           <a
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ftvnews.com.tw%2Ftopics%2F2023taiwantemple%2F&amp;src=sdkpreparse">

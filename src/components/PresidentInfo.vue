@@ -2,15 +2,15 @@
     <div class="layout-president layout">
         <ul class="president-navtab pc">
             <li class="pc" v-for="(candidate, index) in candidates" :key="index" @click="showCandidate(index)">
-                {{ candidate.party }} {{ candidate.main.name }}/{{ candidate.sub.name }}</li>
+                {{ candidate.party }} {{ candidate.main.name }}</li>
+            <!-- /{{ candidate.sub.name }}</li> -->
         </ul>
 
-        <select @change="onCandidateSelect" v-model="selectedCandidate" class="mb">
-
-            <option value="none" selected disabled hidden>民進黨 賴清德</option>
+        <select @change="onCandidateSelect" v-model="selectedCandidate" class="mb custom-select">
+            <option value="" disabled>請選擇候選人</option>
             <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">
                 {{ candidate.party }} {{ candidate.main.name }}
-                /{{ candidate.sub.name }}
+                <!-- /{{ candidate.sub.name }} -->
             </option>
         </select>
 
@@ -25,18 +25,18 @@
                 <div class="president-exp">
                     <ul class="tab">
                         <li @click="activeTab = 'main'"> {{ candidate.main.name }} 學經歷</li>
-                        <li @click="activeTab = 'sub'"> {{ candidate.sub.name }} 學經歷</li>
+                        <!-- <li @click="activeTab = 'sub'"> {{ candidate.sub.name }} 學經歷</li> -->
                     </ul>
                     <ul class="content" v-for="( list, index ) in  candidate.main.Exp " :key="index">
                         <li v-if="activeTab === 'main'"> {{ list }}</li>
                     </ul>
-                    <ul class="content" v-for="( list, index ) in  candidate.sub.Exp " :key="index">
+                    <!-- <ul class="content" v-for="( list, index ) in  candidate.sub.Exp " :key="index">
                         <li v-if="activeTab === 'sub'"> {{ list }}</li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
             <div class="president-news">
-                <h2 class="title"><i class="fa-solid fa-message"></i>&nbsp;相關新聞</h2>
+                <h2><i class="fa-solid fa-message"></i>&nbsp;相關新聞</h2>
                 <div v-for="( item, index ) in  news " :key="index" class="out">
                     <a class="link"
                         :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
@@ -50,14 +50,14 @@
                         </div>
                     </a>
                 </div>
-                <a href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞</a>
+                <a class="more" :href="'https://www.ftvnews.com.tw/tag/' + candidate.main.name">看更多相關新聞 >></a>
             </div>
 
         </div>
         <div class="president-policy " v-for="(candidate, index) in  candidates " :key="index"
             v-show="selectedCandidateIndex === index">
             <h2 class=""><i class="fa-solid fa-book-open"></i>&nbsp;政見</h2>
-            <p class="animate__animated animate__fadeInRight">{{ candidate.main.policy }}</p>
+            <p class="">{{ candidate.main.policy }}</p>
         </div>
     </div>
 </template>
@@ -84,12 +84,12 @@ export default {
                             "哈佛大學公共衛生學院碩士",
                             "台南成大醫院主治醫師",
                             "新樓醫院主治醫師",
-                            "1996年　當選台南市選區的第三屆國民大會代表",
-                            "1998年　當選台南市選區立法委員",
-                            "2010年　改制直轄市後的第一屆台南市市長",
-                            "2014年　連任台南市市長",
-                            "2020年　當選副總統",
-                            "2023年　成為民進黨主席",
+                            "1996年當選台南市選區的第三屆國民大會代表",
+                            "1998年當選台南市選區立法委員",
+                            "2010年改制直轄市後的第一屆台南市市長",
+                            "2014年連任台南市市長",
+                            "2020年當選副總統",
+                            "2023年成為民進黨主席",
 
                         ],
 
@@ -117,9 +117,9 @@ export default {
                             "內政部警政署刑事警察局局長",
                             "內政部警政署署長",
                             "中央警察大學校長",
-                            "2010年　擔任新北市副市長",
-                            "2018年　當選新北市長",
-                            "2022年　連任新北市長",
+                            "2010年擔任新北市副市長",
+                            "2018年當選新北市長",
+                            "2022年連任新北市長",
                         ],
                     },
                     sub: {
@@ -143,9 +143,9 @@ export default {
                             "台大醫院急診部醫師",
                             "台大醫院創傷醫學部主任",
                             "台大醫學院教授",
-                            "1994年　擔任陳水扁競選台北市長的醫界後援會幹部",
-                            "2000年　擔任陳水扁競選總統台大醫院後援會召集人",
-                            "2012年6月　擔任陳水扁民間醫療小組召集人",
+                            "1994年擔任陳水扁競選台北市長的醫界後援會幹部",
+                            "2000年擔任陳水扁競選總統台大醫院後援會召集人",
+                            "2012年6月擔任陳水扁民間醫療小組召集人",
                             "2013年擔任小英之友會常任理事",
                             "2014年當選台北市長",
                             "2018年連任台北市長",
@@ -170,13 +170,13 @@ export default {
                         policy: "郭台銘在參選總統聲明中表示，「台灣未來的總統，需要具有對產業發展的洞察力、對世界經濟局勢的理解力，更需要有帶領人民走出困局的執行力。這是台灣未來總統迫切需要的領導力，「企業家治國」的時代來臨了。」",
                         Exp: [
                             "中國海事專科學校（今臺北海洋科技大學）航運管理科",
-                            "1970年　加入中國國民黨",
-                            "1974年　創立鴻海集團",
-                            "2019年　改任鴻海集團董事",
-                            "2019年　參加國民黨總統初選但未獲提名",
-                            "2000年　退出中國國民黨",
-                            "2019年4-9月　短暫入中國國民黨又退出",
-                            "2023年　參加國民黨總統初選但未獲提名",
+                            "1970年加入中國國民黨",
+                            "1974年創立鴻海集團",
+                            "2019年改任鴻海集團董事",
+                            "2019年參加國民黨總統初選但未獲提名",
+                            "2000年退出中國國民黨",
+                            "2019年4-9月短暫入中國國民黨又退出",
+                            "2023年參加國民黨總統初選但未獲提名",
                         ],
                     },
                     sub: {
@@ -189,7 +189,7 @@ export default {
                     },
                 }
             ],
-            selectedCandidate: 0,// 存储所选的候选人
+            selectedCandidate: "",// 存储所选的候选人
             selectedCandidateIndex: 0, // 存储所选候选人的索引
 
         };
