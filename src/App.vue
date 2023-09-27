@@ -184,13 +184,11 @@ a {
 
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #f08308;
-  margin-bottom: 1rem;
-  margin: 1rem auto;
+  margin: 0rem auto 1rem;
   font-weight: 450;
   letter-spacing: .1rem;
-
 }
 
 hr {

@@ -124,25 +124,26 @@ body {
         border-radius: 4px;
       }
     }
+
+    .calender-title {
+      background: $orangeLiner;
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem 0;
+      border-radius: 1rem 1rem 0rem 0rem;
+    }
     .calender-mb {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       background: $whiteBg;
       box-shadow: $whitebgShadow;
       width: 100%;
-      border-radius: 1.25rem;
+      border-radius: 0 0 1.25rem 1.25rem;
 
       @include pad {
         display: none;
-      }
-      .title {
-        background: $orangeLiner;
-        color: #fff;
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 0;
-        border-radius: 1rem 1rem 0rem 0rem;
       }
       .calender_content {
         display: flex;
@@ -208,7 +209,7 @@ body {
     .empty {
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       position: fixed;
       z-index: 88;
       top: 0rem;
@@ -450,6 +451,7 @@ body {
     }
 
     .president-exp {
+      margin-bottom: 1rem;
       .tab {
         display: flex;
         cursor: pointer;
@@ -572,11 +574,6 @@ body {
   h2 {
     color: $orange;
     padding-left: 1rem;
-
-    &::before {
-      font-family: FontAwesome;
-      content: "\f06d";
-    }
   }
   .banner {
     width: 100%;
@@ -779,7 +776,7 @@ p {
 
     @include pad {
       display: flex;
-      width: 80px;
+      width: 100px;
       font-size: 1.2rem;
       font-weight: 500;
       letter-spacing: 0.1rem;
@@ -819,6 +816,7 @@ p {
   display: flex;
   justify-content: end;
   margin-right: 0;
+  align-items: center;
 }
 
 .navtab-mb {
@@ -849,12 +847,13 @@ p {
 /* 自訂的選擇框外觀 */
 .custom-select {
   width: 100%; /* 設置選擇框寬度 */
-  padding: 10px; /* 設置內邊距 */
+  padding: 1rem 0.5rem; /* 設置內邊距 */
   border: 3px solid $orange; /* 設置邊框 */
   border-radius: 1rem; /* 設置邊框圓角 */
   background-color: #fff; /* 設置背景顏色 */
-  font-size: 16px; /* 設置文字大小 */
+  font-size: 1.3rem; /* 設置文字大小 */
   color: $black; /* 設置文字顏色 */
+  font-weight: 500;
 }
 
 /* 自訂選項外觀 */
@@ -863,6 +862,7 @@ p {
   background-color: #fff; /* 設置選項背景顏色 */
   color: $black; /* 設置文字顏色 */
 }
+
 .title {
   font-size: 1.1rem;
   line-height: 120%;
@@ -996,4 +996,58 @@ li {
 .president-policy {
   width: 100%;
   margin: 1rem auto;
+}
+.fa-solid {
+  padding-right: 8px;
+}
+.custom-select {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid #f08308;
+  border-radius: 1rem;
+  background-color: #fff;
+  font-size: 16px;
+  color: #373535;
+}
+
+select {
+  color: pink;
+}
+
+.calender_content_mb {
+  margin: 1rem 1rem -1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.count_mb {
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  display: block;
+  height: 100%;
+  margin: 0rem 0.5rem;
+
+  .sss {
+    color: $orange;
+    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+  }
+
+  .www {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 80px;
+    border-radius: 1rem 0px 0px 1rem;
+  }
+
+  .wwww {
+    font-size: 0.9rem;
+    justify-content: center;
+    flex-direction: row;
+    display: none;
+  }
 }

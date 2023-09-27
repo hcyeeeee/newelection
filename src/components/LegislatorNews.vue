@@ -16,7 +16,8 @@
                 </a>
             </div>
         </div>
-        <a class="more" href="https://www.ftvnews.com.tw/tag/立委選戰">看更多相關新聞></a>
+        <a class="more" href="https://www.ftvnews.com.tw/tag/立委選戰"><i class="fa-solid fa-eyes"></i>看更多相關新聞<i
+                class="fa-duotone fa-angles-right"></i></a>
     </div>
 </template>
 <script>

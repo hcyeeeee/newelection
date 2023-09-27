@@ -1,12 +1,13 @@
 <template>
     <div class="layout-president layout">
+        <h2><i class="fa-solid fa-user"></i>總統候選人</h2>
         <ul class="president-navtab pc">
             <li class="pc" v-for="(candidate, index) in candidates" :key="index" @click="showCandidate(index)">
                 {{ candidate.party }} {{ candidate.main.name }}</li>
             <!-- /{{ candidate.sub.name }}</li> -->
         </ul>
 
-        <select @change="onCandidateSelect" v-model="selectedCandidate" class="mb custom-select">
+        <select @change="onCandidateSelect" v-model="selectedCandidate" class="mb custom-select form-control info-select ">
             <option value="" disabled>請選擇候選人</option>
             <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">
                 {{ candidate.party }} {{ candidate.main.name }}
@@ -50,7 +51,8 @@
                         </div>
                     </a>
                 </div>
-                <a class="more" :href="'https://www.ftvnews.com.tw/tag/' + candidate.main.name">看更多相關新聞 >></a>
+                <a class="more" :href="'https://www.ftvnews.com.tw/tag/' + candidate.main.name"><i
+                        class="fa-solid fa-eyes"></i>看更多相關新聞<i class="fa-duotone fa-angles-right"></i></a>
             </div>
 
         </div>
@@ -233,3 +235,4 @@ export default {
 }
 
 </script>
+<style></style>

@@ -1,6 +1,6 @@
 <template>
     <div class="home-Legis layout">
-        <h2>立委激戰區</h2>
+        <h2><i class="fa-solid fa-fire"></i>立委激戰區</h2>
         <swiper :spaceBetween="30" :loop="true" :navigation="true" :centeredSlides="true" :pagination="{ clickable: true, }"
             :autoplay="{ delay: 4000, disableOnInteraction: false, }" :modules="modules" class="mySwiper">
             <swiper-slide>
@@ -58,8 +58,8 @@
             </swiper-slide>
 
         </swiper>
-        <a href="https://www.ftvnews.com.tw/tag/%E7%AB%8B%E5%A7%94%E9%81%B8%E6%88%B0/" target="_blank"
-            class="more">點我看更多新聞>></a>
+        <a href="https://www.ftvnews.com.tw/tag/%E7%AB%8B%E5%A7%94%E9%81%B8%E6%88%B0/" target="_blank" class="more"><i
+                class="fa-solid fa-eyes"></i>點我看更多新聞<i class="fa-duotone fa-angles-right"></i></a>
     </div>
 </template>
 <script >

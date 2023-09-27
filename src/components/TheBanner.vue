@@ -17,13 +17,20 @@
                 <p class="wwww">秒</p>
             </div>
         </div>
+        <div class="calender-title mb">行事曆 </div>
         <div class="calender-mb">
-            <div class="title">行事曆 </div>
-            <swiper class="calender_content mySwiper" swiper :spaceBetween="10" :slidesPerView="2" :autoplay="{
-                delay: 2500,
-                disableOnInteraction: false,
-            }" :breakpoints="{
-    '400': { slidesPerView: 2, spaceBetween: 10, }, '600': { slidesPerView: 3, spaceBetween: 10, }
+
+            <div class="count_mb">
+                <p class="www">選戰倒數 </p>
+                <p class="sss"> {{ day }}</p>
+                <p class="wwww">天</p>
+            </div>
+            <swiper class="calender_content_mb mySwiper" :centeredSlides="true" :spaceBetween="10" :slidesPerView="1"
+                :autoplay="{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }" :breakpoints="{
+    '400': { slidesPerView: 1, spaceBetween: 10, }, '600': { slidesPerView: 2, spaceBetween: 10, }
 }" :modules="modules" :loop="true">
 
                 <swiper-slide v-for="item in calender" :key="item.id"
@@ -35,6 +42,7 @@
                     <div style="font-weight: 400;font-size: 1rem;line-height: 120%;">{{ item.DayEvent }}</div>
                 </swiper-slide>
             </swiper>
+
         </div>
 
         <iframe width="100%" height="100%"

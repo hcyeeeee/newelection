@@ -1,7 +1,7 @@
 <template>
     <div class="layout home-president">
         <div class="">
-            <h2>總統激戰區</h2>
+            <h2><i class="fa-solid fa-message"></i>總統激戰區</h2>
             <router-link to="/about">
                 <picture>
                     <source media="(min-width:768px)" srcset="../assets/123.gif">
@@ -64,7 +64,7 @@
             </swiper>
 
         </div>
-        <a class="more" href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞></a>
+        <a class="more" href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞<i class="fa-duotone fa-angles-right"></i></a>
     </div>
 </template>
 

@@ -15,11 +15,11 @@
         </swiper-slide>
       </swiper>
 
-      <div class="count">
+      <!-- <div class="count">
         <p class="www">選戰倒數 </p>
         <p class="sss"> {{ countdown }}</p>
         <p class="wwww">天</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -133,6 +133,7 @@ export default {
 
   .mySwiper {
     background: #FFDA92;
+    border-radius: 0px 1rem 1rem 0;
 
     @include pad {
       border-radius: 0px 10px 10px 0;
@@ -182,7 +183,6 @@ export default {
   justify-content: center;
   font-size: 1.1rem;
   overflow: hidden;
-  border-radius: 0px 1rem 1rem 0px;
 
   @include pad {
     border-radius: 0px;
@@ -204,12 +204,13 @@ export default {
 
     @include phone {
       -webkit-line-clamp: 3;
-      padding: .5rem .8rem;
+      padding: 0rem .8rem;
       margin: 0rem;
     }
 
     @include pad {
-      padding: .8rem;
+      font-size: 1.2rem;
+      padding: 0rem .8rem;
     }
   }
 
