@@ -2,8 +2,10 @@
     <div class="layout-president layout">
         <h2><i class="fa-solid fa-user"></i>總統候選人</h2>
         <ul class="president-navtab pc">
-            <li class="pc" v-for="(candidate, index) in candidates" :key="index" @click="showCandidate(index)">
-                {{ candidate.party }} {{ candidate.main.name }}</li>
+            <li class="pc " :class="{ 'active': index === selectedCandidateIndex }" v-for="(candidate, index) in candidates"
+                :key="index" @click="showCandidate(index)">
+                {{ candidate.party }} {{ candidate.main.name }}
+            </li>
             <!-- /{{ candidate.sub.name }}</li> -->
         </ul>
 
@@ -20,7 +22,8 @@
             <div class="president-info">
                 <div class="up">
                     <div class="president-info-pic">
-                        <img :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.main.name + '.png'" />
+                        <img loading="lazy"
+                            :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.main.name + '.png'" />
                     </div>
                 </div>
                 <div class="president-exp">
@@ -38,11 +41,12 @@
             </div>
             <div class="president-news">
                 <h2><i class="fa-solid fa-message"></i>&nbsp;相關新聞</h2>
-                <div v-for="( item, index ) in  news " :key="index" class="out">
+                <div v-for="( item, index ) in  news " :key="index" class="out" data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom">
                     <a class="link"
                         :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
                         target="_blank">
-                        <img :src="item.Image" class="img" alt="新聞照片">
+                        <img loading="lazy" :src="item.Image" class="img" :alt="item.Title">
                         <div class="inner">
                             <p class="title">
                                 {{ item.Title.replace("快新聞／", "") }}
@@ -51,8 +55,10 @@
                         </div>
                     </a>
                 </div>
-                <a class="more" :href="'https://www.ftvnews.com.tw/tag/' + candidate.main.name"><i
-                        class="fa-solid fa-eyes"></i>看更多相關新聞<i class="fa-duotone fa-angles-right"></i></a>
+                <div class="more">
+                    <a :href="'https://www.ftvnews.com.tw/tag/' + candidate.main.name">看更多相關新聞<i
+                            class="fa-solid fa-angles-right"></i></a>
+                </div>
             </div>
 
         </div>
@@ -72,6 +78,7 @@ export default {
         return {
             news: [],
             activeTab: 'main',
+            activeIndex: 0, // 默认选项的索引
             candidates: [
                 {
                     num: "1",
@@ -196,6 +203,11 @@ export default {
 
         };
     }, methods: {
+        showCandidate(index) {
+            // 在点击时更新 activeIndex
+            this.activeIndex = index;
+            // 执行其他相关操作
+        },
         onCandidateSelect() {
             // 当用户选择候选人时，更新索引
             this.selectedCandidateIndex = this.candidates.indexOf(this.selectedCandidate);
@@ -235,4 +247,8 @@ export default {
 }
 
 </script>
-<style></style>
+<style>
+.active {
+    border-bottom: 2px solid #f08308 !important;
+}
+</style>

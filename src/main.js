@@ -3,8 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
-// import "bootstrap";
-// import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap";
+
 const app = createApp(App);
 
 app.use(router, VueAxios, axios);

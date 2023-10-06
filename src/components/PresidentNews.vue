@@ -2,11 +2,11 @@
     <div class="president-relatednews layout">
         <h2><i class="fa-solid fa-message"></i>&nbsp;總統大選焦點新聞</h2>
         <div class="out">
-            <div v-for="(item, index) in news" :key="index">
+            <div v-for="(item, index) in news" :key="index" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 <a class="link"
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=president'"
                     target="_blank">
-                    <img :src="item.Image" class="img" alt="新聞照片">
+                    <img loading="lazy" :src="item.Image" class="img" :alt="item.Title">
                     <div class="inner">
                         <p class="title">
                             {{ item.Title.replace("快新聞／", "") }}
@@ -16,12 +16,15 @@
                 </a>
             </div>
         </div>
-        <a class="more" href="https://www.ftvnews.com.tw/tag/總統大選"><i class="fa-solid fa-eyes"></i>看更多相關新聞<i
-                class="fa-duotone fa-angles-right"></i></a>
+        <div class="more">
+            <a href="https://www.ftvnews.com.tw/tag/總統大選">看更多相關新聞<i class="fa-solid fa-angles-right"></i></a>
+        </div>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 export default {
     data() {
         return {
@@ -40,6 +43,8 @@ export default {
             .catch((error) => {
                 console.log(error);
             });
+    }, created() {
+        AOS.init()
     }
 
 }

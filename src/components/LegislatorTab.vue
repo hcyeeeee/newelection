@@ -3,10 +3,12 @@
         <h2><i class="fa-solid fa-fire"></i> 立委激戰區</h2>
         <div class="Legislator pc">
             <ul class="navtab">
-                <li v-for="candidate in candidates" :key="candidate.index" @click="selectCandidate(candidate)">
+                <li v-for="candidate in candidates" :key="candidate.index" @click="selectCandidate(candidate)"
+                    :class="{ 'active': candidate.selected }">
                     {{ candidate.name.blue + candidate.name.green + candidate.name.other }}
                 </li>
             </ul>
+
         </div>
         <div class="Legislator pc">
             <swiper v-if="selectedCandidate" :slidesPerView="1" :spaceBetween="10" :pagination="{ clickable: true, }"
@@ -29,9 +31,9 @@
 }" :modules="modules" class="mySwiper">
                 <swiper-slide class="out" v-for="item in selectedCandidate.responseData" :key="item.index"> <a
                         :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
-                        <img :src="item.Image" :alt="item.ID">
+                        <img loading="lazy" :src="item.Image" :alt="item.ID">
                         <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
-                        <div class="time">{{ item.CreateDate }}</div>
+                        <!-- <div class="time">{{ item.CreateDate }}</div> -->
                     </a>
                 </swiper-slide>
             </swiper>
@@ -41,7 +43,6 @@
             </div>
         </div>
         <div class="mb">
-
             <select class="mySelect custom-select" v-model="selectedCandidate" @change="selectCandidate(selectedCandidate)">
                 <option value="">請選擇候選人</option>
                 <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">{{ candidate.name.blue +
@@ -50,9 +51,9 @@
             <div class="Legislator">
                 <div v-if="selectedCandidate">
                     <div class="out">
-                        <a v-for="(item, index) in selectedCandidate.responseData" :key="index"
+                        <a v-for="(item, index) in selectedCandidate.responseData" :key="index" data-aos="fade-up"
                             :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link2">
-                            <img :src="item.Image" :alt="item.ID">
+                            <img loading="lazy" :src="item.Image" :alt="item.ID">
                             <div class="inner">
                                 <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
                                 <div class="time">{{ item.CreateDate }}</div>
@@ -85,6 +86,7 @@ export default {
     },
     data() {
         return {
+
             modules: [Autoplay, Pagination, Navigation],
             candidates: [
                 {
@@ -120,20 +122,23 @@ export default {
     },
     methods: {
         selectCandidate(candidate) {
-            // 根据选中的候选人动态生成 API URL
-            const apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=6`;
-            // 使用 axios 发送请求，并将响应数据存储在相应的 candidate.responseData 中
+            let apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=6`;
+
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=8`;
+            }
+
             axios.get(apiUrl)
                 .then(response => {
-                    // 在这里处理 API 响应数据
                     candidate.responseData = response.data.ITEM;
-                    // 更新选中的候选人
                     this.selectedCandidate = candidate;
                 })
                 .catch(error => {
-                    // 处理错误
                     console.error(error);
                 });
+            this.candidates.forEach((c) => {
+                c.selected = (c === candidate);
+            });
         },
     },
     mounted() {
@@ -142,3 +147,25 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.swiper-pagination {
+    margin: 0rem auto !important;
+}
+
+.arrow {
+    margin: 1.6rem auto !important;
+}
+
+.swiper-pagination {
+    margin: -0.5rem auto !important;
+}
+
+.swiper-pagination {
+    margin: -0.5rem auto;
+}
+
+.active {
+    border-bottom: 2px solid #f08308 !important;
+}
+</style>

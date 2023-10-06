@@ -1,5 +1,6 @@
 
 <template >
+  <h1>【最新】2024總統大選、立委之戰參選名單、政見焦點 - 民視數位專題</h1>
   <TheHeader />
   <div class="all">
     <TheSidebar />
@@ -167,10 +168,7 @@ table {
   border-spacing: 0;
 }
 
-p {
-  font-size: 1.1rem;
-  line-height: 150%
-}
+
 
 a {
   text-decoration: none;
@@ -186,20 +184,17 @@ a {
 h2 {
   font-size: 1.4rem;
   color: #f08308;
-  margin: 0rem auto 1rem;
-  font-weight: 450;
+  margin: .5rem .5rem .8rem;
+  font-weight: 400;
   letter-spacing: .1rem;
 }
 
-hr {
-  height: 1px;
-  opacity: .5;
+
+
+h1 {
+  position: absolute;
+  color: #fdfcfc;
 }
-
-
-.mb {}
-
-.pc {}
 </style>
 
 

@@ -8,7 +8,7 @@ export default defineConfig({
   base:
     process.env.NODE_ENV === "development"
       ? "/topics/test/"
-      : "/topics/election/",
+      : "/topics/2024election/",
   plugins: [vue()],
   resolve: {
     alias: {

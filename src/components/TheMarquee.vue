@@ -15,11 +15,11 @@
         </swiper-slide>
       </swiper>
 
-      <!-- <div class="count">
+      <div class="count">
         <p class="www">選戰倒數 </p>
         <p class="sss"> {{ countdown }}</p>
         <p class="wwww">天</p>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -54,14 +54,14 @@ export default {
         .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
         .then((response) => {
           this.news = response.data.ITEM;
-          console.log("this", this.news)
+
         })
         .catch((error) => {
           console.log("error" + error);
         });
     },
     startCountdown() {
-      const targetDate = new Date("2024/1/13").getTime();
+      const targetDate = new Date("2024/1/13 16:00").getTime();
       const countdownInterval = setInterval(() => {
         const now = new Date().getTime();
         const timeDifference = targetDate - now;
@@ -75,7 +75,7 @@ export default {
           // const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
           // const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
           // this.countdown = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-          this.countdown = `${days + 1} `;
+          this.countdown = `${days} `;
         }
       }, 1000);
     }
@@ -87,7 +87,7 @@ export default {
       .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
       .then((response) => {
         this.news = response.data.ITEM;
-        console.log("this", this.news)
+
       })
       .catch((error) => {
         console.log("error" + error);
@@ -133,7 +133,6 @@ export default {
 
   .mySwiper {
     background: #FFDA92;
-    border-radius: 0px 1rem 1rem 0;
 
     @include pad {
       border-radius: 0px 10px 10px 0;
@@ -145,7 +144,7 @@ export default {
 .count {
   background: #fff9ee;
   border-radius: 0px 10px 10px 0px;
-  padding: .5rem;
+  padding: .7rem .2rem;
   margin: auto;
   font-weight: 500;
   display: block;
@@ -197,15 +196,16 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    margin: .3rem;
-    font-size: 1.1rem;
+    height: 38px;
+    overflow: hidden;
+    margin: 0 .3rem;
+    font-size: 1rem;
 
     @include phone {
-      -webkit-line-clamp: 3;
+      height: auto;
       padding: 0rem .8rem;
       margin: 0rem;
+      font-size: 1.1rem;
     }
 
     @include pad {

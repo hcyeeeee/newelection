@@ -1,11 +1,11 @@
 <template>
-    <div class="layout home-president">
+    <div class="layout ">
         <div class="">
             <h2><i class="fa-solid fa-message"></i>總統激戰區</h2>
-            <router-link to="/about">
+            <router-link to="/president">
                 <picture>
                     <source media="(min-width:768px)" srcset="../assets/123.gif">
-                    <img src="../assets/1234.gif" alt="banner" style="width:100%;">
+                    <img loading="lazy" src="../assets/hh.gif" alt="banner" style="width:100%;">
                 </picture>
             </router-link>
         </div>
@@ -22,9 +22,8 @@
     prevEl: '.swiper-button-prev',
 }" :modules="modules" class="mySwiper">
                 <swiper-slide class="out" v-for="item in news2" :key="item.id">
-                    <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link"
-                        style="margin-bottom:2rem">
-                        <img :src="item.Image" :alt="item.ID">
+                    <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
+                        <img loading="lazy" :src="item.Image" :alt="item.ID">
                         <div class="inner">
                             <div class="title">{{ item.Title.replace("快新聞／", " ") }}</div>
                             <div class="time">{{ item.CreateDate }}</div>
@@ -40,31 +39,25 @@
 
         </div>
         <div class="mb">
-            <swiper :spaceBetween="20" :autoplay="{
-                delay: 2500, slidesPerView: 1,
-                disableOnInteraction: false,
-            }" :breakpoints="{
-    '640': {
-        slidesPerView: 2,
-    },
-}" :pagination="{ clickable: true, }" :navigation="{
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-}" :modules="modules" class="mySwiper">
-                <swiper-slide class="out" v-for="item in news" :key="item.id">
-                    <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
-                        <img :src="item.Image" :alt="item.ID">
-                        <div class="inner">
-                            <div class="title">{{ item.Title.replace("快新聞／", " ") }}</div>
-                            <div class="time">{{ item.CreateDate }}</div>
-                        </div>
-                    </a>
 
-                </swiper-slide>
-            </swiper>
-
+            <div v-for="item in news" :key="item.id" class="news" data-aos="fade-up">
+                <a class="link2"
+                    :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"
+                    target="_blank">
+                    <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
+                    <div class="inner">
+                        <p class="title">
+                            {{ item.Title.replace("快新聞／", "") }}
+                        </p>
+                        <div class="time">{{ item.CreateDate }}</div>
+                    </div>
+                </a>
+            </div>
         </div>
-        <a class="more" href="https://www.ftvnews.com.tw/tag/政治">看更多相關新聞<i class="fa-duotone fa-angles-right"></i></a>
+        <div class="more">
+            <a href="https://www.ftvnews.com.tw/tag/總統大選">看更多相關新聞<i class="fa-solid fa-angles-right"></i></a>
+        </div>
+
     </div>
 </template>
 
@@ -105,7 +98,7 @@ export default {
 
         },
         getNews2() {
-            axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=總統大選&Page=1&sp=5")
+            axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=總統大選&Page=1&sp=3")
                 .then((response) => {
                     this.news = response.data.ITEM;
 
@@ -125,53 +118,21 @@ export default {
 
 </script>
 
-<style lang="scss">
-// @mixin pad {
-//     @media (min-width: 700px) {
-//         @content;
-//     }
-// }
+<style lang="scss" scoped>
+@mixin pad {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
 
+.news {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0.5rem;
 
-
-// .s {
-//     position: relative;
-//     width: 100%;
-//     margin: auto;
-// }
-
-// .swiper-button-next,
-// .swiper-button-prev,
-// .swiper-pagination {
-//     position: absolute;
-//     color: orange;
-//     font-size: 2rem;
-// }
-
-// .swiper-button-prev:after,
-// .swiper-button-next:after {
-//     content: "";
-//     color: orange;
-// }
-
-// .swiper-pagination-bullet-active {
-//     opacity: var(--swiper-pagination-bullet-opacity, 1);
-//     background: orange;
-// }
-
-// .ex {
-//     position: relative;
-//     font-size: 2rem;
-// }
-
-
-
-// select {
-//     background: #fff;
-//     padding: 0.5rem 1rem;
-//     border-radius: 10px;
-//     width: 100%;
-//     text-align: center;
-//     font-weight: 600;
-// }
+    @include pad {
+        gap: 0.5rem;
+    }
+}
 </style>
+

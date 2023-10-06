@@ -15,7 +15,7 @@
 }
 
 $orange: #f08308;
-$black: #373535;
+$black: #353434;
 $orangeLiner: (
   linear-gradient(115deg, #f07708 30.73%, #ff9823 32.81%, #f04e08 100%)
 );
@@ -57,7 +57,7 @@ body {
   .home {
     width: 95%;
     margin: auto;
-    margin-top: 4.5rem;
+    margin-top: 3.5rem;
     @include pad {
       max-width: 700px;
       margin: auto 1rem;
@@ -75,8 +75,7 @@ body {
       display: flex;
       width: fit-content;
       height: fit-content;
-      gap: 0.5rem;
-      padding: 1rem;
+      padding: 1rem 0.5rem;
       background: $whiteBg;
       box-shadow: $whitebgShadow;
       flex-direction: column;
@@ -91,7 +90,7 @@ body {
       text-align: center;
       padding: 0.5rem;
       font-size: 1.2rem;
-      font-weight: 500;
+      font-weight: 400;
       letter-spacing: 0.1rem;
 
       &:hover {
@@ -193,7 +192,7 @@ body {
     .share {
       display: flex;
       gap: 1rem;
-      width: 160px;
+      width: 150px;
       margin: auto;
       margin-right: 0rem;
       max-width: 1200px;
@@ -261,16 +260,16 @@ body {
       right: 0rem;
       z-index: 99;
       background: rgb(248, 245, 245, 0.2);
+      transition: all 1s;
 
       a {
         font-size: 1.1rem;
         color: $black;
         text-align: start;
-        font-weight: 500;
         letter-spacing: 0.1rem;
         &:hover {
           color: $orange;
-          transition: 0.3s all;
+          transition: 0s all;
           width: fit-content;
         }
       }
@@ -311,6 +310,7 @@ body {
       top: 0rem;
       padding: 0rem 0.5rem 1.25rem;
       margin-top: 4.5rem;
+      box-shadow: $whitebgShadow;
     }
 
     .title {
@@ -318,6 +318,7 @@ body {
       color: #fff;
       height: 100%;
       width: 30px;
+      min-height: 20px !important;
       text-align: center;
       padding: 20px 10px;
       border-radius: 1rem 0rem 0rem 1rem;
@@ -326,6 +327,9 @@ body {
         width: 100%;
         padding: 1rem 0.5rem;
         border-radius: 1rem 1rem 0rem 0rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
     .calender_content {
@@ -336,6 +340,10 @@ body {
       width: 120px;
       overflow: hidden;
 
+      .calender-inner {
+        border-bottom: 1px solid rgb(50, 50, 50, 0.4);
+        padding-bottom: 1rem;
+      }
       div {
         text-align: center;
       }
@@ -363,9 +371,13 @@ body {
   border-radius: 1.25rem;
   margin: 1.25rem auto;
   background: #fff;
-  padding: 1rem;
+  padding: 0.5rem;
   /* 用這個陰影 */
   box-shadow: $whitebgShadow;
+  @include pad {
+    padding: 1rem;
+  }
+
   img {
     width: 100%;
   }
@@ -384,11 +396,11 @@ body {
       font-size: 1.2rem;
       font-weight: 500;
       letter-spacing: 0.1rem;
-      padding: 0.5rem;
-      border-bottom: 3px solid #d9d9d9;
+      padding: 0.2rem;
+      border-bottom: 2px solid #d9d9d9;
       &:hover,
       &:active {
-        border-bottom: 3px solid $orange;
+        border-bottom: 2px solid #ffa500;
       }
     }
   }
@@ -400,36 +412,43 @@ body {
 
     @include web {
       display: grid;
-      grid-template-columns: 4fr 3fr;
+      grid-template-columns: 5fr 4fr;
       gap: 1.25rem;
     }
 
     .out {
       margin: 0;
+      margin: 0.5rem;
+      margin-bottom: 1rem;
       .link {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 3fr;
         gap: 0.5rem;
-
-        margin-bottom: 1rem;
         @include phone {
           grid-template-columns: 2fr 3fr;
+        }
+      }
+      img {
+        height: 85px;
+        @include pad {
+          height: 90px;
         }
       }
       .title {
         overflow: hidden;
         align-items: start;
-
+        max-height: 65px;
         @include phone {
-          max-height: 45px;
-          /* margin: 1rem; */
-          margin-bottom: 1rem;
+          max-height: 65px;
+        }
+        @include pad {
+          max-height: 52px;
         }
       }
       .inner {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.5rem;
       }
     }
 
@@ -496,17 +515,20 @@ body {
 }
 .president-relatednews {
   .out {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0.5rem;
+
     @include pad {
+      display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
     }
 
     .link {
       display: grid;
-      grid-template-columns: 1fr;
-      margin-bottom: 1rem;
+      grid-template-columns: 2fr 3fr;
+      gap: 0.5rem;
       @include phone {
         grid-template-columns: 2fr 3fr;
       }
@@ -521,7 +543,7 @@ body {
         @include pad {
           grid-template-columns: 1fr;
           gap: 0.5rem;
-          max-height: 120px;
+          max-height: 150px;
         }
         @include web {
           max-height: 160px;
@@ -530,7 +552,6 @@ body {
       .inner {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
       }
       .time {
         font-size: 0.9rem;
@@ -555,12 +576,15 @@ body {
   div {
     display: flex;
     margin: auto;
-    width: 90%;
-
-    a {
+    width: 95%;
+    p {
       color: #fff;
       margin: auto;
-      padding: 1rem;
+    }
+    a {
+      color: #fff;
+      margin: 0.5rem auto;
+      padding: 0.5rem 0.2rem;
       font-weight: 450;
       &:hover {
         color: #f9f5ef;
@@ -638,12 +662,8 @@ body {
     }
     li {
       width: fit-content;
-      padding: 0.5rem 0;
-      border-bottom: 3px solid #d9d9d9;
-      &:hover,
-      &:active {
-        border-bottom: 3px solid $orange;
-      }
+      padding: 0.1rem 0;
+      border-bottom: 2px solid #d9d9d9;
     }
   }
 }
@@ -653,7 +673,7 @@ body {
   display: flex;
   justify-content: center;
 }
-.countdown {
+.down {
   color: var(--, #181818);
   font-family: Noto Sans TC;
   font-size: 2rem;
@@ -662,42 +682,154 @@ body {
   line-height: normal;
   text-align: center;
 }
-
-table {
-  tr {
-    th {
-    }
+.mb {
+  display: block;
+  @include pad {
+    display: none;
   }
 }
 
+.pc {
+  display: none;
+  @include pad {
+    display: block;
+  }
+}
 table {
-  border: 1px solid rgb(157, 16, 16);
+  width: 100%;
   thead {
     tr {
       display: flex;
+      width: 100%;
       th {
         display: flex;
-        width: 6.25rem;
-        padding: 0.5rem;
+        padding: 0.3rem;
         margin: 0.2rem;
         background: #d9d9d9;
         justify-content: center;
+        width: 100%;
+        box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
+        font-size: 1rem;
+        @include pad {
+          padding: 0.5rem;
+          font-size: 1.2rem;
+          margin: 0.3rem;
+        }
+        &:first-child {
+          width: 30%;
+          @include pad {
+            width: 40%;
+          }
+        }
+        &:nth-child(2) {
+          background: #f3f3f3;
+        }
+        &:nth-child(3) {
+          background: #f3f3f3;
+        }
       }
     }
   }
   tbody {
     tr {
       display: flex;
+      width: 100%;
       td {
         display: flex;
-        width: 6.25rem;
+        width: 100%;
         justify-content: center;
-        padding: 0.5rem;
+        padding: 0.3rem;
         margin: 0.2rem;
         background: #f3f3f3;
-        box-shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
+        font-size: 1rem;
+        align-items: center;
+        @include pad {
+          padding: 0.5rem;
+          font-size: 1.2rem;
+          margin: 0.3rem;
+          font-weight: normal;
+        }
+        &:first-child {
+          background: #d9d9d9;
+          width: 30%;
+          @include pad {
+            width: 40%;
+          }
+        }
       }
     }
+  }
+}
+
+.tablelayout_mb {
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  align-items: start;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  @include pad {
+    display: none;
+  }
+}
+
+.tablelayout_pc {
+  display: none;
+  @include pad {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+.Region-navtab {
+  display: none;
+
+  @include pad {
+    display: flex;
+    justify-content: center;
+  }
+  .active {
+    border-bottom: 2px solid $orange;
+  }
+  li {
+    font-size: 1.2rem;
+    padding: 1px;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #d9d9d9;
+    cursor: pointer;
+  }
+}
+
+.Region {
+  display: none;
+  @include pad {
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .active {
+    background: $orangeLiner;
+    color: white;
+  }
+}
+.Regionbtn {
+  background: #f3f3f3;
+  width: fit-content;
+  padding: 8px 16px;
+
+  box-shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
+  &:hover,
+  :active {
+    background: $orangeLiner;
+    color: white;
   }
 }
 
@@ -799,24 +931,14 @@ p {
   }
 }
 
-.mb {
-  display: block;
-  @include pad {
-    display: none;
-  }
-}
-
-.pc {
-  display: none;
-  @include pad {
-    display: block;
-  }
-}
 .more {
+  margin-right: 0;
+  color: $black;
   display: flex;
   justify-content: end;
-  margin-right: 0;
-  align-items: center;
+  a {
+    width: fit-content;
+  }
 }
 
 .navtab-mb {
@@ -844,88 +966,88 @@ p {
     color: white;
   }
 }
-/* 自訂的選擇框外觀 */
-.custom-select {
-  width: 100%; /* 設置選擇框寬度 */
-  padding: 1rem 0.5rem; /* 設置內邊距 */
-  border: 3px solid $orange; /* 設置邊框 */
-  border-radius: 1rem; /* 設置邊框圓角 */
-  background-color: #fff; /* 設置背景顏色 */
-  font-size: 1.3rem; /* 設置文字大小 */
-  color: $black; /* 設置文字顏色 */
-  font-weight: 500;
-}
 
-/* 自訂選項外觀 */
-.custom-select option {
-  padding: 10px; /* 設置選項內邊距 */
-  background-color: #fff; /* 設置選項背景顏色 */
-  color: $black; /* 設置文字顏色 */
-}
-
-.title {
-  font-size: 1.1rem;
-  line-height: 120%;
-}
 .inner {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
+  @include pad {
+    gap: 0rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .out {
   display: flex;
-  gap: 0.5rem;
-  margin: 1rem auto;
+  gap: 1rem;
+  margin: 1rem 0.5rem;
+
   flex-direction: column;
   @include pad {
     gap: 1rem;
+    margin: 1rem auto;
   }
   .link {
     display: grid;
     grid-template-columns: 2fr 3fr;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    text-align: justify;
 
     @include pad {
       grid-template-columns: 1fr;
+      overflow: hidden;
+      justify-content: start;
+      align-items: start;
     }
     img {
       width: 100%;
       object-fit: cover;
-      max-height: 110px;
+      height: 90px;
       border-radius: 0.5rem;
+
       @include pad {
         grid-template-columns: 1fr;
         gap: 0.5rem;
-        max-height: 120px;
+        height: auto;
+        max-height: 150px;
       }
       @include web {
-        max-height: 160px;
+        height: 160px;
       }
     }
     .time {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       text-align: end;
       opacity: 0.5;
+      @include pad {
+        font-size: 0.9rem;
+      }
     }
   }
 }
+
 .link2 {
   display: grid;
   grid-template-columns: 2fr 3fr;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+
+  .title {
+    text-align: justify;
+  }
   img {
     width: 100%;
     object-fit: cover;
-    max-height: 110px;
+    height: 85px;
     border-radius: 0.5rem;
     @include pad {
       grid-template-columns: 1fr;
       gap: 0.5rem;
-      max-height: 120px;
+      max-height: 150px;
     }
+  }
+  .inner {
+    display: flex;
+    justify-content: center;
   }
   .time {
     font-size: 0.9rem;
@@ -937,24 +1059,38 @@ p {
 .arrow {
   position: relative;
   width: 25%;
-  margin: 1rem auto;
-  top: -28px;
-  top: -34px;
+  margin: 0rem auto;
+  top: -0px;
+  top: -25px;
   min-width: 180px;
+  @include pad {
+    position: relative;
+    width: 25%;
+    margin: 1rem auto;
+    top: -28px;
+    top: -34px;
+    min-width: 180px;
+  }
 }
 
 .fa-arrow-left,
 .fa-arrow-right {
-  color: orange;
-  padding: 0.5rem 0.6rem;
-  font-size: 20px;
+  color: $orange;
+  padding: 0.3rem 0.4rem;
+  font-size: 15px;
   &:hover {
+    color: $orange;
     border-radius: 100px;
-    border: 3px solid;
+    border: 2px solid;
   }
   &:active {
+    color: $orange;
     border-radius: 100px;
-    border: 3px solid;
+    border: 2px solid;
+  }
+  @include pad {
+    padding: 0.5rem 0.6rem;
+    font-size: 20px;
   }
 }
 .swiper-button-prev,
@@ -985,13 +1121,27 @@ p {
 }
 
 .title {
-  line-height: 130%;
-  font-size: 1.1rem;
+  line-height: 140%;
+  font-size: 1rem;
+
+  max-height: 65px;
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  text-align: justify;
+  @include pad {
+    font-size: 1.1rem;
+    max-height: 52px;
+  }
 }
 
 li {
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
   line-height: 170% !important;
+  @include pad {
+    font-size: 1.1rem;
+  }
 }
 .president-policy {
   width: 100%;
@@ -1002,16 +1152,16 @@ li {
 }
 .custom-select {
   width: 100%;
-  padding: 10px;
-  border: 3px solid #f08308;
-  border-radius: 1rem;
+  border: 0px solid;
+  padding: 8px 10px;
+  border-radius: 0.5rem;
   background-color: #fff;
-  font-size: 16px;
+  font-size: 1.1rem;
   color: #373535;
-}
-
-select {
-  color: pink;
+  box-shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
+  @include pad {
+    font-size: 1.2rem;
+  }
 }
 
 .calender_content_mb {
@@ -1050,4 +1200,100 @@ select {
     flex-direction: row;
     display: none;
   }
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url("../assets/angle-down.png") no-repeat scroll right center
+    transparent;
+  padding-right: 10px;
+}
+.active {
+  border-bottom: 2px solid #ffa500;
+}
+
+.swiper-pagination {
+  margin: 0.5rem auto;
+  @include pad {
+    margin: 0rem auto;
+  }
+}
+
+.home-video {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @include pad {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+.layout2 {
+  width: 95%;
+  border-radius: 1.25rem;
+  margin: 0.5rem auto;
+  background: #fff;
+  padding: 0.5rem;
+  /* 用這個陰影 */
+  box-shadow: $whitebgShadow;
+}
+
+.link:hover {
+  opacity: 0.85;
+}
+
+.navtab {
+  display: -webkit-inline-box;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  white-space: overflow;
+  height: auto;
+
+  @include pad {
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  li {
+    width: fit-content;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #d9d9d9;
+    &:hover,
+    &:active {
+      border-bottom: 2px solid $orange;
+    }
+  }
+}
+p {
+  font-size: 1rem;
+  line-height: 150%;
+  @include pad {
+    font-size: 1.1rem;
+  }
+}
+.Legislator-tab {
+  .swiper-pagination {
+    margin: -0.5rem auto;
+  }
+}
+
+.Region-navtab_mb,
+.select_mb {
+  display: flex;
+  @include pad {
+    display: none;
+  }
+}
+
+.List_mb {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }

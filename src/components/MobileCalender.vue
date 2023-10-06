@@ -1,29 +1,30 @@
 <template>
     <div class="banner">
-        <div>
-            <picture>
-                <source media="(min-width:768px)" srcset="../assets/banner_mb.png" alt="banner">
-                <img loading="lazy" src="../assets/banner_mb.png" alt="banner" style="width:100%;">
-            </picture>
-            <div class="count">
+        <div class="calender-title mb">行事曆 </div>
+        <div class="calender-mb">
+            <!-- <div class="count_mb">
                 <p class="www">選戰倒數 </p>
                 <p class="sss"> {{ day }}</p>
                 <p class="wwww">天</p>
-                <p class="sss"> {{ hours }}</p>
-                <p class="wwww">時</p>
-                <p class="sss"> {{ mins }}</p>
-                <p class="wwww">分</p>
-                <p class="sss"> {{ secs }}</p>
-                <p class="wwww">秒</p>
-            </div>
+            </div> -->
+            <swiper class="calender_content_mb mySwiper" :centeredSlides="true" :spaceBetween="10" :slidesPerView="2"
+                :autoplay="{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }" :breakpoints="{
+    '600': { slidesPerView: 2, spaceBetween: 10, }
+}" :modules="modules" :loop="true">
+
+                <swiper-slide v-for="item in calender" :key="item.id" class="calender_text ">
+                    <div style="margin-bottom: .3rem;font-weight: 400;font-size: 0.9rem; letter-spacing: .1rem;">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        {{ item.startDate }}{{ item.endDate }}
+                    </div>
+                    <div style="font-weight: 400;font-size: 1rem;line-height: 120%;">{{ item.DayEvent }}</div>
+                </swiper-slide>
+            </swiper>
+
         </div>
-
-
-        <iframe width="100%" height="100%"
-            src="https://www.youtube.com/embed/ylYJSBUgaMA?autoplay=1&mute=1&si=GDtC43iZq4uLNHqf"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
     </div>
 </template>
 <script>
