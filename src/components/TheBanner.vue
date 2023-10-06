@@ -17,8 +17,6 @@
                 <p class="wwww">秒</p>
             </div>
         </div>
-
-
         <iframe width="100%" height="100%"
             src="https://www.youtube.com/embed/ylYJSBUgaMA?autoplay=1&mute=1&si=GDtC43iZq4uLNHqf"
             title="YouTube video player" frameborder="0"
@@ -90,7 +88,10 @@ export default {
         setInterval(() => {
             this.startCountdown();
         }, 900);
-
+    }, mounted() {
+        setTimeout(() => {
+            this.startCountdown();
+        }, 800);
     },
 };
 </script>

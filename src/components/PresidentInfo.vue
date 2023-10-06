@@ -232,18 +232,7 @@ export default {
     },
     created() {
         this.showCandidate(0);
-
-    },
-    mounted() {
-        axios.get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=賴清德&高虹安&Page=1&sp=6")
-            .then((response) => {
-                this.news = response.data.ITEM; // 将获取的新闻数据赋值给Vue实例的news属性
-            })
-            .catch((error) => {
-                console.log(error);
-            });
     }
-
 }
 
 </script>

@@ -35,11 +35,8 @@
                 <div class="swiper-button-next"><i class="fa-solid fa-arrow-right"></i></div>
                 <div class="swiper-button-prev"><i class="fa-solid fa-arrow-left "></i></div>
             </div>
-
-
         </div>
         <div class="mb">
-
             <div v-for="item in news" :key="item.id" class="news" data-aos="fade-up">
                 <a class="link2"
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"

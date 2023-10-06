@@ -1297,3 +1297,32 @@ p {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+
+.footer {
+  width: fit-content;
+  margin: 1rem auto 5rem;
+  @include pad {
+    margin: 2rem auto;
+  }
+}
+
+.up {
+  position: fixed;
+  right: 1.5%;
+  bottom: 2rem;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.scrollup {
+  img {
+    width: 40px;
+    height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 100px;
+    @include pad {
+      display: none;
+    }
+  }
+}

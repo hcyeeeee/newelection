@@ -51,7 +51,6 @@
             複製連結
           </a>
         </div>
-
       </div>
     </div>
   </div>
@@ -85,29 +84,7 @@ export default {
         document.body.removeChild(e),
         alert('網址複製成功，立刻分享給你的好友吧!')
     },
-    startCountdown() {
-      const targetDate = new Date("2024-1-14").getTime();
-
-      const countdownInterval = setInterval(() => {
-        const now = new Date().getTime();
-        const timeDifference = targetDate - now;
-
-        if (timeDifference <= 0) {
-          clearInterval(countdownInterval);
-          this.countdown = "1/13 到了！";
-        } else {
-          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-          // const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          // const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-          // const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-          // this.countdown = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-          this.countdown = `${days} 天`;
-        }
-      }, 1000);
-    }
-  }, mounted() {
-    this.startCountdown();
-  },
+  }
 }
 </script>
 

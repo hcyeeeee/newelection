@@ -23,8 +23,6 @@
 </template>
 <script>
 import axios from 'axios';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 export default {
     data() {
         return {
@@ -43,10 +41,7 @@ export default {
             .catch((error) => {
                 console.log(error);
             });
-    }, created() {
-        AOS.init()
-    }
-
+    },
 }
 
 </script>

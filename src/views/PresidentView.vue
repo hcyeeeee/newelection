@@ -7,7 +7,6 @@
   </div>
 </template>
 <script >
-import 'animate.css'
 import TheBanner from '../components/TheBanner.vue'
 import PresidentInfo from '../components/PresidentInfo.vue'
 import PresidentNews from '../components/PresidentNews.vue'
@@ -23,6 +22,5 @@ export default {
   }
 }
 </script>
-<style></style>
 
 

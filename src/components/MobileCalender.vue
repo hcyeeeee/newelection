@@ -63,36 +63,7 @@ export default {
             ],
             modules: [Autoplay],
         }
-    },
-    methods: {
-        startCountdown() {
-            const targetDate = new Date("2024/1/13 16:00").getTime();
-            const countdownInterval = setTimeout(() => {
-                const now = new Date().getTime();
-                const timeDifference = targetDate - now;
-
-                if (timeDifference <= 0) {
-                    clearInterval(countdownInterval);
-                    this.countdown = "1/13 到了！";
-                } else {
-                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-                    this.day = `${days} `;
-                    this.hours = `${hours} `;
-                    this.mins = `${minutes} `;
-                    this.secs = `${seconds} `;
-
-                }
-            }, 1000);
-        }
-    }, created() {
-        setInterval(() => {
-            this.startCountdown();
-        }, 900);
-
-    },
+    }
 };
 </script>
 <style lang="scss" scoped>

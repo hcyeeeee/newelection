@@ -77,8 +77,6 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-
-
 export default {
     components: {
         Swiper,

@@ -8,7 +8,8 @@
     <TheCalender />
   </div>
   <BottomNav />
-  <div style="width:fit-content;margin: auto;margin-bottom:5rem ;">Copyright © 2023 民視新聞網路部 社群中心</div>
+  <ScrollUp />
+  <div class="footer">Copyright © 2023 民視新聞網路部 社群中心</div>
 </template>
 
 <script >
@@ -19,12 +20,14 @@ import TheHeader from './components/TheHeader.vue'
 import TheCalender from './components/TheCalender.vue'
 import TheSidebar from './components/TheSidebar.vue'
 import BottomNav from './components/BottomNav.vue'
+import ScrollUp from './components/ScrollUp.vue'
 export default {
   components: {
     TheHeader,
     TheCalender,
     TheSidebar,
-    BottomNav
+    BottomNav,
+    ScrollUp
   },
   created() {
     AOS.init()
@@ -195,6 +198,8 @@ h1 {
   position: absolute;
   color: #fdfcfc;
 }
+
+
 </style>
 
 

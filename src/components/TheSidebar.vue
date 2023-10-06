@@ -6,7 +6,3 @@
         <a href="https://www.ftvnews.com.tw/topics/2024election/Policy">政策牛肉</a>
     </div>
 </template>
-<script>
-
-</script>
-<style lang="scss"></style>

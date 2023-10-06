@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import 'animate.css'
 import TheBanner from '../components/TheBanner.vue'
 import TheMarquee from '../components/TheMarquee.vue'
 
@@ -41,7 +40,7 @@ export default {
         { label: '長照政策', content: '这是長照政策的内容', link: '8a53b893-70f0-4915-87e5-2467a83a8a02' },
         // 添加更多选项卡以及它们的内容
       ],
-      activeTab: 0, // 默认选中的选项卡索引
+      activeTab: 0, 
     };
   },
   methods: {
@@ -87,7 +86,6 @@ export default {
 
 };
 </script>
-
 <style lang="scss" scoped>
 ul {
   flex-direction: row;

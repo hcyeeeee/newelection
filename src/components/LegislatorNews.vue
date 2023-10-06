@@ -24,13 +24,9 @@
 <script>
 import axios from 'axios';
 export default {
-    computed: {
-
-    },
     data() {
         return {
             news: [],
-
         };
     }, methods: {
         fetchNews() {
@@ -47,11 +43,8 @@ export default {
     mounted() {
         this.fetchNews();
     }
-
 }
-
 </script>
-
 <style lang="scss" scoped>
 @mixin pad {
     @media (min-width: 768px) {

@@ -4,17 +4,13 @@
       <div class="marquee_title">
         <p>快訊</p>
       </div>
-      <swiper :autoplay="{
-        delay: 2500,
-        disableOnInteraction: false,
-      }" :modules="modules" class="mySwiper">
+      <swiper :autoplay="{ delay: 2500, disableOnInteraction: false }" :modules="modules" class="mySwiper">
         <swiper-slide class="marquee" v-for="item in news" :key="item.id">
           <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"
             target="_blank" rel="noopener noreferrer">
             {{ item.Title.replace("快新聞／", "") }}</a>
         </swiper-slide>
       </swiper>
-
       <div class="count">
         <p class="www">選戰倒數 </p>
         <p class="sss"> {{ countdown }}</p>
@@ -24,15 +20,11 @@
   </div>
 </template>
 <script>
-
 import { Swiper, SwiperSlide } from 'swiper/vue';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import required modules
 import { Autoplay } from 'swiper/modules';
 import axios from 'axios';
-
 
 export default {
   components: {
@@ -51,7 +43,7 @@ export default {
     get_hotnews() {
       // eslint-disable-next-line no-undef
       axios
-        .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
+        .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=6")
         .then((response) => {
           this.news = response.data.ITEM;
 
@@ -61,7 +53,7 @@ export default {
         });
     },
     startCountdown() {
-      const targetDate = new Date("2024/1/13 16:00").getTime();
+      const targetDate = new Date("2024/1/13").getTime();
       const countdownInterval = setInterval(() => {
         const now = new Date().getTime();
         const timeDifference = targetDate - now;
@@ -71,28 +63,13 @@ export default {
           this.countdown = "1/13 到了！";
         } else {
           const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-          // const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          // const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-          // const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-          // this.countdown = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-          this.countdown = `${days} `;
+          this.countdown = `${days + 1} `;
         }
       }, 1000);
     }
   }, mounted() {
     this.startCountdown();
-
-    // eslint-disable-next-line no-undef
-    axios
-      .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=20")
-      .then((response) => {
-        this.news = response.data.ITEM;
-
-      })
-      .catch((error) => {
-        console.log("error" + error);
-      });
-
+    this.get_hotnews();
   },
 };
 </script>

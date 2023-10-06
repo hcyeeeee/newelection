@@ -14,8 +14,6 @@
 
 
 <script>
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 import sectionBanner from '../components/TheBanner.vue'
 import MobileCalender from '../components/MobileCalender.vue'
 import TheMarquee from '../components/TheMarquee.vue'
@@ -25,15 +23,12 @@ import HomeVideo from '../components/HomeVideo.vue'
 
 export default {
   components: {
-
     sectionBanner,
     MobileCalender,
     TheMarquee,
     HomeLegis,
     HomePresi,
     HomeVideo,
-  }, created() {
-    AOS.init()
   }
 };
 
