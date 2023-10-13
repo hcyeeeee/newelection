@@ -1,12 +1,12 @@
 <template>
     <div class="calender">
         <div class="title">
-            <i class="fa-regular fa-calendar-check"></i> 行事曆
+            行事曆
         </div>
         <div class="calender_content">
             <div v-for="item in calender" :key="item.id" class="calender-inner">
                 <div style="margin-bottom: .3rem;font-weight: 300;font-size: 0.9rem;">
-                    {{item.startDate}}{{ item.endDate }}
+                    {{ item.startDate }}{{ item.endDate }}
                 </div>
                 <div style="font-weight: 400;font-size: 1rem;line-height: 130%;">{{ item.DayEvent }}</div>
             </div>

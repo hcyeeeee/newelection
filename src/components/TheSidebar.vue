@@ -1,8 +1,35 @@
 <template>
     <div class="navbar ">
-        <router-link to="/">決戰2024</router-link>
-        <router-link to="/president">總統大選</router-link>
-        <router-link to="/Legislator">立委選戰</router-link>
-        <a href="https://www.ftvnews.com.tw/topics/2024election/Policy">政策牛肉</a>
+        <router-link to="/" class="icontitle">
+            <img src="../assets/fight.png" alt="">
+            <h2> 決戰2024</h2>
+        </router-link>
+        <router-link class="icontitle" to="/president">
+            <img src="../assets/homepresi.png" alt="">
+            <h2> 總統大選</h2>
+        </router-link>
+        <router-link class="icontitle" to="/Legislator">
+            <img src="../assets/homelegis.png" alt="">
+            <h2>立委選戰</h2>
+        </router-link>
+        <a class="icontitle" href="https://www.ftvnews.com.tw/topics/2024election/Policy">
+            <img src="../assets/policy.png" alt="">
+            <h2> 政策牛肉</h2>
+        </a>
+        <!-- <router-link class="icontitle" to="/Question">
+            <img src="../assets/qa.png" alt="">
+            <h2>選舉Q&A</h2>
+        </router-link> -->
     </div>
 </template>
+<style lang="scss" scoped>
+h2 {
+    color: black;
+    font-size: 1.2rem;
+    letter-spacing: 0;
+
+    &:hover {
+        color: #f08308;
+    }
+}
+</style>

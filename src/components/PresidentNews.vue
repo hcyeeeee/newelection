@@ -1,6 +1,9 @@
 <template>
     <div class="president-relatednews layout">
-        <h2><i class="fa-solid fa-message"></i>&nbsp;總統大選焦點新聞</h2>
+        <div class="icontitle">
+            <img src="../assets/HomePresi.png" alt="">
+            <h2>總統大選焦點新聞</h2>
+        </div>
         <div class="out">
             <div v-for="(item, index) in news" :key="index" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 <a class="link"

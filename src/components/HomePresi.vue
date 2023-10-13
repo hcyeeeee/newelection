@@ -1,12 +1,17 @@
 <template>
     <div class="layout ">
         <div class="">
-            <h2><i class="fa-solid fa-message"></i>總統激戰區</h2>
+            <div class="icontitle">
+                <img src="../assets/HomePresi.png" alt="">
+                <h2>總統激戰區</h2>
+            </div>
             <router-link to="/president">
-                <picture>
-                    <source media="(min-width:768px)" srcset="../assets/123.gif">
-                    <img loading="lazy" src="../assets/hh.gif" alt="banner" style="width:100%;">
-                </picture>
+                <lottie-player class="mb" src="https://lottie.host/7b471a2b-b906-4b36-b101-d21c1e9e5c00/0JUFnXotpW.json"
+                    background="transparent" speed="1.5" style="width: 100%; height: 100%" direction="1" mode="normal" loop
+                    autoplay></lottie-player>
+                <lottie-player class="pc" src="https://lottie.host/06775d0a-bc01-4177-b00b-16bb0b0321b3/sDR4z9Zc8j.json"
+                    background="transparent" speed="1.5" style="width: 100%; height: 100%" direction="1" mode="normal" loop
+                    autoplay></lottie-player>
             </router-link>
         </div>
         <div class="pc">

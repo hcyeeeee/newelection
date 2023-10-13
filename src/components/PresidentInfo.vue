@@ -1,6 +1,9 @@
 <template>
     <div class="layout-president layout">
-        <h2><i class="fa-solid fa-user"></i>總統候選人</h2>
+        <div class="icontitle">
+            <img src="../assets/HomePresi.png" alt="">
+            <h2>總統候選人</h2>
+        </div>
         <ul class="president-navtab pc">
             <li class="pc " :class="{ 'active': index === selectedCandidateIndex }" v-for="(candidate, index) in candidates"
                 :key="index" @click="showCandidate(index)">
@@ -37,10 +40,23 @@
                     <!-- <ul class="content" v-for="( list, index ) in  candidate.sub.Exp " :key="index">
                         <li v-if="activeTab === 'sub'"> {{ list }}</li>
                     </ul> -->
+                    <div class="president-policy " v-for="(candidate, index) in  candidates " :key="index"
+                        v-show="selectedCandidateIndex === index">
+                        <div class="icontitle">
+                            <img src="../assets/policy.png" alt="">
+                            <h2>政見</h2>
+                        </div>
+                        <p class="">{{ candidate.main.policy }}</p>
+                    </div>
                 </div>
+
             </div>
+
             <div class="president-news">
-                <h2><i class="fa-solid fa-message"></i>&nbsp;相關新聞</h2>
+                <div class="icontitle">
+                    <img src="../assets/News.png" alt="">
+                    <h2>{{ candidate.main.name }}相關新聞</h2>
+                </div>
                 <div v-for="( item, index ) in  news " :key="index" class="out" data-aos="fade-up"
                     data-aos-anchor-placement="top-bottom">
                     <a class="link"
@@ -60,12 +76,6 @@
                             class="fa-solid fa-angles-right"></i></a>
                 </div>
             </div>
-
-        </div>
-        <div class="president-policy " v-for="(candidate, index) in  candidates " :key="index"
-            v-show="selectedCandidateIndex === index">
-            <h2 class=""><i class="fa-solid fa-book-open"></i>&nbsp;政見</h2>
-            <p class="">{{ candidate.main.policy }}</p>
         </div>
     </div>
 </template>
@@ -91,8 +101,6 @@ export default {
                             "國立台灣大學復健醫學系學士",
                             "國立成功大學學士後醫學系",
                             "哈佛大學公共衛生學院碩士",
-                            "台南成大醫院主治醫師",
-                            "新樓醫院主治醫師",
                             "1996年當選台南市選區的第三屆國民大會代表",
                             "1998年當選台南市選區立法委員",
                             "2010年改制直轄市後的第一屆台南市市長",
@@ -232,7 +240,11 @@ export default {
     },
     created() {
         this.showCandidate(0);
-    }
+    }, mounted() {
+        if (this.candidates.length > 0) {
+            this.selectedCandidate = this.candidates[0];
+        }
+    },
 }
 
 </script>

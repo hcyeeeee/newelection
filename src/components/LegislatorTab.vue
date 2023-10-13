@@ -1,6 +1,9 @@
 <template>
     <div class="layout Legislator-tab">
-        <h2><i class="fa-solid fa-fire"></i> 立委激戰區</h2>
+        <div class="icontitle">
+            <img src="../assets/HomeLegis.png" alt="">
+            <h2>立委激戰區</h2>
+        </div>
         <div class="Legislator pc">
             <ul class="navtab">
                 <li v-for="candidate in candidates" :key="candidate.index" @click="selectCandidate(candidate)"

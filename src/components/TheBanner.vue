@@ -1,10 +1,13 @@
 <template>
     <div class="banner">
         <div>
-            <picture>
-                <source media="(min-width:768px)" srcset="../assets/banner_mb.png" alt="banner">
-                <img loading="lazy" src="../assets/banner_mb.png" alt="banner" style="width:100%;">
-            </picture>
+            <div class="h1title">
+                <h1>
+                    <span>決戰2024</span>
+                    <br>
+                    總統大選 | 立委選戰
+                </h1>
+            </div>
             <div class="count">
                 <p class="www">選戰倒數 </p>
                 <p class="sss"> {{ day }}</p>
@@ -100,4 +103,6 @@ export default {
 .swiper-slide-next {
     opacity: .8;
 }
+
+
 </style>

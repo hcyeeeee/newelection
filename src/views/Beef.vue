@@ -3,7 +3,10 @@
     <TheMarquee />
     <TheBanner />
     <div class="layout">
-      <h2><i class="fa-solid fa-fire"></i> 政策牛肉</h2>
+      <div class="icontitle">
+        <img src="../assets/policy.png" alt="">
+        <h2>政策牛肉</h2>
+      </div>
       <ul>
         <li v-for="(tab, index) in tabs" :key="index" @click="activateTab(index)"
           :class="{ active: activeTab === index }">{{ tab.label }}</li>
@@ -40,7 +43,7 @@ export default {
         { label: '長照政策', content: '这是長照政策的内容', link: '8a53b893-70f0-4915-87e5-2467a83a8a02' },
         // 添加更多选项卡以及它们的内容
       ],
-      activeTab: 0, 
+      activeTab: 0,
     };
   },
   methods: {

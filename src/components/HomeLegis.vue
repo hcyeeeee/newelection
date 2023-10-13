@@ -1,14 +1,16 @@
 <template>
     <div class="home-Legis layout">
-        <h2><i class="fa-solid fa-fire"></i>立委激戰區</h2>
+        <div class="icontitle">
+            <img src="../assets/HomeLegis.png" alt="">
+            <h2>立委激戰區</h2>
+        </div>
         <swiper :spaceBetween="30" :loop="true" :navigation="{
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         }" :centeredSlides="true" :pagination="{ clickable: true, }"
             :autoplay="{ delay: 4000, disableOnInteraction: false, }" :modules="modules" class="mySwiper">
             <swiper-slide>
-                <a href="https://www.ftvnews.com.tw/topics/election/Legislator"><img src="../assets/fight1.png"
-                        class="banner" alt="fight1"></a>
+                <router-link to="/Legislator"><img src="../assets/fight1.png" class="banner" alt="fight1"></router-link>
                 <div class="out">
                     <div v-for="item in news" :key="item.id" class="news">
                         <a class="link"
@@ -25,8 +27,8 @@
                     </div>
                 </div>
             </swiper-slide>
-            <swiper-slide> <a href="https://www.ftvnews.com.tw/topics/election/Legislator"><img src="../assets/fight2.png"
-                        class="banner" alt="fight2"></a>
+            <swiper-slide> <router-link to="/Legislator"><img src="../assets/fight2.png" class="banner"
+                        alt="fight2"></router-link>
                 <div class="out">
                     <div v-for="item in news1" :key="item.id" class="news">
                         <a class="link"
@@ -44,8 +46,7 @@
                 </div>
             </swiper-slide>
             <swiper-slide>
-                <a href="https://www.ftvnews.com.tw/topics/election/Legislator"><img src="../assets/fight3.png"
-                        class="banner" alt="fight3"></a>
+                <router-link to="/Legislator"><img src="../assets/fight3.png" class="banner" alt="fight3"></router-link>
                 <div class="out">
                     <div v-for="item in news2" :key="item.id" class="news">
                         <a class="link"

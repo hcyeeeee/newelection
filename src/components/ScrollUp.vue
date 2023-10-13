@@ -30,8 +30,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.5s ease;
@@ -40,5 +38,13 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
+}
+
+.up {
+    position: fixed;
+    right: 1.5%;
+    bottom: 4rem;
+    z-index: 9999;
+    cursor: pointer;
 }
 </style>

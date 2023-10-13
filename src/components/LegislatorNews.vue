@@ -1,6 +1,9 @@
 <template>
     <div class="layout">
-        <h2><i class="fa-solid fa-message"></i> 立委選戰焦點新聞</h2>
+        <div class="icontitle">
+            <img src="../assets/News.png" alt="">
+            <h2>立委選戰焦點新聞</h2>
+        </div>
         <div class="out legis_out">
             <div v-for="(item, index) in news" :key="index" data-aos="fade-up">
                 <a class="link"

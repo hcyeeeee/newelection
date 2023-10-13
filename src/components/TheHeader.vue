@@ -3,6 +3,7 @@
     <div class="header_inner">
       <a href="https://www.ftvnews.com.tw/" target="_blank">
         <img loading="lazy" src="../assets/民視新聞網.png" class="logo" alt="民視新聞網">
+     
       </a>
       <div class="nav pc">
       </div>

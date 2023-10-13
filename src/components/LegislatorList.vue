@@ -1,6 +1,9 @@
 <template>
     <div class="layout">
-        <h2><i class="fa-solid fa-fire"></i>{{ selectedCity }}立委參選名單</h2>
+        <div class="icontitle">
+            <img src="../assets/LegisList.png" alt="">
+            <h2>{{ selectedCity }}立委參選名單</h2>
+        </div>
         <div class="Region-navtab">
             <li @click="selectRegion('北部地區')" :class="{ 'active': selectedRegion === '北部地區' }">北部地區</li>
             <li @click="selectRegion('中部地區')" :class="{ 'active': selectedRegion === '中部地區' }">中部地區</li>
@@ -18,7 +21,7 @@
                     <option value="南部地區">南部地區</option>
                     <option value="東部地區">東部地區</option>
                     <option value="離島地區">離島地區</option>
-                    <option value="原住民地區">平地/山地原住民</option>
+                    <option value="原住民地區">原住民</option>
                 </select>
             </div>
 
@@ -46,7 +49,7 @@
                     <tbody>
                         <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
                             <td v-if="index % 2 === 0">{{ candidate.distrist }}</td>
-                            <td v-if="index % 2 === 0"> <img
+                            <td v-if="index % 2 === 0"> <img class="partyicon"
                                     :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
                                     :alt="candidate.party">{{
                                         candidate.party }}</td>
@@ -66,7 +69,7 @@
                         <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
                             <td v-if="index % 2 === 1">{{ candidate.distrist }}</td>
                             <td v-if="index % 2 === 1">
-                                <img loading="lazy"
+                                <img class="partyicon" loading="lazy"
                                     :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
                                     alt="">
                                 {{ candidate.party }}
@@ -88,7 +91,8 @@
                     <tbody>
                         <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
                             <td>{{ candidate.distrist }}</td>
-                            <td> <img :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
+                            <td> <img class="partyicon"
+                                    :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
                                     :alt="candidate.party">{{
                                         candidate.party }}</td>
                             <td>{{ candidate.name }}</td>
@@ -412,6 +416,11 @@ export default {
                             "distrist": 1,
                             "party": "民進黨",
                             "name": "林志潔"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "柯美蘭"
                         }
                     ],
                     "新竹縣": [
@@ -1039,7 +1048,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
+.partyicon {
     width: 30px !important;
     border-radius: 100px;
     margin-right: 1rem;
