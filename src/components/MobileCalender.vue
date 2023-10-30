@@ -23,7 +23,6 @@
                     <div style="font-weight: 400;font-size: 1rem;line-height: 120%;">{{ item.DayEvent }}</div>
                 </swiper-slide>
             </swiper>
-
         </div>
     </div>
 </template>

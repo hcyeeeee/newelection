@@ -1,7 +1,7 @@
 <template>
     <div class="scrollup">
         <Transition name="fade">
-            <div v-show="scrollY > 100">
+            <div v-show="scrollY > 100 && !reachedBottom">
                 <img class="up" src="../assets/up.png" @click="scrollTop" loading="lazy" alt="up">
             </div>
         </Transition>
@@ -13,12 +13,14 @@ export default {
     data() {
         return {
             scrollY: 0,
+            reachedBottom: false
         }
     },
     methods: {
         scrollTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' })
         },
+
     },
 
     created() {
@@ -44,7 +46,6 @@ export default {
     position: fixed;
     right: 1.5%;
     bottom: 4rem;
-    z-index: 9999;
     cursor: pointer;
 }
 </style>

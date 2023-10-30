@@ -729,11 +729,6 @@ export default {
                         },
                         {
                             "distrist": 6,
-                            "party": "民進黨",
-                            "name": "趙天麟"
-                        },
-                        {
-                            "distrist": 6,
                             "party": "喜樂島聯盟",
                             "name": "郭倍宏"
                         },

@@ -131,6 +131,8 @@ export default {
                 });
 
         }
+
+
     }, mounted() {
         this.getNews1(),
             this.getNews2(),

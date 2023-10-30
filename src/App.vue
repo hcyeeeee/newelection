@@ -7,7 +7,6 @@
     <router-view></router-view>
     <TheCalender />
   </div>
-  <BottomNav />
   <ScrollUp />
   <div class="footer">Copyright © 2023 民視新聞網路部 社群中心</div>
 </template>
@@ -185,11 +184,24 @@ a {
 
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #f08308;
   margin: 0.5rem 0;
   font-weight: 400;
   letter-spacing: .1rem;
+}
+
+.lv-progressbar__value {
+  background: linear-gradient(90deg, #f8cf7b 0.35%, #ff8400 30.16%) !important;
+  border-radius: 2rem;
+}
+
+.lv-progressbar {
+  border: 0 none;
+  height: 1.5rem;
+  background: #F3EEE8 !important;
+  border-radius: 3px;
+  border-radius: 2rem !important;
 }
 </style>
 

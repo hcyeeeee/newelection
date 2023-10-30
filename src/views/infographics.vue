@@ -4,20 +4,27 @@
     <TheBanner />
     <div class="layout">
       <div class="icontitle">
-        <img src="../assets/policy.png" alt="">
-        <h2>政策牛肉</h2>
+        <img src="../assets/map.png" alt="">
+        <h2>歷屆總統副總統選舉得票數</h2>
       </div>
       <ul>
         <li v-for="(tab, index) in tabs" :key="index" @click="activateTab(index)"
           :class="{ active: activeTab === index }">
-          <h2 class="policytitle">{{ tab.label }}</h2>
-        </li>
+          {{ tab.label }}</li>
       </ul>
-      <div class="tab-content">
-        <div v-for="(tab, index) in tabs" :key="index" v-show="activeTab === index">
-          <div class="infogram-embed" :data-id="tab.link" data-type="interactive" :data-title="'2024大選-' + tab.label">
-          </div>
+
+      <div v-for="(tab, index) in tabs" :key="index" v-show="activeTab === index">
+        <div class="infogram-embed" :data-id="tab.link" data-type="interactive" :data-title="'2024大選-' + tab.label">
         </div>
+      </div>
+
+    </div>
+    <div class="layout">
+      <div class="icontitle">
+        <img src="../assets/HomeLegis.png" alt="">
+        <h2>歷屆立委席次變化</h2>
+      </div>
+      <div class="flourish-embed flourish-parliament" :data-src=flourishSrc>
       </div>
     </div>
   </div>
@@ -35,12 +42,11 @@ export default {
   data() {
     return {
       tabs: [
-        { label: '青年補助', content: '這是青年補助的内容', link: '744f826c-dbfd-48c9-9bcd-330479349fe2' },
-        { label: '國防政策', content: '這是國防政策的内容', link: 'b8d80ee3-0f68-4847-963d-4f4a523cc846' },
-        { label: '生育政策', content: '這是生育政策的内容', link: '64eaf169-8845-4648-925f-d4d0fa9d80bf' },
-        { label: '長照政策', content: '這是長照政策的内容', link: '8a53b893-70f0-4915-87e5-2467a83a8a02' },
-        // 添加更多选项卡以及它们的内容
+        { label: '2012年', link: '4c8f7092-a088-4e47-ba62-1856495110b8' },
+        { label: '2016年', link: '0ee18735-d808-4d4e-b00c-bca4b906ce8a' },
+        { label: '2020年', link: '0ed95ff8-d441-4d6a-b74f-3f5f05f9b76e' },
       ],
+      flourishSrc: "visualisation/14873406",
       activeTab: 0,
     };
   },
@@ -48,9 +54,17 @@ export default {
     activateTab(index) {
       this.activeTab = index; // 点击选项卡时设置选中的选项卡索引
     },
+    loadFlourishScript() {
+      const script = document.createElement("script");
+      script.src = "https://public.flourish.studio/resources/embed.js";
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
   },
   created() {
     this.activateTab(0);
+    // Infogram 脚本加载
     // Infogram 脚本加载
     !function (e, n, i, s) {
       var d = "InfogramEmbeds";
@@ -65,6 +79,9 @@ export default {
         o.parentNode.insertBefore(r, o);
       }
     }(document, "script", "infogram-async", "https://infogram.com/js/dist/embed-loader-min.js");
+  },
+  mounted() {
+    this.loadFlourishScript();
   },
   watch: {
     $route(to, from) {
@@ -88,29 +105,20 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@mixin phone {
-  @media (min-width: 500px) {
-    @content;
-  }
-}
-
 ul {
   flex-direction: row;
   width: 90%;
   justify-content: center;
-  gap: 6px;
+  gap: 1rem;
   margin: auto;
   display: flex;
   cursor: pointer;
-
-  @include phone {
-    gap: 1rem;
-  }
 
   li {
     font-size: 1.2rem;
     font-weight: 500;
     letter-spacing: 0.1rem;
+    padding: 0.2rem;
     border-bottom: 2px solid #d9d9d9;
 
     &:hover,
@@ -119,13 +127,6 @@ ul {
       border-bottom: 2px solid #ffa500;
     }
   }
-}
-
-
-.policytitle {
-  font-size: 1rem;
-  margin: auto;
-  color: rgb(18, 18, 18);
 }
 </style>
 

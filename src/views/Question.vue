@@ -7,13 +7,14 @@
         <img src="../assets/QA.png" alt="">
         <h2>選舉Q&A</h2>
       </div>
-      <div v-for="item in Question" :key="item.id" class="Question">
+      <div v-for="item in Question" data-aos="fade-right" :key="item.id" class="Question" @click="closeMenu(item)">
         <div class="qatitle" @click="toggle(item)">
           <img src="../assets/Q.png" alt="">
           <p>{{ item.Q }}</p>
           <i :class="'fa-duotone fa-xl' + (item.isVisible ? ' fa-angle-up' : ' fa-angle-down')"></i>
         </div>
         <div class="qatitle" :style="{ display: item.isVisible ? 'flex' : 'none' }">
+          <hr>
           <img src="../assets/A.png" alt="">
           <p>{{ item.A }}</p>
         </div>
@@ -34,7 +35,6 @@ export default {
   data() {
     return {
       isVisible: false,
-
       Question: [
         {
           Q: '中華民國第16任總統副總統及第11屆立法委員選舉什麼時候進行投票呢？',
@@ -97,7 +97,14 @@ export default {
   }, methods: {
     toggle(question) {
       question.isVisible = !question.isVisible;
-    }
+    },
+    closeMenu(clickedItem) {
+      this.Question.forEach(item => {
+        if (item !== clickedItem) {
+          item.isVisible = false;
+        }
+      });
+    },
   },
 };
 </script>
@@ -110,14 +117,21 @@ export default {
   margin: 1rem auto;
   cursor: pointer;
   box-shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
+  transition: 1s all;
+
+  &:hover {
+    background: #f6f6f6;
+  }
+
 }
 
 .qatitle {
   width: 95%;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   display: flex;
   margin: auto;
   align-items: center;
+  transition: 1s all;
 
   img {
     width: 40px;
@@ -128,14 +142,16 @@ export default {
     align-items: center;
     justify-content: start;
     margin: auto .5rem;
-    font-weight: 300;
+    font-weight: 400;
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    transition: 1s all;
   }
 
   i {
     justify-content: end;
     margin-right: 0rem;
+
 
   }
 }

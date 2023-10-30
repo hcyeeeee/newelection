@@ -24,6 +24,10 @@
                 </div>
                 <ul class="video_tab">
                     <li>
+                        <a href="https://www.youtube.com/embed/videoseries?si=kaibtbx87BlFy3Nt&amp;list=PLkP0kGDs5OtfjDmXlQ0VqQqikquY6i3zd"
+                            target="video-frame">2024總統立委大選</a>
+                    </li>
+                    <li>
                         <a href="https://www.youtube.com/embed/videoseries?si=xOrLVtfLvo4Aaqq7&amp;list=PLkP0kGDs5OtdSRxmjhD36zCp28lSWO_v4"
                             target="video-frame">2024立委選戰巡禮</a>
                     </li>
@@ -35,7 +39,7 @@
                 <div class="video-menu">
                     <div class="video-container">
                         <iframe width="100%" height="100%"
-                            src="https://www.youtube.com/embed/videoseries?si=xOrLVtfLvo4Aaqq7&amp;list=PLkP0kGDs5OtdSRxmjhD36zCp28lSWO_v4"
+                            src="https://www.youtube.com/embed/videoseries?si=kaibtbx87BlFy3Nt&amp;list=PLkP0kGDs5OtfjDmXlQ0VqQqikquY6i3zd"
                             title="YouTube video player" frameborder="0" name="video-frame"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>

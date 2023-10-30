@@ -3,7 +3,6 @@
     <div class="header_inner">
       <a href="https://www.ftvnews.com.tw/" target="_blank">
         <img loading="lazy" src="../assets/民視新聞網.png" class="logo" alt="民視新聞網">
-     
       </a>
       <div class="nav pc">
       </div>
@@ -28,7 +27,7 @@
           <i :class="'fa-solid' + (isMobileMenuVisible ? ' fa-xmark' : ' fa-bars')"></i>
         </h3>
       </div>
-      <div class="mobile_menu" data-aos="fade-left" :style="{ display: isMobileMenuVisible ? 'flex' : 'none' }" alt="">
+      <div class="mobile_menu" :style="{ display: isMobileMenuVisible ? 'flex' : 'none' }">
         <router-link to="/" @click="closeMenu">
           <img loading="lazy" src="../assets/fight2024.png" alt="fight2024">
         </router-link>
@@ -36,6 +35,9 @@
         <router-link to="/president" @click="closeMenu">總統大選</router-link>
         <router-link to="/Legislator" @click="closeMenu"> 立委選戰 </router-link>
         <a href=" https://www.ftvnews.com.tw/topics/2024election/Policy" @click="closeMenu">政策牛肉</a>
+        <a href=" https://www.ftvnews.com.tw/topics/2024election/infographics" @click="closeMenu">歷年版圖</a>
+        <router-link to="/question" @click="closeMenu">選舉Q&A</router-link>
+
         <div class="mobile_share">
           <a
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ftvnews.com.tw%2Ftopics%2F2023taiwantemple%2F&amp;src=sdkpreparse">
@@ -52,6 +54,31 @@
             複製連結
           </a>
         </div>
+      </div>
+    </div>
+    <div class="bottom bottom_inner">
+      <div>
+        <router-link to="/">回首頁</router-link>
+        <p>|</p>
+        <router-link to="/president">總統大選</router-link>
+        <p>|</p>
+        <router-link to="/Legislator">立委選戰</router-link>
+        <p>|</p>
+        <div class="dropdown">
+          <router-link class="dropdown-btn" to="/Legislator">更多資訊 </router-link>
+          <ul class="menu">
+            <li>
+              <router-link to="/Question">選舉Q&A</router-link>
+            </li>
+            <li>
+              <a href="https://www.ftvnews.com.tw/topics/2024election/infographics">歷年版圖</a>
+            </li>
+            <li>
+              <a href="https://www.ftvnews.com.tw/topics/2024election/policy">政策牛肉</a>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
@@ -91,4 +118,6 @@ export default {
 
 
 
-<style lang="scss"></style>
+<style lang="scss">
+/* 描述下拉選單容器 */
+</style>

@@ -5,10 +5,10 @@
         </div>
         <div class="calender_content">
             <div v-for="item in calender" :key="item.id" class="calender-inner">
-                <div style="margin-bottom: .3rem;font-weight: 300;font-size: 0.9rem;">
+                <div style="margin-bottom: .3rem;font-weight: 400;font-size: 0.9rem;color: rgb(21, 21, 21);">
                     {{ item.startDate }}{{ item.endDate }}
                 </div>
-                <div style="font-weight: 400;font-size: 1rem;line-height: 130%;">{{ item.DayEvent }}</div>
+                <div style="font-weight:350;font-size: 1rem;line-height: 130%;">{{ item.DayEvent }}</div>
             </div>
         </div>
     </div>

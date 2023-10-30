@@ -16,15 +16,19 @@
             <img src="../assets/policy.png" alt="">
             <h2> 政策牛肉</h2>
         </a>
-        <!-- <router-link class="icontitle" to="/Question">
+        <a class="icontitle" href="https://www.ftvnews.com.tw/topics/2024election/infographics">
+            <img src="../assets/map.png" alt="">
+            <h2>歷年版圖</h2>
+        </a>
+        <router-link class="icontitle" to="/Question">
             <img src="../assets/qa.png" alt="">
             <h2>選舉Q&A</h2>
-        </router-link> -->
+        </router-link>
     </div>
 </template>
 <style lang="scss" scoped>
 h2 {
-    color: black;
+    color: rgb(32, 32, 32);
     font-size: 1.2rem;
     letter-spacing: 0;
 

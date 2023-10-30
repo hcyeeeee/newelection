@@ -25,7 +25,7 @@
 }" :pagination="{ clickable: true, }" :navigation="{
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
-}" :modules="modules" class="mySwiper">
+}" :modules="modules" class="mySwiper" :loop="true">
                 <swiper-slide class="out" v-for="item in news2" :key="item.id">
                     <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
                         <img loading="lazy" :src="item.Image" :alt="item.ID">
