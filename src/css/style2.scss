@@ -633,10 +633,19 @@ body {
     height: auto;
 
     @include pad {
+      width: 90%;
       display: flex;
       grid-template-columns: 1fr 1fr 1fr;
-      justify-content: space-between;
-      gap: 2rem;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    @include web {
+      width: 70%;
+    }
+    @include big {
+      gap: 1.5rem;
+      width: 90%;
     }
     li {
       width: fit-content;
@@ -1403,4 +1412,3 @@ p {
     }
   }
 }
-

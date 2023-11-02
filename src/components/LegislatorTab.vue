@@ -14,31 +14,20 @@
 
         </div>
         <div class="Legislator pc">
-            <swiper v-if="selectedCandidate" :slidesPerView="1" :spaceBetween="10" :pagination="{ clickable: true, }"
-                :breakpoints="{
-                    '640': {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    '768': {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                    '1024': {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                }" :navigation="{
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-}" :modules="modules" class="mySwiper">
+
+            <swiper v-if="selectedCandidate" :slidesPerView="3" :loop="true" :spaceBetween="20"
+                :pagination="{ clickable: true, }" :navigation="{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }" :modules="modules" class="mySwiper">
+
                 <swiper-slide class="out" v-for="item in selectedCandidate.responseData" :key="item.index"> <a
                         :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
                         <img loading="lazy" :src="item.Image" :alt="item.ID">
                         <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
-                        <!-- <div class="time">{{ item.CreateDate }}</div> -->
                     </a>
                 </swiper-slide>
+
             </swiper>
             <div class="arrow">
                 <div class="swiper-button-next"><i class="fa-solid fa-arrow-right"></i></div>
@@ -93,14 +82,41 @@ export default {
                 {
                     index: "1",
                     name: {
+                        blue: "蘇巧慧",
+                        green: " vs 洪佳君",
+                        other: "",
+                    },
+                    responseData: '',
+                },
+                {
+                    index: "2",
+                    name: {
+                        blue: "吳崢",
+                        green: " vs 張智倫",
+                        other: " vs 邱臣遠",
+                    },
+                    responseData: '',
+                },
+                {
+                    index: "3",
+                    name: {
+                        blue: "吳沛憶",
+                        green: " vs 鍾小平",
+                        other: " vs 于美人",
+                    },
+                    responseData: '',
+                },
+                {
+                    index: "4",
+                    name: {
                         blue: "許淑華",
                         green: " vs 徐巧芯",
                         other: "",
                     },
-                    responseData: '', // 为每个 tab 保留回应数据
+                    responseData: '',
                 },
                 {
-                    index: "2",
+                    index: "5",
                     name: {
                         blue: "高嘉瑜",
                         green: " vs 李彥秀",
@@ -108,15 +124,8 @@ export default {
                     },
                     responseData: '',
                 },
-                {
-                    index: "3",
-                    name: {
-                        blue: "謝佩芬",
-                        green: " vs 王鴻薇",
-                        other: "",
-                    },
-                    responseData: '',
-                }
+
+
             ],
             selectedCandidate: null, // 用于存储当前选中的候选人数据
         };
@@ -126,7 +135,7 @@ export default {
             let apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=6`;
 
             if (window.matchMedia("(min-width: 768px)").matches) {
-                apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=8`;
+                apiUrl = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidate.name.blue}&Page=1&sp=6`;
             }
 
             axios.get(apiUrl)

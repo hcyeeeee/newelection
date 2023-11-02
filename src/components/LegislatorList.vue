@@ -738,6 +738,11 @@ export default {
                             "name": "陳美雅"
                         },
                         {
+                            "distrist": 6,
+                            "party": "民進黨",
+                            "name": "黃捷"
+                        },
+                        {
                             "distrist": 7,
                             "party": "民進黨",
                             "name": "許智傑"

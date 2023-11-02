@@ -25,11 +25,11 @@
                 <ul class="video_tab">
                     <li>
                         <a href="https://www.youtube.com/embed/videoseries?si=kaibtbx87BlFy3Nt&amp;list=PLkP0kGDs5OtfjDmXlQ0VqQqikquY6i3zd"
-                            target="video-frame">2024總統立委大選</a>
+                            target="video-frame">總統大選</a>
                     </li>
                     <li>
                         <a href="https://www.youtube.com/embed/videoseries?si=xOrLVtfLvo4Aaqq7&amp;list=PLkP0kGDs5OtdSRxmjhD36zCp28lSWO_v4"
-                            target="video-frame">2024立委選戰巡禮</a>
+                            target="video-frame">立委選戰</a>
                     </li>
                     <li>
                         <a href="https://www.youtube.com/embed/videoseries?si=xOrLVtfLvo4Aaqq7&amp;list=PLkP0kGDs5OtfXdfmpvkcGbR65NmjqLk70"
