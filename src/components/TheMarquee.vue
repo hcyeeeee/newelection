@@ -11,10 +11,10 @@
             {{ item.Title.replace("快新聞／", "") }}</a>
         </swiper-slide>
       </swiper>
-      <div class="count">
-        <p class="www">選戰倒數 </p>
-        <p class="sss"> {{ countdown }}</p>
-        <p class="wwww">天</p>
+      <div class="count_mb">
+        <p class="count-title">選戰倒數 </p>
+        <p class="count-num">{{ countdown }}</p>
+        <p class="count-text">天</p>
       </div>
     </div>
   </div>

@@ -37,7 +37,7 @@
         <a href=" https://www.ftvnews.com.tw/topics/2024election/Policy" @click="closeMenu">政策牛肉</a>
         <a href=" https://www.ftvnews.com.tw/topics/2024election/infographics" @click="closeMenu">歷年版圖</a>
         <router-link to="/question" @click="closeMenu">選舉Q&A</router-link>
-
+        <router-link to="/videos" @click="closeMenu">影音專區</router-link>
         <div class="mobile_share">
           <a
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ftvnews.com.tw%2Ftopics%2F2023taiwantemple%2F&amp;src=sdkpreparse">
@@ -68,6 +68,9 @@
           <router-link class="dropdown-btn" to="/Legislator">更多資訊 </router-link>
           <ul class="menu">
             <li>
+              <router-link to="/Videos">影音專區</router-link>
+            </li>
+            <li>
               <router-link to="/Question">選舉Q&A</router-link>
             </li>
             <li>
@@ -78,7 +81,6 @@
             </li>
           </ul>
         </div>
-
       </div>
     </div>
   </div>

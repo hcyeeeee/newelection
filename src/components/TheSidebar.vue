@@ -24,6 +24,10 @@
             <img src="../assets/qa.png" alt="">
             <h2>選舉Q&A</h2>
         </router-link>
+        <router-link class="icontitle" to="/videos">
+            <img src="../assets/video.png" alt="">
+            <h2>影音專區</h2>
+        </router-link>
     </div>
 </template>
 <style lang="scss" scoped>

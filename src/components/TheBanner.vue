@@ -1,7 +1,7 @@
 <template>
     <div class="banner">
         <div>
-            <div class="h1title">
+            <div class="layout-h1">
                 <h1>
                     <span>決戰2024</span>
                     <br>
@@ -9,15 +9,15 @@
                 </h1>
             </div>
             <div class="count">
-                <p class="www">選戰倒數 </p>
-                <p class="sss"> {{ day }}</p>
-                <p class="wwww">天</p>
-                <p class="sss"> {{ hours }}</p>
-                <p class="wwww">時</p>
-                <p class="sss"> {{ mins }}</p>
-                <p class="wwww">分</p>
-                <p class="sss"> {{ secs }}</p>
-                <p class="wwww">秒</p>
+                <p class="count-title">選戰倒數 </p>
+                <span>{{ day }}</span>
+                <p class="count-text">天</p>
+                <span>{{ hours }}</span>
+                <p class="count-text">時</p>
+                <span> {{ mins }}</span>
+                <p class="count-text">分</p>
+                <span> {{ secs }}</span>
+                <p class="count-text">秒</p>
             </div>
         </div>
         <iframe width="100%" height="100%"
@@ -28,19 +28,7 @@
     </div>
 </template>
 <script>
-
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
-// Import Swiper styles
-import 'swiper/css';
-// import required modules
-import { Autoplay } from 'swiper/modules';
-
 export default {
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
     data() {
         return {
             countdown: "",
@@ -48,20 +36,6 @@ export default {
             hours: "",
             mins: "",
             secs: "",
-            news: [],
-            calender: [
-                { startDate: "2023/09/19", endDate: "-11/02", DayEvent: "受理總統、副總統選舉連署書件" },
-                { startDate: "2023/11/07", endDate: "", DayEvent: "發布立法委員選舉公告" },
-                { startDate: "2023/11/14前", endDate: "", DayEvent: "公告總統、副總統選舉連署結果" },
-                { startDate: "2023/11/20", endDate: "-11/24", DayEvent: "受理正副總統與立法委員選舉候選人登記之申請" },
-                { startDate: "2023/12/05前", endDate: "", DayEvent: "審定總統、副總統選舉候選人名單，並通知抽籤" },
-                { startDate: "2023/12/11", endDate: "", DayEvent: "正副總統選舉候選人抽籤決定號次" },
-                { startDate: "2023/12/15", endDate: "", DayEvent: "公告總統、副總統選舉候選人名單" },
-                { startDate: "2024/01/02", endDate: "", DayEvent: "公告立法委員選舉候選人名單" },
-                { startDate: "2024/01/13", endDate: "", DayEvent: "投票及開票日" },
-                { startDate: "2024/01/19前", endDate: "", DayEvent: "公告總統、副總統與立法委員選舉當選人名單" },
-            ],
-            modules: [Autoplay],
         }
     },
     methods: {
@@ -87,22 +61,11 @@ export default {
                 }
             }, 1000);
         }
-    }, created() {
-        setInterval(() => {
-            this.startCountdown();
-        }, 900);
-    }, mounted() {
+    },
+    mounted() {
         setTimeout(() => {
             this.startCountdown();
         }, 800);
     },
 };
 </script>
-<style lang="scss" scoped>
-.swiper-slide-prev,
-.swiper-slide-next {
-    opacity: .8;
-}
-
-
-</style>

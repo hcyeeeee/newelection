@@ -1,7 +1,6 @@
 
 <template >
   <TheHeader />
-
   <div class="all">
     <TheSidebar />
     <router-view></router-view>
@@ -10,7 +9,6 @@
   <ScrollUp />
   <div class="footer">Copyright © 2023 民視新聞網路部 社群中心</div>
 </template>
-
 <script >
 import AOS from 'aos'
 import 'aos/dist/aos.css'

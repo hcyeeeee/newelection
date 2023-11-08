@@ -2,23 +2,18 @@
   <div class="home">
     <TheMarquee />
     <sectionBanner />
-    <MobileCalender />
+    <TheMarqueeMB />
     <!-- <VotePresi /> -->
     <HomeLegis />
-    <!-- <div data-aos="zoom-in">
-      <HomePresi />
-    </div> -->
     <HomePresi />
     <HomeVideo />
   </div>
 </template>
-
-
 <script>
 import sectionBanner from '../components/TheBanner.vue'
-import MobileCalender from '../components/MobileCalender.vue'
 import TheMarquee from '../components/TheMarquee.vue'
 // import VotePresi from '../components/VotePresi.vue'
+import TheMarqueeMB from '../components/TheMarqueeMb.vue'
 import HomeLegis from '../components/HomeLegis.vue'
 import HomePresi from '../components/HomePresi.vue'
 import HomeVideo from '../components/HomeVideo.vue'
@@ -26,9 +21,9 @@ import HomeVideo from '../components/HomeVideo.vue'
 export default {
   components: {
     sectionBanner,
-    MobileCalender,
     TheMarquee,
     // VotePresi,
+    TheMarqueeMB,
     HomeLegis,
     HomePresi,
     HomeVideo,

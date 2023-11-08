@@ -4,13 +4,44 @@
             <img src="../assets/LegisList.png" alt="">
             <h2>{{ selectedCity }}立委參選名單</h2>
         </div>
-        <div class="Region-navtab">
-            <li @click="selectRegion('北部地區')" :class="{ 'active': selectedRegion === '北部地區' }">北部地區</li>
-            <li @click="selectRegion('中部地區')" :class="{ 'active': selectedRegion === '中部地區' }">中部地區</li>
-            <li @click="selectRegion('南部地區')" :class="{ 'active': selectedRegion === '南部地區' }">南部地區</li>
-            <li @click="selectRegion('東部地區')" :class="{ 'active': selectedRegion === '東部地區' }">東部地區</li>
-            <li @click="selectRegion('離島地區')" :class="{ 'active': selectedRegion === '離島地區' }">離島地區</li>
-            <li @click="selectRegion('原住民地區')" :class="{ 'active': selectedRegion === '原住民地區' }">平地/山地原住民</li>
+        <div class="dddd">
+            <div class="Region-navtab pc">
+                <li style="background: transparent; color: #c1c1c1; box-shadow: none;">地區/縣市</li>
+                <li @click="selectRegion('北部地區')" :class="{ 'active': selectedRegion === '北部地區' }">北部地區</li>
+                <li @click="selectRegion('中部地區')" :class="{ 'active': selectedRegion === '中部地區' }">中部地區</li>
+                <li @click="selectRegion('南部地區')" :class="{ 'active': selectedRegion === '南部地區' }">南部地區</li>
+                <li @click="selectRegion('東部地區')" :class="{ 'active': selectedRegion === '東部地區' }">東部地區</li>
+                <li @click="selectRegion('離島地區')" :class="{ 'active': selectedRegion === '離島地區' }">離島地區</li>
+                <li @click="selectRegion('原住民地區')" :class="{ 'active': selectedRegion === '原住民地區' }">平地/山地原住民</li>
+            </div>
+            <div v-if="selectedRegion">
+                <div class="Region">
+                    <div v-for="(city, cityName) in electionData[selectedRegion]" :key="cityName"
+                        @click="selectCity(cityName)" :class="{ 'active': selectedCity === cityName }" class="Regionbtn">
+                        {{ cityName }}
+                    </div>
+                </div>
+                <div class="tablelayout_pc">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>選區</th>
+                                <th>政黨</th>
+                                <th>姓名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
+                                <td>{{ candidate.distrist }}</td>
+                                <td> <img class="partyicon"
+                                        :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
+                                        :alt="candidate.party">{{ candidate.party }}</td>
+                                <td>{{ candidate.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <div class="List_mb">
@@ -24,61 +55,11 @@
                     <option value="原住民地區">原住民</option>
                 </select>
             </div>
-
             <select v-model="selectedCity" class="custom-select select_mb">
                 <option v-for="(city, cityName) in electionData[selectedRegion]" :key="cityName">{{ cityName }}</option>
             </select>
         </div>
         <div v-if="selectedRegion">
-            <div class="Region">
-                <div v-for="(city, cityName) in electionData[selectedRegion]" :key="cityName" @click="selectCity(cityName)"
-                    :class="{ 'active': selectedCity === cityName }" class="Regionbtn">
-                    {{ cityName }}
-                </div>
-            </div>
-
-            <div class="tablelayout_pc">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>選區</th>
-                            <th>政黨</th>
-                            <th>姓名</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
-                            <td v-if="index % 2 === 0">{{ candidate.distrist }}</td>
-                            <td v-if="index % 2 === 0"> <img class="partyicon"
-                                    :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
-                                    :alt="candidate.party">{{
-                                        candidate.party }}</td>
-                            <td v-if="index % 2 === 0">{{ candidate.name }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>選區</th>
-                            <th>政黨</th>
-                            <th>姓名</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
-                            <td v-if="index % 2 === 1">{{ candidate.distrist }}</td>
-                            <td v-if="index % 2 === 1">
-                                <img class="partyicon" loading="lazy"
-                                    :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
-                                    alt="">
-                                {{ candidate.party }}
-                            </td>
-                            <td v-if="index % 2 === 1">{{ candidate.name }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
             <div class=" tablelayout_mb">
                 <table>
                     <thead>
@@ -88,8 +69,9 @@
                             <th>姓名</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
+                        <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
                             <td>{{ candidate.distrist }}</td>
                             <td> <img class="partyicon"
                                     :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
@@ -102,6 +84,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 </template>
 <script>
@@ -123,6 +106,10 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "張斯綱"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "侯漢廷"
                         },
                         {
                             "distrist": 2,
@@ -130,6 +117,10 @@ export default {
                             "name": "王世堅"
                         },
                         {
+                            "distrist": 2,
+                            "party": "台灣麻將最大黨",
+                            "name": "謝尚衡"
+                        }, {
                             "distrist": 2,
                             "party": "國民黨",
                             "name": "游淑慧"
@@ -155,9 +146,29 @@ export default {
                             "name": "李彥秀"
                         },
                         {
+                            "distrist": 4,
+                            "party": "基進黨",
+                            "name": "吳欣岱"
+                        },
+                        {
                             "distrist": 5,
                             "party": "民進黨",
                             "name": "吳沛憶"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "國民黨",
+                            "name": "鍾小平"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "無黨籍",
+                            "name": "于美人"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "台灣麻將最大黨",
+                            "name": "張華特"
                         },
                         {
                             "distrist": 6,
@@ -178,6 +189,11 @@ export default {
                             "distrist": 7,
                             "party": "國民黨",
                             "name": "徐巧芯"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "台灣麻將最大黨",
+                            "name": "方定瑜"
                         },
                         {
                             "distrist": 8,
@@ -212,6 +228,11 @@ export default {
                             "name": "林淑芬"
                         },
                         {
+                            "distrist": 2,
+                            "party": "民眾黨",
+                            "name": "李有宜"
+                        },
+                        {
                             "distrist": 3,
                             "party": "民進黨",
                             "name": "李坤城"
@@ -229,7 +250,7 @@ export default {
                         {
                             "distrist": 4,
                             "party": "國民黨",
-                            "name": "蔡欣璋"
+                            "name": "蔣欣璋"
                         },
                         {
                             "distrist": 5,
@@ -297,6 +318,11 @@ export default {
                             "name": "林金結"
                         },
                         {
+                            "distrist": 10,
+                            "party": "台灣麻將最大黨",
+                            "name": "張哲源"
+                        },
+                        {
                             "distrist": 11,
                             "party": "民進黨",
                             "name": "曾柏瑜"
@@ -332,6 +358,11 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "王醒之"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣麻將最大黨",
+                            "name": "張世昌"
                         }
                     ],
                     "桃園市": [
@@ -344,6 +375,11 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "牛煦庭"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "時代力量",
+                            "name": "徐鈺雯"
                         },
                         {
                             "distrist": 2,
@@ -376,6 +412,11 @@ export default {
                             "name": "萬美玲"
                         },
                         {
+                            "distrist": 4,
+                            "party": "公民黨",
+                            "name": "甘乃迪"
+                        },
+                        {
                             "distrist": 5,
                             "party": "民進黨",
                             "name": "劉仁照"
@@ -399,6 +440,11 @@ export default {
                             "distrist": 6,
                             "party": "無黨籍",
                             "name": "趙正宇"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "民眾黨",
+                            "name": "李慕妍"
                         }
                     ],
                     "新竹市": [
@@ -433,6 +479,11 @@ export default {
                             "distrist": 1,
                             "party": "民進黨",
                             "name": "詹紀緹"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "綠黨",
+                            "name": "余筱菁"
                         },
                         {
                             "distrist": 2,
@@ -482,7 +533,7 @@ export default {
                         },
                         {
                             "distrist": 1,
-                            "party": "國民黨",
+                            "party": "無黨籍",
                             "name": "劉燈鐘"
                         },
                         {
@@ -568,9 +619,14 @@ export default {
                             "name": "康世明"
                         },
                         {
-                            "distrist": 2,
+                            "distrist": 1,
                             "party": "無黨籍",
                             "name": "陳超明"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣麻將最大黨",
+                            "name": "洪鈺翔"
                         },
                         {
                             "distrist": 2,
@@ -605,6 +661,11 @@ export default {
                             "name": "陽曜聰"
                         },
                         {
+                            "distrist": 2,
+                            "party": "台灣麻將最大黨",
+                            "name": "鄒伊忠"
+                        },
+                        {
                             "distrist": 3,
                             "party": "民進黨",
                             "name": "吳音寧"
@@ -637,6 +698,11 @@ export default {
                             "name": "馬文君"
                         },
                         {
+                            "distrist": 1,
+                            "party": "勞動黨",
+                            "name": "許文忠"
+                        },
+                        {
                             "distrist": 2,
                             "party": "民進黨",
                             "name": "蔡培慧"
@@ -657,6 +723,11 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "丁學忠"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣革命黨",
+                            "name": "李昭儀"
                         },
                         {
                             "distrist": 2,
@@ -681,6 +752,11 @@ export default {
                             "distrist": 1,
                             "party": "公民黨",
                             "name": "江嘉盛"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "民眾黨",
+                            "name": "曾尹儷"
                         },
                         {
                             "distrist": 2,
@@ -751,6 +827,10 @@ export default {
                             "distrist": 7,
                             "party": "國民黨",
                             "name": "鍾易仲"
+                        }, {
+                            "distrist": 7,
+                            "party": "無黨籍",
+                            "name": "洪啟修 "
                         },
                         {
                             "distrist": 8,
@@ -773,6 +853,11 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "周宏昌"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "魏耀乾"
                         },
                         {
                             "distrist": 2,
@@ -805,6 +890,11 @@ export default {
                             "name": "李全教"
                         },
                         {
+                            "distrist": 4,
+                            "party": "台灣麻將最大黨",
+                            "name": "何力弘"
+                        },
+                        {
                             "distrist": 5,
                             "party": "民進黨",
                             "name": "林俊憲"
@@ -823,6 +913,11 @@ export default {
                             "distrist": 6,
                             "party": "國民黨",
                             "name": "陳以信"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "無黨籍",
+                            "name": "陳永和"
                         }
                     ],
                     "嘉義市": [
@@ -843,7 +938,7 @@ export default {
                         },
                         {
                             "distrist": 1,
-                            "party": "無黨籍",
+                            "party": "公民黨",
                             "name": "簡明廉"
                         }
                     ],
@@ -884,6 +979,11 @@ export default {
                             "distrist": 2,
                             "party": "無黨籍",
                             "name": "蘇孟淳"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "民進黨",
+                            "name": "徐富癸"
                         }
                     ],
                     "澎湖縣": [
@@ -936,11 +1036,6 @@ export default {
                             "distrist": 1,
                             "party": "民眾黨",
                             "name": "尚文凱"
-                        },
-                        {
-                            "distrist": 1,
-                            "party": "基進黨",
-                            "name": "楊佩樺"
                         }
                     ],
                     "連江縣": [
@@ -953,6 +1048,16 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "陳雪生"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "民眾黨",
+                            "name": "曹爾凱"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "公民黨",
+                            "name": "李克焜"
                         }
                     ]
                 },
@@ -977,6 +1082,11 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "陳政宗"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣麻將最大黨",
+                            "name": "潘彥睿"
                         }
                     ],
                     "山地原住民": [
@@ -1040,7 +1150,7 @@ export default {
     },
     mounted() {
         this.selectedRegion = '北部地區',
-            this.selectedCity = 'Taipei'
+            this.selectedCity = '台北市'
     }
 
 }
@@ -1048,9 +1158,78 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin pad {
+    @media (min-width: 800px) {
+        @content;
+    }
+}
+
 .partyicon {
     width: 30px !important;
     border-radius: 100px;
     margin-right: 1rem;
+}
+
+.dddd {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+}
+
+.Region-navtab {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    text-align: center;
+    justify-content: start;
+    font-size: 1.4rem;
+
+    margin: auto;
+    margin-top: 1rem;
+
+    li {
+        background: #f3f3f3;
+        font-size: 1.2rem !important;
+        padding: .4rem .6rem;
+        margin: .4rem;
+        border-bottom: 0px solid rgb(201, 201, 201);
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+    }
+
+    .active {
+        background: linear-gradient(115deg, #f07708 30.73%, #ff9823 32.81%, #f04e08 100%);
+        color: white;
+    }
+
+}
+
+.Regionbtn {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none !important;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    border-bottom: 2px solid #dedede;
+
+    .active {
+        color: black !important;
+        border-bottom: 2px solid orange;
+    }
+}
+
+.Region {
+    .active {
+        color: black !important;
+        border-bottom: 2px solid orange;
+    }
+}
+
+.pc {
+    display: none;
+
+    @include pad {
+        display: flex;
+    }
 }
 </style>

@@ -19,6 +19,7 @@
   }
 }
 
+// Colors
 $orange: #f08308;
 $black: #353434;
 $white: #ffffff;
@@ -27,6 +28,8 @@ $Bg-Shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
 $orangeLiner: (
   linear-gradient(115deg, #f07708 30.73%, #ff9823 32.81%, #f04e08 100%)
 );
+
+// Typography
 $letter: 0.1rem;
 $font-sm: 1rem;
 $font-md: 1.2rem;
@@ -37,6 +40,9 @@ body {
   margin: auto;
   background: $Bg-white;
   color: $black;
+  img {
+    width: 100%;
+  }
   a {
     color: $black;
   }
@@ -46,9 +52,9 @@ body {
   .all {
     display: flex;
     flex-direction: column;
-    margin: auto;
     justify-content: center;
     width: 98%;
+    margin: auto;
 
     @include pad {
       flex-direction: row;
@@ -62,6 +68,28 @@ body {
     }
   }
 
+  //swiper-style
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: transparent;
+    &:after {
+      display: none;
+    }
+  }
+
+  .swiper {
+    width: 100%;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: $orange !important;
+  }
+
+  .swiper-slide {
+    margin-bottom: 2rem;
+  }
+
   .about,
   .home {
     width: 95%;
@@ -69,8 +97,7 @@ body {
     margin-top: 3.5rem;
     @include pad {
       max-width: 700px;
-      margin: auto 1rem;
-      margin-top: 4.5rem;
+      margin: 4.5rem 1rem auto 1rem;
     }
     @include web {
       max-width: unset;
@@ -80,14 +107,14 @@ body {
     display: none;
     @include pad {
       display: flex;
+      gap: $gap-sm;
       width: fit-content;
       height: fit-content;
-      background: $white;
-      box-shadow: $Bg-Shadow;
       flex-direction: column;
       position: sticky;
       right: 0;
-      gap: $gap-sm;
+      background: $white;
+      box-shadow: $Bg-Shadow;
       padding: 1rem;
       margin-top: 4.5rem;
       border-radius: 1.25rem;
@@ -97,13 +124,11 @@ body {
       white-space: nowrap;
       text-align: center;
       font-size: $font-md;
-      font-weight: 400;
       letter-spacing: $letter;
-
       &:hover,
       &:focus {
         color: $orange;
-        transition: all 0.2s;
+        transition: all 2s;
       }
     }
   }
@@ -111,15 +136,48 @@ body {
   .banner {
     display: flex;
     flex-direction: column;
-
     @include pad {
       display: grid;
-      grid-template-columns: 4fr 3fr;
+      grid-template-columns: 1fr 1fr;
       gap: $gap-md;
     }
-    img {
+
+    .layout-h1 {
+      position: relative;
+      height: 130px;
       width: 100%;
+      background: url("../assets/bn.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      @include phone {
+        height: 200px;
+        margin-bottom: 0px;
+      }
+
+      h1 {
+        font-size: $font-md;
+        line-height: 1.5;
+        position: relative;
+        text-align: center;
+        transform: rotate(-3deg);
+        top: 0rem;
+        @include phone {
+          font-size: 1.8rem;
+          top: 1rem;
+        }
+        span {
+          color: #fd8c0cea;
+          text-shadow: 0px 0 rgba(0, 0, 0, 0.865), 3px 0px black, 3px 1px black,
+            2px 0px rgba(0, 0, 0, 0.702), 2px -0px black;
+          font-size: 3rem;
+          font-weight: bold;
+          letter-spacing: 0.2rem;
+        }
+      }
     }
+
     .count,
     iframe {
       display: none;
@@ -684,23 +742,24 @@ body {
 }
 table {
   width: 100%;
+
   thead {
+    display: flex;
+    gap: 0.5rem;
     tr {
       display: flex;
       width: 100%;
       th {
         display: flex;
-        padding: 0.3rem;
-        margin: 0.2rem;
-        background: #d9d9d9;
+        padding: 0.5rem;
+        background: #f3eee8;
         justify-content: center;
         width: 100%;
-        box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
         font-size: $font-sm;
         @include pad {
-          padding: 0.5rem;
+          padding: 10px;
           font-size: $font-md;
-          margin: 0.3rem;
+          margin: 0rem;
         }
         &:first-child {
           width: 30%;
@@ -708,35 +767,37 @@ table {
             width: 40%;
           }
         }
-        &:nth-child(2),
-        &:nth-child(3) {
-          background: #f3f3f3;
-        }
       }
     }
   }
   tbody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 0 0.5rem;
     tr {
+      height: 45px;
       display: flex;
-      width: 100%;
+
+      &:nth-child(even) {
+        background: #f8f8f8;
+      }
       td {
         display: flex;
         width: 100%;
         justify-content: center;
         padding: 0.3rem;
         margin: 0.2rem;
-        background: #f3f3f3;
-        box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
         font-size: $font-sm;
         align-items: center;
         @include pad {
-          padding: 0.5rem;
+          padding: 0.3rem;
+          margin: 0.5rem;
           font-size: $font-md;
-          margin: 0.3rem;
           font-weight: normal;
         }
         &:first-child {
-          background: #d9d9d9;
           width: 30%;
           @include pad {
             width: 40%;
@@ -798,24 +859,18 @@ table {
     cursor: pointer;
     display: flex;
     gap: $gap-md;
+
     justify-content: center;
   }
   .active {
     background: $orangeLiner;
     color: white;
+    border-radius: 100rem;
   }
 }
 .Regionbtn {
-  background: #f3f3f3;
   width: fit-content;
   padding: 8px 16px;
-
-  box-shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
-  &:hover,
-  :active {
-    background: $orangeLiner;
-    color: white;
-  }
 }
 
 .s {
@@ -866,7 +921,7 @@ p {
     align-items: center;
   }
 
-  .sss {
+  span {
     color: $orange;
     font-weight: bold;
     font-size: 1.8rem;
@@ -874,7 +929,7 @@ p {
     letter-spacing: $letter;
   }
 
-  .www {
+  .count-title {
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
@@ -891,7 +946,7 @@ p {
     }
   }
 
-  .wwww {
+  .count-text {
     font-size: 0.9rem;
     justify-content: center;
     flex-direction: row;
@@ -1066,29 +1121,6 @@ p {
   }
 }
 
-//swiper-style
-.swiper-button-prev,
-.swiper-button-next {
-  color: transparent;
-  &:after {
-    display: none;
-  }
-}
-
-.swiper {
-  padding: 1rem 0;
-  width: 100%;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: var(--swiper-pagination-bullet-opacity, 1);
-  background: $orange !important;
-}
-
-.swiper-slide {
-  margin-bottom: 2rem;
-}
-
 .title {
   line-height: 140%;
   font-size: $font-sm;
@@ -1148,8 +1180,11 @@ li {
   display: block;
   height: 100%;
   margin: 0rem 0.5rem;
+  @include pad {
+    display: none;
+  }
 
-  .sss {
+  .count-num {
     color: $orange;
     font-weight: bold;
     font-size: 1.8rem;
@@ -1157,7 +1192,7 @@ li {
     letter-spacing: $letter;
   }
 
-  .www {
+  .count-title {
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
@@ -1166,11 +1201,10 @@ li {
     border-radius: 1rem 0px 0px 1rem;
   }
 
-  .wwww {
+  .count-text {
     font-size: 0.9rem;
     justify-content: center;
     flex-direction: row;
-    display: none;
   }
 }
 
@@ -1326,42 +1360,6 @@ p {
   }
 }
 
-.h1title {
-  position: relative;
-  height: 130px;
-  background: url("../assets/bn.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 100%;
-  margin-bottom: 10px;
-  @include phone {
-    height: 200px;
-    background-size: cover;
-    margin-bottom: 0px;
-  }
-
-  h1 {
-    font-size: $font-md;
-    line-height: 1.5;
-    letter-spacing: 1px;
-    text-align: center;
-    transform: rotate(-3deg);
-    top: 0rem;
-    position: relative;
-    @include phone {
-      font-size: 2rem;
-      top: 1rem;
-    }
-  }
-  span {
-    color: #fd8c0c;
-    text-shadow: 0px 0 black, 0px 1px black, 2px 2px black, 2px -0px black;
-    font-size: 3rem;
-    font-weight: bold;
-    letter-spacing: 0.2rem;
-  }
-}
-
 .dropdown {
   position: relative;
 }
@@ -1377,7 +1375,7 @@ p {
 .dropdown > .menu {
   position: absolute;
   left: 0;
-  top: -10.5rem;
+  top: -13.8rem;
   list-style: none;
   margin: 0;
   padding: 0;
