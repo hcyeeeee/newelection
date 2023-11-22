@@ -30,7 +30,7 @@
                     <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
                         <img loading="lazy" :src="item.Image" :alt="item.ID">
                         <div class="inner">
-                            <div class="title">{{ item.Title.replace("快新聞／", " ") }}</div>
+                            <h3 class="title">{{ item.Title.replace("快新聞／", " ") }}</h3>
                             <div class="time">{{ item.CreateDate }}</div>
                         </div>
                     </a>
@@ -48,9 +48,9 @@
                     target="_blank">
                     <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
                     <div class="inner">
-                        <p class="title">
+                        <h3 class="title">
                             {{ item.Title.replace("快新聞／", "") }}
-                        </p>
+                        </h3>
                         <div class="time">{{ item.CreateDate }}</div>
                     </div>
                 </a>

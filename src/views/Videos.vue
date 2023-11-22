@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="views">
     <TheMarquee />
     <TheBanner />
     <div class="layout">
@@ -11,7 +11,7 @@
         <ul class="tabs navtab" style="margin-bottom: 1rem;">
           <li v-for="(tab, index) in tabs" :key="index" @click="currentTab = index"
             :class="{ active: index === currentTab }">
-            {{ tab.title }}
+            <h3>{{ tab.title }}</h3>
           </li>
         </ul>
         <div class="video-container">
@@ -22,9 +22,9 @@
             allowfullscreen></iframe>
         </div>
       </div>
-      <!-- <div style="display: flex; align-items: center;">
+      <div style="display: flex; align-items: center; margin: .5rem auto;">
         <img src="../assets/bell.png" alt="" style="width: 35px;"> {{ tabs[currentTab].content }}
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -60,12 +60,12 @@ export default {
           si: '04hEzUmcBl7J8bUW',
           list: 'PLBXFGXTYyFgAmbYv9Bgq9cxcWcwW6qgJA'
         },
-        {
-          title: "決策者",
-          content: "時事政治、生活氣象、熱門話題，我們通通佮你講！網友們，快點一起跟主持人聊天吧！",
-          si: 'w56b8QMQtkUcdEJp',
-          list: 'PLf2VRok0uRO00pjoMvaT0YJDmNjGak-xy'
-        },
+        // {
+        //   title: "決策者",
+        //   content: "時事政治、生活氣象、熱門話題，我們通通佮你講！網友們，快點一起跟主持人聊天吧！",
+        //   si: 'w56b8QMQtkUcdEJp',
+        //   list: 'PLf2VRok0uRO00pjoMvaT0YJDmNjGak-xy'
+        // },
         {
           title: "民視佮你講",
           content: "時事政治、生活氣象、熱門話題，我們通通佮你講！網友們，快點一起跟主持人聊天吧！",

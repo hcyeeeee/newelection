@@ -7,7 +7,7 @@
         <ul class="president-navtab pc">
             <li class="pc " :class="{ 'active': index === selectedCandidateIndex }" v-for="(candidate, index) in candidates"
                 :key="index" @click="showCandidate(index)">
-                {{ candidate.party }} {{ candidate.main.name }}
+                <h2>{{ candidate.party }} {{ candidate.main.name }}{{ candidate.sub.name }}</h2>
             </li>
             <!-- /{{ candidate.sub.name }}</li> -->
         </ul>
@@ -31,22 +31,28 @@
                 </div>
                 <div class="president-exp">
                     <ul class="tab">
-                        <li @click="activeTab = 'main'"> {{ candidate.main.name }} 學經歷</li>
-                        <!-- <li @click="activeTab = 'sub'"> {{ candidate.sub.name }} 學經歷</li> -->
+                        <li @click="activeTab = 'main'" :class="{ 'fo': activeTab === 'main' }"> {{ candidate.main.name }}
+                            學經歷</li>
+                        <li @click="activeTab = 'sub'" :class="{ 'fo': activeTab === 'sub' }"
+                            v-if="candidate.sub.name == '/蕭美琴'">
+                            {{ candidate.sub.name.replace("/", "") }} 學經歷
+                        </li>
                     </ul>
-                    <ul class="content" v-for="( list, index ) in  candidate.main.Exp " :key="index">
+                    <ul :class="{ 'content': activeTab === 'main' }" v-for="( list, index ) in  candidate.main.Exp "
+                        :key="index">
                         <li v-if="activeTab === 'main'"> {{ list }}</li>
                     </ul>
-                    <!-- <ul class="content" v-for="( list, index ) in  candidate.sub.Exp " :key="index">
+                    <ul :class="{ 'content': activeTab === 'sub' }" v-for="( list, index ) in  candidate.sub.Exp "
+                        :key="index">
                         <li v-if="activeTab === 'sub'"> {{ list }}</li>
-                    </ul> -->
+                    </ul>
                     <div class="president-policy " v-for="(candidate, index) in  candidates " :key="index"
                         v-show="selectedCandidateIndex === index">
                         <div class="icontitle">
                             <img src="../assets/policy.png" alt="">
                             <h2>政見</h2>
                         </div>
-                        <p class="">{{ candidate.main.policy }}</p>
+                        <h3 class="">{{ candidate.main.policy }}</h3>
                     </div>
                 </div>
 
@@ -64,9 +70,9 @@
                         target="_blank">
                         <img loading="lazy" :src="item.Image" class="img" :alt="item.Title">
                         <div class="inner">
-                            <p class="title">
+                            <h3 class="title">
                                 {{ item.Title.replace("快新聞／", "") }}
-                            </p>
+                            </h3>
                             <div class="time">{{ item.CreateDate }}</div>
                         </div>
                     </a>
@@ -112,10 +118,15 @@ export default {
 
                     },
                     sub: {
-                        name: "副總統",
+                        name: "/蕭美琴",
                         Exp: [
-                            "立法院第9、10屆立法委員",
-                            "萬澤外國法事務律師事務所主持律師"
+                            "紐澤西州蒙特克萊爾高中",
+                            "美國歐柏林學院東亞研究學士",
+                            "美國哥倫比亞大學政治學碩士學位",
+                            "民主進步黨中央黨部國際事務部副主任",
+                            "民主進步黨中央黨部國際事務部主任（歷任五任）",
+                            "第5、6、8、9屆立法院委員",
+                            "中華民國第15任駐美國代表（對內官銜為駐美國大使）"
                         ],
                         age: "65",
                     },
@@ -140,10 +151,17 @@ export default {
                         ],
                     },
                     sub: {
-                        name: "副總統",
+                        name: "",
                         Exp: [
-                            "立法警察",
-                            "萬澤警察"
+                            "中央警察大學犯罪防治研究所法學博士",
+                            "台北市政府警察局刑事警察大隊分隊長",
+                            "桃園縣政府警察局局長",
+                            "內政部警政署刑事警察局局長",
+                            "內政部警政署署長",
+                            "中央警察大學校長",
+                            "2010年擔任新北市副市長",
+                            "2018年當選新北市長",
+                            "2022年連任新北市長",
                         ],
                         age: "65",
                     },
@@ -170,10 +188,19 @@ export default {
                         ],
                     },
                     sub: {
-                        name: "副總統",
+                        name: "",
                         Exp: [
-                            "立法院第9、10屆立法委員",
-                            "萬澤外國法事務律師事務所主持律師"
+                            "台灣大學醫學院臨床醫學研究所博士",
+                            "台大醫院急診部醫師",
+                            "台大醫院創傷醫學部主任",
+                            "台大醫學院教授",
+                            "1994年擔任陳水扁競選台北市長的醫界後援會幹部",
+                            "2000年擔任陳水扁競選總統台大醫院後援會召集人",
+                            "2012年6月擔任陳水扁民間醫療小組召集人",
+                            "2013年擔任小英之友會常任理事",
+                            "2014年當選台北市長",
+                            "2018年連任台北市長",
+                            "2019年被推舉為民眾黨首任黨主席",
                         ],
                         age: "65",
                     },
@@ -197,10 +224,16 @@ export default {
                         ],
                     },
                     sub: {
-                        name: "副總統",
+                        name: "",
                         Exp: [
-                            "立法院第9、10屆立法委員",
-                            "萬澤外國法事務律師事務所主持律師"
+                            "中國海事專科學校（今臺北海洋科技大學）航運管理科",
+                            "1970年加入中國國民黨",
+                            "1974年創立鴻海集團",
+                            "2019年改任鴻海集團董事",
+                            "2019年參加國民黨總統初選但未獲提名",
+                            "2000年退出中國國民黨",
+                            "2019年4-9月短暫入中國國民黨又退出",
+                            "2023年參加國民黨總統初選但未獲提名",
                         ],
                         age: "65",
                     },
@@ -248,8 +281,23 @@ export default {
 }
 
 </script>
-<style>
+<style scoped lang="scss">
 .active {
+    background: rgba(255, 122, 0, 0.20);
     border-bottom: 2px solid #f08308 !important;
+}
+
+li {
+    h2 {
+        font-size: 1.1rem;
+        margin: 0;
+        color: black;
+        white-space: nowrap;
+    }
+
+}
+
+.layout-president .president-navtab {
+    gap: 1rem;
 }
 </style>

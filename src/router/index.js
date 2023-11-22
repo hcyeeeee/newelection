@@ -6,6 +6,7 @@ import Beef from "../views/Beef.vue";
 import Question from "../views/Question.vue";
 import infographics from "../views/infographics.vue";
 import videos from "../views/Videos.vue";
+import test from "../views/test.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -17,52 +18,47 @@ const router = createRouter({
     {
       path: "/president",
       name: "president",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: PageAbout,
     },
     {
       path: "/Legislator",
       name: "Legislator",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: LegisterView,
     },
     {
       path: "/Policy",
       name: "Beef",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Beef,
+      meta: {
+        title: "最新》2024總統大選政策懶人包、候選人政見一次看 ｜民視新聞網",
+      },
     },
     {
       path: "/Question",
       name: "Question",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Question,
     },
     {
       path: "/infographics",
       name: "infographics",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: infographics,
     },
     {
       path: "/videos",
       name: "videos",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: videos,
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: test,
     },
   ],
 });
-
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  next();
+});
 export default router;

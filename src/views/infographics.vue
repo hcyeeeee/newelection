@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="views">
     <TheMarquee />
     <TheBanner />
     <div class="layout">
@@ -10,7 +10,8 @@
       <ul>
         <li v-for="(tab, index) in tabs" :key="index" @click="activateTab(index)"
           :class="{ active: activeTab === index }">
-          {{ tab.label }}</li>
+          <h3>{{ tab.label }}</h3>
+        </li>
       </ul>
 
       <div v-for="(tab, index) in tabs" :key="index" v-show="activeTab === index">
@@ -64,7 +65,6 @@ export default {
   },
   created() {
     this.activateTab(0);
-    // Infogram 脚本加载
     // Infogram 脚本加载
     !function (e, n, i, s) {
       var d = "InfogramEmbeds";

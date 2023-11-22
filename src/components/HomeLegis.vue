@@ -8,7 +8,7 @@
             :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }" :centeredSlides="true"
             :pagination="{ clickable: true, }" :autoplay="{ delay: 5000, disableOnInteraction: false, }" :modules="modules"
             class="mySwiper">
-            <swiper-slide>
+            <!-- <swiper-slide>
                 <router-link to="/Legislator">
                     <img src="../assets/fight1.jpg" class="banner" alt="蘇巧慧">
                 </router-link>
@@ -27,7 +27,7 @@
                         </a>
                     </div>
                 </div>
-            </swiper-slide>
+            </swiper-slide> -->
             <swiper-slide> <router-link to="/Legislator">
                     <img src="../assets/fight2.jpg" class="banner" alt="中和選區">
                 </router-link>
@@ -38,9 +38,9 @@
                             target="_blank">
                             <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
                             <div class="inner">
-                                <p class="title">
+                                <h3 class="title">
                                     {{ item.Title.replace("快新聞／", "") }}
-                                </p>
+                                </h3>
                                 <div class="time">{{ item.CreateDate }}</div>
                             </div>
                         </a>
@@ -58,9 +58,9 @@
                             target="_blank">
                             <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
                             <div class="inner">
-                                <p class="title">
+                                <h3 class="title">
                                     {{ item.Title.replace("快新聞／", "") }}
-                                </p>
+                                </h3>
                                 <div class="time">{{ item.CreateDate }}</div>
                             </div>
                         </a>
@@ -78,9 +78,9 @@
                             target="_blank">
                             <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
                             <div class="inner">
-                                <p class="title">
+                                <h3 class="title">
                                     {{ item.Title.replace("快新聞／", "") }}
-                                </p>
+                                </h3>
                                 <div class="time">{{ item.CreateDate }}</div>
                             </div>
                         </a>
@@ -98,9 +98,9 @@
                             target="_blank">
                             <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
                             <div class="inner">
-                                <p class="title">
+                                <h3 class="title">
                                     {{ item.Title.replace("快新聞／", "") }}
-                                </p>
+                                </h3>
                                 <div class="time">{{ item.CreateDate }}</div>
                             </div>
                         </a>

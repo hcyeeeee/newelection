@@ -33,8 +33,8 @@
         </router-link>
         <router-link to="/" @click="closeMenu">回首頁</router-link>
         <router-link to="/president" @click="closeMenu">總統大選</router-link>
-        <router-link to="/Legislator" @click="closeMenu"> 立委選戰 </router-link>
-        <a href=" https://www.ftvnews.com.tw/topics/2024election/Policy" @click="closeMenu">政策牛肉</a>
+
+        <router-link to="/policy" @click="closeMenu"> 政策牛肉 </router-link>
         <a href=" https://www.ftvnews.com.tw/topics/2024election/infographics" @click="closeMenu">歷年版圖</a>
         <router-link to="/question" @click="closeMenu">選舉Q&A</router-link>
         <router-link to="/videos" @click="closeMenu">影音專區</router-link>
@@ -77,7 +77,7 @@
               <a href="https://www.ftvnews.com.tw/topics/2024election/infographics">歷年版圖</a>
             </li>
             <li>
-              <a href="https://www.ftvnews.com.tw/topics/2024election/policy">政策牛肉</a>
+              <router-link to="/policy"> 政策牛肉 </router-link>
             </li>
           </ul>
         </div>

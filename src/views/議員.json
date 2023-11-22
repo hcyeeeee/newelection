@@ -1,0 +1,498 @@
+```jsx
+漢青
+"不分區": {
+  "民進黨": [
+    {
+      "distrist": 1,
+      "party": "民進黨",
+      "name": "林月琴"
+    },
+    {
+      "distrist": 2,
+      "party": "民進黨",
+      "name": "沈伯洋"
+    },
+    {
+      "distrist": 3,
+      "party": "民進黨",
+      "name": "張雅琳"
+    },
+    {
+      "distrist": 4
+                            "party": "民進黨",
+      "name": "洪申翰"
+    },
+    {
+      "distrist": 5,
+      "party": "民進黨",
+      "name": "羅美玲"
+    },
+    {
+      "distrist": 6,
+      "party": "民進黨",
+      "name": "游錫堃"
+    },
+    {
+      "distrist": 7,
+      "party": "民進黨",
+      "name": "范雲"
+    },
+    {
+      "distrist": 8,
+      "party": "民進黨",
+      "name": "柯建銘"
+    },
+    {
+      "distrist": 9,
+      "party": "民進黨",
+      "name": "沈發惠"
+    },
+    {
+      "distrist": 10,
+      "party": "民進黨",
+      "name": "莊瑞雄"
+    },
+    {
+      "distrist": 11,
+      "party": "民進黨",
+      "name": "林楚茵"
+    },
+    {
+      "distrist": 12,
+      "party": "民進黨",
+      "name": "郭昱晴"
+    },
+    {
+      "distrist": 13,
+      "party": "民進黨",
+      "name": "王正旭"
+    },
+    {
+      "distrist": 14,
+      "party": "民進黨",
+      "name": "王義川"
+    },
+    {
+      "distrist": 15,
+      "party": "民進黨",
+      "name": "陳培瑜"
+    },
+    {
+      "distrist": 16,
+      "party": "民進黨",
+      "name": "陳俊翰"
+    },
+    {
+      "distrist": 17,
+      "party": "民進黨",
+      "name": "張秀君"
+    },
+    {
+      "distrist": 18,
+      "party": "民進黨",
+      "name": "黃奕睿"
+    },
+    {
+      "distrist": 19,
+      "party": "民進黨",
+      "name": "孫一信"
+    },
+    {
+      "distrist": 20,
+      "party": "民進黨",
+      "name": "吳祥榮"
+    },
+    {
+      "distrist": 21,
+      "party": "民進黨",
+      "name": "陳慧君"
+    },
+    {
+      "distrist": 22,
+      "party": "民進黨",
+      "name": "柯富揚"
+    },
+    {
+      "distrist": 23,
+      "party": "民進黨",
+      "name": "劉柏君"
+    },
+    {
+      "distrist": 24,
+      "party": "民進黨",
+      "name": "石明謹"
+    },
+    {
+      "distrist": 25,
+      "party": "民進黨",
+      "name": "曾美玲"
+    },
+    {
+      "distrist": 26,
+      "party": "民進黨",
+      "name": "黃真瑋"
+    },
+    {
+      "distrist": 27,
+      "party": "民進黨",
+      "name": "曾湘樺"
+    },
+    {
+      "distrist": 28,
+      "party": "民進黨",
+      "name": "鄭力嘉"
+    },
+    {
+      "distrist": 29,
+      "party": "民進黨",
+      "name": "陳右欣"
+    },
+    {
+      "distrist": 30,
+      "party": "民進黨",
+      "name": "余宛如"
+    },
+    {
+      "distrist": 31,
+      "party": "民進黨",
+      "name": "許菡芸"
+    },
+    {
+      "distrist": 32,
+      "party": "民進黨",
+      "name": "周威佑"
+    },
+    {
+      "distrist": 33,
+      "party": "民進黨",
+      "name": "廖韶吟"
+    },
+    {
+      "distrist": 34,
+      "party": "民進黨",
+      "name": "蔡宜文"
+    },
+  ],
+}
+```
+
+```jsx
+"不分區": {
+  "國民黨不分區": [
+    {
+      "distrist": 1,
+      "party": "國民黨",
+      "name": "韓國瑜"
+    },
+    {
+      "distrist": 2,
+      "party": "國民黨",
+      "name": "柯志恩"
+    },
+    {
+      "distrist": 3,
+      "party": "國民黨",
+      "name": "葛如鈞"
+    },
+    {
+      "distrist": 4,
+      "party": "國民黨",
+      "name": "翁曉玲"
+    },
+    {
+      "distrist": 5,
+      "party": "國民黨",
+      "name": "陳菁徽"
+    },
+    {
+      "distrist": 6,
+      "party": "國民黨",
+      "name": "吳宗憲"
+    },
+    {
+      "distrist": 7,
+      "party": "國民黨",
+      "name": "林倩綺"
+    },
+    {
+      "distrist": 8,
+      "party": "國民黨",
+      "name": "陳永康"
+    },
+    {
+      "distrist": 9,
+      "party": "國民黨",
+      "name": "許宇甄"
+    },
+    {
+      "distrist": 10,
+      "party": "國民黨",
+      "name": "謝龍介"
+    },
+    {
+      "distrist": 11,
+      "party": "國民黨",
+      "name": "蘇清泉"
+    },
+    {
+      "distrist": 12,
+      "party": "國民黨",
+      "name": "張嘉郡"
+    },
+    {
+      "distrist": 13,
+      "party": "國民黨",
+      "name": "王育敏"
+    },
+    {
+      "distrist": 14,
+      "party": "國民黨",
+      "name": "蔡明忠"
+    },
+    {
+      "distrist": 15,
+      "party": "國民黨",
+      "name": "吳亮儀"
+    },
+    {
+      "distrist": 16,
+      "party": "國民黨",
+      "name": "李玉嬋"
+    },
+    {
+      "distrist": 17,
+      "party": "國民黨",
+      "name": "李霞"
+    },
+    {
+      "distrist": 18,
+      "party": "國民黨",
+      "name": "楊應超"
+    },
+    {
+      "distrist": 19,
+      "party": "國民黨",
+      "name": "徐弘庭"
+    },
+    {
+      "distrist": 20,
+      "party": "國民黨",
+      "name": "鍾沛君"
+    },
+    {
+      "distrist": 21,
+      "party": "國民黨",
+      "name": "江怡臻"
+    },
+    {
+      "distrist": 22,
+      "party": "國民黨",
+      "name": "簡榮宗"
+    },
+    {
+      "distrist": 23,
+      "party": "國民黨",
+      "name": "田長沛"
+    },
+    {
+      "distrist": 24,
+      "party": "國民黨",
+      "name": "沈采穎"
+    },
+    {
+      "distrist": 25,
+      "party": "國民黨",
+      "name": "林瓊嘉"
+    },
+    {
+      "distrist": 26,
+      "party": "國民黨",
+      "name": "陳克威"
+    },
+    {
+      "distrist": 27,
+      "party": "國民黨",
+      "name": "邱一峰"
+    },
+    {
+      "distrist": 28,
+      "party": "國民黨",
+      "name": "廖怡琇"
+    },
+    {
+      "distrist": 29,
+      "party": "國民黨",
+      "name": "李縉穎"
+    },
+    {
+      "distrist": 30,
+      "party": "國民黨",
+      "name": "李茂芊"
+    },
+    {
+      "distrist": 31,
+      "party": "國民黨",
+      "name": "丁瑀"
+    },
+    {
+      "distrist": 32,
+      "party": "國民黨",
+      "name": "楊智伃"
+    },
+    {
+      "distrist": 33,
+      "party": "國民黨",
+      "name": "何嘉霖"
+    },
+    {
+      "distrist": 34,
+      "party": "國民黨",
+      "name": "康晉瑜"
+    },
+  ],
+}
+```
+
+```jsx
+"不分區": {
+  "台灣基進": [
+    {
+      "distrist": 1,
+      "party": "台灣基進",
+      "name": "史惟筑"
+    },
+    {
+      "distrist": 2,
+      "party": "台灣基進",
+      "name": "陳奕齊"
+    },
+    {
+      "distrist": 3,
+      "party": "台灣基進",
+      "name": "黃楓茹"
+    },
+    {
+      "distrist": 4,
+      "party": "台灣基進",
+      "name": "陳君愷"
+    },
+    {
+      "distrist": 5,
+      "party": "台灣基進",
+      "name": "楊佩樺"
+    },
+    {
+      "distrist": 6,
+      "party": "台灣基進",
+      "name": "黃馨瑩"
+    },
+    {
+      "distrist": 7,
+      "party": "台灣基進",
+      "name": "徐煊博"
+    }
+  ],
+  "時代力量": [
+    {
+      "distrist": 1,
+      "party": "時代力量",
+      "name": "林依瑩"
+    },
+    {
+      "distrist": 2,
+      "party": "時代力量",
+      "name": "王寶萱"
+    },
+    {
+      "distrist": 3,
+      "party": "時代力量",
+      "name": "宋國鼎"
+    },
+    {
+      "distrist": 4,
+      "party": "時代力量",
+      "name": "江盛"
+    },
+    {
+      "distrist": 5,
+      "party": "時代力量",
+      "name": "陳泰源"
+    },
+    {
+      "distrist": 6,
+      "party": "時代力量",
+      "name": "陳昱安"
+    },
+    {
+      "distrist": 7,
+      "party": "時代力量",
+      "name": "余佳蒨"
+    },
+    {
+      "distrist": 8,
+      "party": "時代力量",
+      "name": "鄭侑青"
+    }
+  ],
+  " 公民黨、台灣工黨 共推": [
+    {
+      "distrist": 1,
+      "party": "民進黨",
+      "name": "伍麗華"
+    },
+    {
+      "distrist": 1,
+      "party": "民進黨",
+      "name": "伍麗華"
+    }
+   {
+      "distrist": 1,
+      "party": "民進黨",
+      "name": "伍麗華"
+    }
+   {
+      "distrist": 1,
+      "party": "民進黨",
+      "name": "伍麗華"
+    }
+   {
+      "distrist": 1,
+      "party": "民進黨",
+      "name": "伍麗華"
+    }
+  ],
+  "台灣麻將最大黨": [
+    {
+      "distrist": 1,
+      "party": "台灣麻將最大黨",
+      "name": "盧建璋"
+    },
+    {
+      "distrist": 2,
+      "party": "台灣麻將最大黨",
+      "name": "張嘉玲"
+    }
+{
+      "distrist": 3,
+      "party": "台灣麻將最大黨",
+      "name": "吳庭萱"
+    }
+  ],
+  "台灣綠黨": [
+    {
+      "distrist": 1,
+      "party": "台灣綠黨",
+      "name": "林莉棻"
+    },
+    {
+      "distrist": 2,
+      "party": "台灣綠黨",
+      "name": "李菁琪"
+    },
+    {
+      "distrist": 3,
+      "party": "台灣綠黨",
+      "name": "吳伊婷"
+    }
+  ]
+}

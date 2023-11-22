@@ -5,15 +5,15 @@
             <h2>立委選戰焦點新聞</h2>
         </div>
         <div class="out legis_out">
-            <div v-for="(item, index) in news" :key="index" data-aos="fade-up">
+            <div v-for="(item, index) in news" :key="index">
                 <a class="link"
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=Legislator'"
                     target="_blank">
                     <img loading="lazy" :src="item.Image" class="img" :alt="item.Title">
                     <div class="inner">
-                        <p class="title">
+                        <h3 class="title">
                             {{ item.Title.replace("快新聞／", "") }}
-                        </p>
+                        </h3>
                         <div class="time">{{ item.CreateDate }}</div>
                     </div>
                 </a>

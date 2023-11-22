@@ -19,6 +19,9 @@
                 <span> {{ secs }}</span>
                 <p class="count-text">秒</p>
             </div>
+            <!-- <div class="count">
+                <span> {{ countdown }}</span>
+            </div> -->
         </div>
         <iframe width="100%" height="100%"
             src="https://www.youtube.com/embed/ylYJSBUgaMA?autoplay=1&mute=1&si=GDtC43iZq4uLNHqf"
@@ -47,7 +50,7 @@ export default {
 
                 if (timeDifference <= 0) {
                     clearInterval(countdownInterval);
-                    this.countdown = "1/13 到了！";
+                    this.countdown = "！現正開票中！";
                 } else {
                     const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -57,13 +60,12 @@ export default {
                     this.hours = `${hours} `;
                     this.mins = `${minutes} `;
                     this.secs = `${seconds} `;
-
                 }
             }, 1000);
         }
     },
     mounted() {
-        setTimeout(() => {
+        setInterval(() => {
             this.startCountdown();
         }, 800);
     },

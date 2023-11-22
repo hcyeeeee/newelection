@@ -11,9 +11,9 @@
                     target="_blank">
                     <img loading="lazy" :src="item.Image" class="img" :alt="item.Title">
                     <div class="inner">
-                        <p class="title">
+                        <h3 class="title">
                             {{ item.Title.replace("快新聞／", "") }}
-                        </p>
+                        </h3>
                         <div class="time">{{ item.CreateDate }}</div>
                     </div>
                 </a>

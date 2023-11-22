@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="views">
     <TheMarquee />
     <TheBanner />
     <div class="layout">
@@ -10,13 +10,13 @@
       <div v-for="item in Question" data-aos="fade-right" :key="item.id" class="Question" @click="closeMenu(item)">
         <div class="qatitle" @click="toggle(item)">
           <img src="../assets/Q.png" alt="">
-          <p>{{ item.Q }}</p>
+          <h3>{{ item.Q }}</h3>
           <i :class="'fa-duotone fa-xl' + (item.isVisible ? ' fa-angle-up' : ' fa-angle-down')"></i>
         </div>
         <div class="qatitle" :style="{ display: item.isVisible ? 'flex' : 'none' }">
-          <hr>
+          <br>
           <img src="../assets/A.png" alt="">
-          <p>{{ item.A }}</p>
+          <h3>{{ item.A }}</h3>
         </div>
       </div>
     </div>
@@ -153,6 +153,10 @@ export default {
     margin-right: 0rem;
 
 
+  }
+
+  h3 {
+    width: 100%;
   }
 }
 </style>

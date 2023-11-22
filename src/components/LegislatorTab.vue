@@ -2,13 +2,13 @@
     <div class="layout Legislator-tab">
         <div class="icontitle">
             <img src="../assets/HomeLegis.png" alt="">
-            <h2>立委激戰區</h2>
+            <h2>立委激戰最新動態</h2>
         </div>
         <div class="Legislator pc">
             <ul class="navtab">
                 <li v-for="candidate in candidates" :key="candidate.index" @click="selectCandidate(candidate)"
                     :class="{ 'active': candidate.selected }">
-                    {{ candidate.name.blue + candidate.name.green + candidate.name.other }}
+                    <h2>{{ candidate.name.blue + candidate.name.green + candidate.name.other }}</h2>
                 </li>
             </ul>
 
@@ -24,7 +24,7 @@
                 <swiper-slide class="out" v-for="item in selectedCandidate.responseData" :key="item.index"> <a
                         :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
                         <img loading="lazy" :src="item.Image" :alt="item.ID">
-                        <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
+                        <h3 class="title">{{ item.Title.replace("快新聞／", " ") }}</h3>
                     </a>
                 </swiper-slide>
 
@@ -82,15 +82,6 @@ export default {
                 {
                     index: "1",
                     name: {
-                        blue: "蘇巧慧",
-                        green: " vs 洪佳君",
-                        other: "",
-                    },
-                    responseData: '',
-                },
-                {
-                    index: "2",
-                    name: {
                         blue: "吳崢",
                         green: " vs 張智倫",
                         other: " vs 邱臣遠",
@@ -98,7 +89,7 @@ export default {
                     responseData: '',
                 },
                 {
-                    index: "3",
+                    index: "2",
                     name: {
                         blue: "吳沛憶",
                         green: " vs 鍾小平",
@@ -107,7 +98,7 @@ export default {
                     responseData: '',
                 },
                 {
-                    index: "4",
+                    index: "3",
                     name: {
                         blue: "許淑華",
                         green: " vs 徐巧芯",
@@ -116,7 +107,7 @@ export default {
                     responseData: '',
                 },
                 {
-                    index: "5",
+                    index: "4",
                     name: {
                         blue: "高嘉瑜",
                         green: " vs 李彥秀",
@@ -158,7 +149,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .swiper-pagination {
     margin: 0rem auto !important;
 }
@@ -177,5 +168,15 @@ export default {
 
 .active {
     border-bottom: 2px solid #f08308 !important;
+    background: rgba(255, 122, 0, 0.20);
+}
+
+
+li {
+    h2 {
+        font-size: 1.1rem;
+        color: black;
+        margin: 0rem auto;
+    }
 }
 </style>
