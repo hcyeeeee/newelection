@@ -189,9 +189,57 @@ h2 {
   letter-spacing: .1rem;
 }
 
+
+
 .lv-progressbar__value {
-  background: linear-gradient(90deg, #f8cf7b 0.35%, #ff8400 30.16%) !important;
+  background: linear-gradient(90deg, #f8cf7b 0.35%, #ff8400 30.16%);
   border-radius: 2rem;
+  width: 100%;
+  animation: rotationAnimation 5s linear infinite, colorAnimation 1.5s ease-in-out infinite;
+}
+
+@keyframes colorAnimation {
+  0% {
+    background: linear-gradient(70deg, #f8cf7b 0.35%, #f8ca6e 30.16%);
+  }
+
+  50% {
+    background: linear-gradient(100deg, #ffe1a4 0.35%, #ffeecd 31.16%);
+    background: linear-gradient(70deg, #f8cf7b 0.35%, #f8ca6e 30.16%);
+  }
+
+  100% {
+    background: linear-gradient(70deg, #f8cf7b 0.35%, #f8ca6e 30.16%);
+  }
+}
+
+
+
+
+.lv-progressbar__value {
+  animation: progress 3s linear infinite;
+  /* Don't touch this anim bar color*/
+  background: linear-gradient(-45deg,
+      #FFCA91 25%,
+      #fc9c36 25%,
+      #fc9c36 50%,
+      #FFCA91 50%,
+      #FFCA91 75%,
+      #fc9c36 75%,
+      #fc9c36);
+  /* Don't touch this */
+  background-repeat: repeat-x;
+  /* The size of the bars must match the background-position in the @keyframes */
+  background-size: 2em 2em;
+  border-radius: 10px;
+  height: inherit;
+  width: 100%;
+}
+
+@keyframes progress {
+  to {
+    background-position: 1.5em 0;
+  }
 }
 
 .lv-progressbar {

@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header_inner">
       <a href="https://www.ftvnews.com.tw/" target="_blank">
-        <img loading="lazy" src="../assets/民視新聞網.png" class="logo" alt="民視新聞網">
+        <img loading="lazy" src="../assets/民視新聞網.png" class="logo" alt="民視新聞網" title="民視新聞網">
       </a>
       <div class="nav pc">
       </div>
@@ -33,7 +33,7 @@
         </router-link>
         <router-link to="/" @click="closeMenu">回首頁</router-link>
         <router-link to="/president" @click="closeMenu">總統大選</router-link>
-
+        <router-link to="/Legislator" @click="closeMenu">立委選戰</router-link>
         <router-link to="/policy" @click="closeMenu"> 政策牛肉 </router-link>
         <a href=" https://www.ftvnews.com.tw/topics/2024election/infographics" @click="closeMenu">歷年版圖</a>
         <router-link to="/question" @click="closeMenu">選舉Q&A</router-link>

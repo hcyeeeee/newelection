@@ -2,18 +2,20 @@
   <div class="home">
     <TheMarquee />
     <sectionBanner />
-    <TheMarqueeMB />
-    <!-- <VotePresi /> -->
-    <HomeLegis />
+    <!-- <TheMarqueeMB /> -->
+    <VotePresi />
+    <VoteLegis />
     <HomePresi />
+    <HomeLegis />
     <HomeVideo />
   </div>
 </template>
 <script>
 import sectionBanner from '../components/TheBanner.vue'
 import TheMarquee from '../components/TheMarquee.vue'
-// import VotePresi from '../components/VotePresi.vue'
-import TheMarqueeMB from '../components/TheMarqueeMb.vue'
+import VotePresi from '../components/VotePresi.vue'
+import VoteLegis from '../components/VoteLegis.vue'
+// import TheMarqueeMB from '../components/TheMarqueeMb.vue'
 import HomeLegis from '../components/HomeLegis.vue'
 import HomePresi from '../components/HomePresi.vue'
 import HomeVideo from '../components/HomeVideo.vue'
@@ -22,8 +24,9 @@ export default {
   components: {
     sectionBanner,
     TheMarquee,
-    // VotePresi,
-    TheMarqueeMB,
+    VotePresi,
+    VoteLegis,
+    // TheMarqueeMB,
     HomeLegis,
     HomePresi,
     HomeVideo,

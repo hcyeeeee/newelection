@@ -16,7 +16,7 @@
             <img src="../assets/policy.png" alt="">
             <div> 政策牛肉</div>
         </router-link>
-        <a class="icontitle" href="https://www.ftvnews.com.tw/topics/2024election/infographics">
+        <a class="icontitle" href="https://www.ftvnews.com.tw/topics/2024election/infographics" >
             <img src="../assets/map.png" alt="">
             <div>歷年版圖</div>
         </a>

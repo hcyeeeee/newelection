@@ -16,8 +16,6 @@
                 <p class="count-text">時</p>
                 <span> {{ mins }}</span>
                 <p class="count-text">分</p>
-                <span> {{ secs }}</span>
-                <p class="count-text">秒</p>
             </div>
             <!-- <div class="count">
                 <span> {{ countdown }}</span>
@@ -38,7 +36,6 @@ export default {
             day: "",
             hours: "",
             mins: "",
-            secs: "",
         }
     },
     methods: {
@@ -64,10 +61,13 @@ export default {
             }, 1000);
         }
     },
-    mounted() {
+    created() {
         setInterval(() => {
             this.startCountdown();
-        }, 800);
-    },
+        }, 10000);
+        setTimeout(() => {
+            this.startCountdown()
+        }, 1000);
+    }
 };
 </script>

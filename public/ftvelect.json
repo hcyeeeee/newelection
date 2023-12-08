@@ -1,0 +1,962 @@
+{
+  "T1": {
+    "type": "01",
+    "typeName": "總統",
+    "tickets": [
+      {
+        "candNo": 1,
+        "candName": "賴清德",
+        "party": "民進黨",
+        "ticket": 222100,
+        "winner": ""
+      },
+      {
+        "candNo": 2,
+        "candName": "侯友宜",
+        "party": "國民黨",
+        "ticket": 1200,
+        "winner": "*"
+      },
+      {
+        "candNo": 3,
+        "candName": "柯文哲",
+        "party": "民進黨",
+        "ticket": 103330,
+        "winner": ""
+      }
+    ]
+  },
+  "T2": {
+    "type": "02",
+    "typeName": "區域立委",
+    "detail": [
+      {
+        "cityNo": "01",
+        "cityName": "台北市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德1",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": "*"
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德2",
+                "party": "民進黨",
+                "ticket": 1022222,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德3",
+                "party": "民進黨",
+                "ticket": 1020,
+                "winner": "*"
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 200,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 2000,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 200,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "02",
+        "cityName": "新北市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "高雄市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "04",
+        "cityName": "台中市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "盧秀燕",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "新竹縣",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "新竹韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "雲林縣",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "澎湖縣",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "台東縣",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "台東縣韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "花蓮縣",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "台東縣韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "03",
+        "cityName": "連江縣",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第一選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "台東縣韓國瑜",
+                "party": "國民黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "T3": {
+    "type": "03",
+    "typeName": "平地原住民立委",
+    "detail": [
+      {
+        "cityNo": "01",
+        "cityName": "台北市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第十三選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "平地原住民立委",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "平地原住民立委",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 3,
+                "candName": "平地原住民立委",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "02",
+        "cityName": "新北市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第十四選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "平地原住民立委1",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "平地原住民立委2",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          },
+          {
+            "areaNo": "2",
+            "areaName": "第二選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "T4": {
+    "type": "04",
+    "typeName": "山地原住民立委",
+    "detail": [
+      {
+        "cityNo": "01",
+        "cityName": "台北市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第十四選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "山地原住民立委",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": "*"
+              },
+              {
+                "candNo": 2,
+                "candName": "山地原住民立委",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cityNo": "02",
+        "cityName": "新北市",
+        "areas": [
+          {
+            "areaNo": "1",
+            "areaName": "第十五選區",
+            "tickets": [
+              {
+                "candNo": 1,
+                "candName": "山地原住民立委2",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              },
+              {
+                "candNo": 2,
+                "candName": "山地原住民立委德2",
+                "party": "民進黨",
+                "ticket": 100,
+                "winner": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "T5": {
+    "type": "99",
+    "typeName": "政黨票",
+    "detail": [
+      {
+        "partyNo": "01",
+        "cityName": "AAAA黨",
+        "tickets": 2000,
+        "ticketsRate": 15.45
+      },
+      {
+        "partyNo": "02",
+        "cityName": "BBBB黨",
+        "tickets": 2000,
+        "ticketsRate": 15.45
+      },
+      {
+        "partyNo": "03",
+        "cityName": "CCCC黨",
+        "tickets": 2000,
+        "ticketsRate": 15.45
+      },
+      {
+        "partyNo": "04",
+        "cityName": "DDDD黨",
+        "tickets": 2000,
+        "ticketsRate": 15.45
+      }
+    ]
+  }
+}

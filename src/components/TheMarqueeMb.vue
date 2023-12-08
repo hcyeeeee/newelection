@@ -1,8 +1,8 @@
-<template>
-  <div class="banner">
+<!-- <template>
+ <div class="banner">
     <div class="calender-title mb">行事曆 </div>
     <div class="calender-mb">
-      <swiper class="calender_content_mb mySwiper" :centeredSlides="true" :spaceBetween="20" :slidesPerView="2"
+  <swiper class="calender_content_mb mySwiper" :centeredSlides="true" :spaceBetween="20" :slidesPerView="2"
         :autoplay="{ delay: 1500, disableOnInteraction: false, }"
         :breakpoints="{ '600': { slidesPerView: 3, spaceBetween: 10, } }" :modules="modules" :loop="true">
         <swiper-slide v-for="item in calender" :key="item.id" class="calender_text ">
@@ -14,7 +14,7 @@
             {{ item.DayEvent }}
           </div>
         </swiper-slide>
-      </swiper>
+      </swiper> 
     </div>
   </div>
 </template>
@@ -52,4 +52,4 @@ export default {
   opacity: .3;
   filter: blur(1px);
 }
-</style>
+</style> -->

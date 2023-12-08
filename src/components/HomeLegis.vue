@@ -8,26 +8,7 @@
             :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }" :centeredSlides="true"
             :pagination="{ clickable: true, }" :autoplay="{ delay: 5000, disableOnInteraction: false, }" :modules="modules"
             class="mySwiper">
-            <!-- <swiper-slide>
-                <router-link to="/Legislator">
-                    <img src="../assets/fight1.jpg" class="banner" alt="蘇巧慧">
-                </router-link>
-                <div class="out">
-                    <div v-for="item in news1" :key="item.id" class="news">
-                        <a class="link"
-                            :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"
-                            target="_blank">
-                            <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
-                            <div class="inner">
-                                <p class="title">
-                                    {{ item.Title.replace("快新聞／", "") }}
-                                </p>
-                                <div class="time">{{ item.CreateDate }}</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </swiper-slide> -->
+
             <swiper-slide> <router-link to="/Legislator">
                     <img src="../assets/fight2.jpg" class="banner" alt="中和選區">
                 </router-link>

@@ -13,11 +13,15 @@
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
     "bootstrap-vue": "^2.23.1",
+    "chart.js": "^4.4.1",
+    "dr-vue-echarts": "^1.0.14",
+    "highcharts-vue": "^1.4.3",
     "lightvue": "^1.5.1",
     "requirejs": "^2.3.6",
     "swiper": "^10.2.0",
     "vue": "^3.3.7",
     "vue-axios": "^3.5.2",
+    "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {

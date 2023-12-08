@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import PageAbout from "../views/PresidentView.vue";
 import LegisterView from "../views/LegisterView.vue";
-import Beef from "../views/Beef.vue";
+import Beef from "../views/Policy.vue";
 import Question from "../views/Question.vue";
 import infographics from "../views/infographics.vue";
 import videos from "../views/Videos.vue";

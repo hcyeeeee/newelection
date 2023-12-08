@@ -7,7 +7,7 @@
       <swiper :autoplay="{ delay: 2500, disableOnInteraction: false }" :modules="modules" class="mySwiper">
         <swiper-slide class="marquee" v-for="item in news" :key="item.id">
           <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"
-            target="_blank" rel="noopener noreferrer">
+            target="_blank" rel="noopener noreferrer" :title=item.Title>
             {{ item.Title.replace("快新聞／", "") }}</a>
         </swiper-slide>
       </swiper>

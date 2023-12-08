@@ -5,73 +5,66 @@
                 <img src="../assets/HomePresi.png" alt="">
                 <h2>總統即時開票區</h2>
             </div>
-            <div v-for="item in candidates" :key="item.id" class="vote-list">
-
+            <div v-for="item in news3.tickets" :key="item.id" ref="" class="vote-list">
                 <div class="vote-pic">
                     <div class="party">
-                        <img loading="lazy"
-                            :src="'https://www.ftvnews.com.tw/topics/2024election/' + item.party + '.png'" />
+                        <img class="vote-pic-img" loading="lazy"
+                            :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + item.party + '.jpg'" />
                     </div>
                     <div class="pic">
-                        <img loading="lazy" :src="'https://www.ftvnews.com.tw/topics/2024election/' + item.name + '.png'" />
+                        <img class="vote-pic-img" loading="lazy"
+                            :src="'https://www.ftvnews.com.tw/topics/2024election/' + item.candName + '.jpg'" />
 
                     </div>
                     <div class="pic2">
-                        <img loading="lazy" :src="'https://www.ftvnews.com.tw/topics/2024election/' + item.sub + '.png'" />
+                        <img loading="lazy"
+                            :src="'https://www.ftvnews.com.tw/topics/2024election/images/candidates/' + item.candName + '2.jpg'" />
                     </div>
                 </div>
                 <div class="vote-num">
                     <div class="vote-num-inner">
                         <div class="up">
-                            <div class="num"> {{ item.num }}</div>
-                            <div class="name"> {{ item.name }}/{{ item.sub }}</div>
-                            <div class="tickets">{{ item.tickets.toString().replace(/\B(?=(\d{4})+(?!\d))/g, '萬') }}</div>
+                            <div class="num"> {{ item.candNo }}</div>
+                            <div class="name"> {{ item.candName }}/ {{ item.candName }}</div>
+
+                            <div class="tickets" :style="{ color: ticketColor }">{{
+                                item.ticket.toString().replace(/\B(?=(\d{4})+(?!\d))/g, '萬') }}
+                            </div>
+                            <img v-if="item.winner == '*'" src="../assets/pass.png" alt="pass" class="pass"
+                                style="z-index: 99999;">
                         </div>
                     </div>
                     <div style="width: 100%">
-                        <LvProgressBar :value="item.tickets / 80000" />
+                        <LvProgressBar :value="item.ticket / 10000" :showValue="showValue" />
+                        {{ item.ticket }}
+
                     </div>
+                    <hr>
                 </div>
             </div>
+            <!-- <h3>a的值是:{{ numbers.a }}</h3>
+            <button @click="numbers.a++">點我+1</button>
+            <h3>b的值是:{{ numbers.b }}</h3>
+            <button @click="numbers = { a: 111, b: 555 }">點我+1</button> -->
+
         </div>
     </div>
 </template>
 <script>
+import axios from 'axios';
 import LvProgressBar from 'lightvue/progress-bar';
 export default {
     data() {
         return {
-            news: [], candidates: [
-                {
-                    num: "1",
-                    party: "民進黨",
-                    name: "賴清德",
-                    sub: "賴清德",
-                    tickets: "122113",
-                },
-                {
-                    num: "2",
-                    party: "國民黨",
-                    name: "侯友宜",
-                    sub: "賴清德",
-                    tickets: "321222",
-                },
-                {
-                    num: "3",
-                    party: "民眾黨",
-                    name: "柯文哲",
-                    sub: "賴清德",
-                    tickets: "622212",
-                },
-                {
-                    num: "4",
-                    party: "無黨籍",
-                    name: "郭台銘",
-                    sub: "賴清德",
-                    tickets: "902100",
-                }
-            ],
+            ticketColor: 'black', // Default color
+            news3: [],
             value: 0,
+            all: 2000000,
+            showValue: false,
+            numbers: {
+                a: 1,
+                b: 1
+            },
         };
     },
     interval: null,
@@ -83,15 +76,29 @@ export default {
                     newValue = 0;
                 }
                 this.value = newValue;
-            }, 2000);
+            }, 5000);
         },
         endProgress() {
             clearInterval(this.interval);
             this.interval = null;
+        }, getPresi() {
+            axios
+                .get("/ftvelect.json")
+                .then((response) => {
+                    this.news3 = response.data.T1;
+                    console.log(this.news3)
+                })
+                .catch((error) => {
+                    console.log("error" + error);
+                });
         },
     },
     mounted() {
+        this.getPresi();
         this.startProgress();
+        setInterval(() => {
+            this.getPresi()
+        }, 10000);
     },
     beforeDestroy() {
         this.endProgress();
@@ -99,11 +106,6 @@ export default {
     components: {
         LvProgressBar: LvProgressBar,
     },
-    watch: {
-        test: {
-
-        }
-    }
 };
 </script>
 
@@ -116,16 +118,16 @@ export default {
 
 .vote-list {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    position: relative;
+    grid-template-columns: 2fr 3fr;
     gap: 1rem;
-    height: 140px;
-    height: 120px;
+    height: 150px;
+    width: 90%;
+    margin: auto;
 
     img {
         position: absolute;
         border-radius: 1000px;
-        width: 80px;
+        width: 100px;
         fill: #FFF;
         border: 3px solid white;
         filter: drop-shadow(1.9500000476837158px 1.9500000476837158px 2.5999999046325684px rgba(0, 0, 0, 0.15));
@@ -134,48 +136,54 @@ export default {
 
 .vote-pic {
     display: flex;
-    padding-right: 2rem;
-    width: 100px;
+    width: 100%;
+    justify-content: start;
 }
 
 .vote-num {
-    padding-left: 2rem;
     display: flex;
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    gap: 1rem
+    gap: 1rem;
+    width: 100%;
+    margin: auto;
 }
 
 .party {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
-        width: 30px;
+        margin: auto;
+        width: 50px;
         z-index: 4;
+
     }
 }
 
 .pic {
-    position: absolute;
-    left: 1rem;
+    position: relative;
+    left: 5%;
 
 
     img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         object-fit: cover;
         z-index: 3;
     }
 }
 
 .pic2 {
-    position: absolute;
-    left: 5rem;
+    position: relative;
+    left: 45%;
     top: 1rem;
 
     img {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         object-fit: cover;
     }
 }
@@ -206,6 +214,21 @@ export default {
     font-weight: 500;
     display: flex;
     justify-content: end;
+}
+
+.pass {
+    width: 30px !important;
+    height: 30px;
+    position: relative !important;
+    border-radius: 1000px;
+    fill: none;
+    border: none;
+    filter: none;
+
+    @include pad {
+        width: 40px !important;
+        height: 40px;
+    }
 }
 </style>
 

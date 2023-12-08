@@ -2,22 +2,20 @@
     <div class="layout-president layout">
         <div class="icontitle">
             <img src="../assets/HomePresi.png" alt="">
-            <h2>總統候選人</h2>
+            <h2>正副總統候選人</h2>
         </div>
         <ul class="president-navtab pc">
             <li class="pc " :class="{ 'active': index === selectedCandidateIndex }" v-for="(candidate, index) in candidates"
                 :key="index" @click="showCandidate(index)">
-                <h2>{{ candidate.party }} {{ candidate.main.name }}{{ candidate.sub.name }}</h2>
+                <h2>
+                    {{ candidate.party }} {{ candidate.main.name }}/{{ candidate.sub.name }}</h2>
             </li>
-            <!-- /{{ candidate.sub.name }}</li> -->
         </ul>
 
         <select @change="onCandidateSelect" v-model="selectedCandidate" class="mb custom-select form-control info-select ">
             <option value="" disabled>請選擇候選人</option>
             <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">
-                {{ candidate.party }} {{ candidate.main.name }}
-                <!-- /{{ candidate.sub.name }} -->
-            </option>
+                {{ candidate.party }} {{ candidate.main.name }} / {{ candidate.sub.name }} </option>
         </select>
 
         <div class="president" v-for="(candidate, index) in  candidates " :key="index"
@@ -33,8 +31,7 @@
                     <ul class="tab">
                         <li @click="activeTab = 'main'" :class="{ 'fo': activeTab === 'main' }"> {{ candidate.main.name }}
                             學經歷</li>
-                        <li @click="activeTab = 'sub'" :class="{ 'fo': activeTab === 'sub' }"
-                            v-if="candidate.sub.name == '/蕭美琴'">
+                        <li @click="activeTab = 'sub'" :class="{ 'fo': activeTab === 'sub' }">
                             {{ candidate.sub.name.replace("/", "") }} 學經歷
                         </li>
                     </ul>
@@ -49,10 +46,17 @@
                     <div class="president-policy " v-for="(candidate, index) in  candidates " :key="index"
                         v-show="selectedCandidateIndex === index">
                         <div class="icontitle">
+
                             <img src="../assets/policy.png" alt="">
-                            <h2>政見</h2>
+                            <router-link to="policy" style=" width:100%">
+                                <h2>政見</h2>
+                            </router-link>
                         </div>
                         <h3 class="">{{ candidate.main.policy }}</h3>
+                        <div class="more">
+                            <router-link to="policy" class="policy">看更多政見<i
+                                    class="fa-solid fa-angles-right"></i></router-link>
+                        </div>
                     </div>
                 </div>
 
@@ -118,7 +122,7 @@ export default {
 
                     },
                     sub: {
-                        name: "/蕭美琴",
+                        name: "蕭美琴",
                         Exp: [
                             "紐澤西州蒙特克萊爾高中",
                             "美國歐柏林學院東亞研究學士",
@@ -151,17 +155,17 @@ export default {
                         ],
                     },
                     sub: {
-                        name: "",
+                        name: "趙少康",
                         Exp: [
-                            "中央警察大學犯罪防治研究所法學博士",
-                            "台北市政府警察局刑事警察大隊分隊長",
-                            "桃園縣政府警察局局長",
-                            "內政部警政署刑事警察局局長",
-                            "內政部警政署署長",
-                            "中央警察大學校長",
-                            "2010年擔任新北市副市長",
-                            "2018年當選新北市長",
-                            "2022年連任新北市長",
+                            "台灣大學農業工程學系機械組",
+                            "美國南卡羅來納州州立克萊門森大學機械工程碩士",
+                            "飛碟廣播股份有限公司董事長",
+                            "中國廣播公司董事長兼總經理",
+                            "TVBS《少康戰情室》主持人",
+                            "台北市議會議員第4－5屆議員",
+                            "中華民國第1、2屆立法委員",
+                            "中華民國第2任行政院環境保護署署長",
+                            "新黨第1屆全國委員會召集人"
                         ],
                         age: "65",
                     },
@@ -177,7 +181,7 @@ export default {
                             "台灣大學醫學院臨床醫學研究所博士",
                             "台大醫院急診部醫師",
                             "台大醫院創傷醫學部主任",
-                            "台大醫學院教授",
+
                             "1994年擔任陳水扁競選台北市長的醫界後援會幹部",
                             "2000年擔任陳水扁競選總統台大醫院後援會召集人",
                             "2012年6月擔任陳水扁民間醫療小組召集人",
@@ -188,56 +192,56 @@ export default {
                         ],
                     },
                     sub: {
-                        name: "",
+                        name: "吳欣盈",
                         Exp: [
-                            "台灣大學醫學院臨床醫學研究所博士",
-                            "台大醫院急診部醫師",
-                            "台大醫院創傷醫學部主任",
-                            "台大醫學院教授",
-                            "1994年擔任陳水扁競選台北市長的醫界後援會幹部",
-                            "2000年擔任陳水扁競選總統台大醫院後援會召集人",
-                            "2012年6月擔任陳水扁民間醫療小組召集人",
-                            "2013年擔任小英之友會常任理事",
-                            "2014年當選台北市長",
-                            "2018年連任台北市長",
-                            "2019年被推舉為民眾黨首任黨主席",
+                            "新光人壽慈善基金會執行長",
+                            "新光人壽保險公司副總經理",
+                            "臺灣工商企業聯合會監事",
+                            "倫敦美林證券資產管理投資分析師",
+                            "英國公益慈善協會董事",
+                            "新光大學新加坡專案總籌備規劃負責人",
+                            "英國The Institute for Philanthropy基金會董事",
+                            "美國 The Philanthropy Workshop 國際董事",
+                            "世界經濟論壇青年全球領袖成員",
+                            "台灣民眾黨籍第10屆立法委員"
+
                         ],
                         age: "65",
                     },
                 },
-                {
-                    num: "4",
-                    party: "無黨籍",
-                    main: {
-                        name: "郭台銘",
-                        age: "59",
-                        policy: "郭台銘在參選總統聲明中表示，「台灣未來的總統，需要具有對產業發展的洞察力、對世界經濟局勢的理解力，更需要有帶領人民走出困局的執行力。這是台灣未來總統迫切需要的領導力，「企業家治國」的時代來臨了。」",
-                        Exp: [
-                            "中國海事專科學校（今臺北海洋科技大學）航運管理科",
-                            "1970年加入中國國民黨",
-                            "1974年創立鴻海集團",
-                            "2019年改任鴻海集團董事",
-                            "2019年參加國民黨總統初選但未獲提名",
-                            "2000年退出中國國民黨",
-                            "2019年4-9月短暫入中國國民黨又退出",
-                            "2023年參加國民黨總統初選但未獲提名",
-                        ],
-                    },
-                    sub: {
-                        name: "",
-                        Exp: [
-                            "中國海事專科學校（今臺北海洋科技大學）航運管理科",
-                            "1970年加入中國國民黨",
-                            "1974年創立鴻海集團",
-                            "2019年改任鴻海集團董事",
-                            "2019年參加國民黨總統初選但未獲提名",
-                            "2000年退出中國國民黨",
-                            "2019年4-9月短暫入中國國民黨又退出",
-                            "2023年參加國民黨總統初選但未獲提名",
-                        ],
-                        age: "65",
-                    },
-                }
+                // {
+                //     num: "4",
+                //     party: "無黨籍",
+                //     main: {
+                //         name: "郭台銘",
+                //         age: "59",
+                //         policy: "郭台銘在參選總統聲明中表示，「台灣未來的總統，需要具有對產業發展的洞察力、對世界經濟局勢的理解力，更需要有帶領人民走出困局的執行力。這是台灣未來總統迫切需要的領導力，「企業家治國」的時代來臨了。」",
+                //         Exp: [
+                //             "中國海事專科學校（今臺北海洋科技大學）航運管理科",
+                //             "1970年加入中國國民黨",
+                //             "1974年創立鴻海集團",
+                //             "2019年改任鴻海集團董事",
+                //             "2019年參加國民黨總統初選但未獲提名",
+                //             "2000年退出中國國民黨",
+                //             "2019年4-9月短暫入中國國民黨又退出",
+                //             "2023年參加國民黨總統初選但未獲提名",
+                //         ],
+                //     },
+                //     sub: {
+                //         name: "",
+                //         Exp: [
+                //             "中國海事專科學校（今臺北海洋科技大學）航運管理科",
+                //             "1970年加入中國國民黨",
+                //             "1974年創立鴻海集團",
+                //             "2019年改任鴻海集團董事",
+                //             "2019年參加國民黨總統初選但未獲提名",
+                //             "2000年退出中國國民黨",
+                //             "2019年4-9月短暫入中國國民黨又退出",
+                //             "2023年參加國民黨總統初選但未獲提名",
+                //         ],
+                //         age: "65",
+                //     },
+                // }
             ],
             selectedCandidate: "",// 存储所选的候选人
             selectedCandidateIndex: 0, // 存储所选候选人的索引
@@ -259,7 +263,7 @@ export default {
         }, fetchNews() {
             if (this.selectedCandidateIndex !== null) {
                 const candidateName = this.candidates[this.selectedCandidateIndex].main.name;
-                const url = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidateName}&Page=1&sp=6`;
+                const url = `https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=${candidateName}&Page=1&sp=7`;
                 axios
                     .get(url)
                     .then((response) => {
@@ -300,4 +304,13 @@ li {
 .layout-president .president-navtab {
     gap: 1rem;
 }
+
+.more {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.policy:hover {}
 </style>

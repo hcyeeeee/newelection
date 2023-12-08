@@ -6,10 +6,9 @@
                 v-if="selectedRegion == '北部地區' || selectedRegion == '中部地區' || selectedRegion == '南部地區' || selectedRegion == '東部地區' || selectedRegion == '離島地區' || selectedRegion == '原住民地區'">
                 {{ selectedCity }}立委參選名單</h2>
             <h2 v-if="selectedRegion == '不分區'">
-                {{ selectedCity }}不分區立委參選名單</h2>
+                {{ selectedCity.replace("公民黨", "公民黨＋台灣工黨") }}不分區立委參選名單</h2>
 
         </div>
-
         <div class="dddd">
             <div class="Region-navtab pc">
                 <li style="background: transparent; color: #c1c1c1; box-shadow: none;">地區/縣市</li>
@@ -40,20 +39,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(candidate, index) in electionData[selectedRegion][selectedCity]" :key="index">
-                                <td v-if="index < 14">{{ candidate.distrist }}</td>
-                                <td v-if="index < 14"> <img class="partyicon"
-                                        :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
+                            <tr v-for="(candidate, index) in   electionData[selectedRegion][selectedCity]  " :key="index">
+                                <td
+                                    v-if="electionData[selectedRegion][selectedCity].length <= 19 || index <= electionData[selectedRegion][selectedCity].length / 2">
+                                    {{ candidate.distrist }}
+                                </td>
+                                <td
+                                    v-if="electionData[selectedRegion][selectedCity].length <= 19 || index <= electionData[selectedRegion][selectedCity].length / 2">
+                                    <img class="partyicon"
+                                        :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + candidate.party + '.jpg'"
                                         :alt="candidate.party">
                                     <h3>{{ candidate.party }}</h3>
                                 </td>
-                                <td v-if="index < 14">
+                                <td
+                                    v-if="electionData[selectedRegion][selectedCity].length <= 19 || index <= electionData[selectedRegion][selectedCity].length / 2">
                                     <h3>{{ candidate.name }}</h3>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <table v-if="selectedCity == '台北市' || selectedCity == '新北市'">
+                    <table
+                        v-if="selectedCity == '台北市' || selectedCity == '新北市' || selectedCity == '高雄市' || selectedCity == '臺南市' || selectedCity == '臺中市'">
                         <thead>
                             <tr>
                                 <th>選區</th>
@@ -62,14 +68,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
-                                <td v-if="index >= 14">{{ candidate.distrist }}</td>
-                                <td v-if="index >= 14"> <img class="partyicon"
-                                        :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
+                            <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                                :key="index">
+
+                                <td v-if="index > (electionData[selectedRegion][selectedCity].length / 2)">{{
+                                    candidate.distrist }}</td>
+                                <td v-if="index > (electionData[selectedRegion][selectedCity].length / 2)"> <img
+                                        class="partyicon"
+                                        :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + candidate.party + '.jpg'"
                                         :alt="candidate.party">
                                     <h3>{{ candidate.party }}</h3>
                                 </td>
-                                <td v-if="index >= 14">
+                                <td v-if="index > (electionData[selectedRegion][selectedCity].length / 2)">
                                     <h3>{{ candidate.name }}</h3>
                                 </td>
                             </tr>
@@ -79,15 +89,16 @@
             </div>
             <div v-if="selectedRegion == '不分區'" style="margin-top: 1.5rem;">
                 <div class="Region">
-                    <div v-for="(city, cityName) in electionData[selectedRegion]" :key="cityName"
+                    <div v-for="(  city, cityName  ) in   electionData[selectedRegion]  " :key="cityName"
                         @click="selectCity(cityName)" :class="{ 'active': selectedCity === cityName }" class="Regionbtn">
-                        <img class="partyicon" :src="'https://www.ftvnews.com.tw/topics/2024election/' + cityName + '.png'"
+                        <img class="partyicon"
+                            :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + cityName + '.jpg'"
                             :alt="cityName">
-                        {{ cityName.replace("公民黨", "公民黨＋台灣工黨") }}
+                        {{ cityName }}
                     </div>
                 </div>
                 <div class="tablelayout_pc">
-                    <table>
+                    <table v-if="selectedCity !== '其他政黨'">
                         <thead>
                             <tr>
                                 <th>排序</th>
@@ -95,15 +106,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
-                                <td v-if="candidate.distrist <= 17">{{ candidate.distrist }}</td>
-                                <td v-if="candidate.distrist <= 17">
+                            <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                                :key="index">
+                                <td v-if="candidate.distrist <= electionData[selectedRegion][selectedCity].length / 2">{{
+                                    candidate.distrist }}</td>
+                                <td v-if="candidate.distrist <= electionData[selectedRegion][selectedCity].length / 2">
                                     <h3>{{ candidate.name }}</h3>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <table v-if="selectedCity == '民進黨' || selectedCity == '國民黨'">
+                    <table v-if="selectedCity == '民進黨' || selectedCity == '國民黨' || selectedCity == '民眾黨'">
                         <thead>
                             <tr>
                                 <th>排序</th>
@@ -111,9 +124,57 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
-                                <td v-if="candidate.distrist > 17">{{ candidate.distrist }}</td>
-                                <td v-if="candidate.distrist > 17">
+                            <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                                :key="index">
+                                <td v-if="candidate.distrist > electionData[selectedRegion][selectedCity].length / 2">{{
+                                    candidate.distrist }}</td>
+                                <td v-if="candidate.distrist > electionData[selectedRegion][selectedCity].length / 2">
+                                    <h3>{{ candidate.name }}</h3>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table v-if="selectedCity == '其他政黨'">
+                        <thead>
+                            <tr>
+                                <th>排序</th>
+                                <th>政黨</th>
+                                <th>姓名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                                :key="index">
+                                <td v-if="index < 21">{{ candidate.distrist }}</td>
+                                <td v-if="index < 21"> <img class="partyicon"
+                                        :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + candidate.party + '.jpg'"
+                                        :alt="candidate.party">
+                                    <h3>{{ candidate.party }}</h3>
+                                </td>
+                                <td v-if="index < 21">
+                                    <h3>{{ candidate.name }}</h3>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table v-if="selectedCity == '其他政黨'">
+                        <thead>
+                            <tr>
+                                <th>排序</th>
+                                <th>政黨</th>
+                                <th>姓名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                                :key="index">
+                                <td v-if="index >= 21">{{ candidate.distrist }}</td>
+                                <td v-if="index >= 21"><img class="partyicon"
+                                        :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + candidate.party + '.jpg'"
+                                        :alt="candidate.party">
+                                    <h3>{{ candidate.party }}</h3>
+                                </td>
+                                <td v-if="index >= 21">
                                     <h3>{{ candidate.name }}</h3>
                                 </td>
                             </tr>
@@ -136,7 +197,7 @@
                 </select>
             </div>
             <select v-model="selectedCity" class="custom-select select_mb">
-                <option v-for="(city, cityName) in electionData[selectedRegion]" :key="cityName">{{
+                <option v-for="(  city, cityName  ) in   electionData[selectedRegion]  " :key="cityName">{{
                     cityName }}</option>
             </select>
         </div>
@@ -152,10 +213,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
+                        <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                            :key="index">
                             <td>{{ candidate.distrist }}</td>
                             <td> <img class="partyicon"
-                                    :src="'https://www.ftvnews.com.tw/topics/2024election/' + candidate.party + '.png'"
+                                    :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + candidate.party + '.jpg'"
                                     :alt="candidate.party">
                                 <h3>{{ candidate.party }}</h3>
                             </td>
@@ -168,7 +230,7 @@
         </div>
         <div v-if="selectedRegion == '不分區'">
             <div class=" tablelayout_mb">
-                <table>
+                <table v-if="selectedCity !== '其他政黨'">
                     <thead>
                         <tr>
                             <th>排序</th>
@@ -177,15 +239,62 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="( candidate, index ) in  electionData[selectedRegion][selectedCity] " :key="index">
-                            <td>{{ candidate.distrist }}</td>
-                            <td>{{ candidate.name }}</td>
+                        <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                            :key="index">
+                            <td v-if="candidate.distrist <= 17">{{ candidate.distrist }}</td>
+                            <td v-if="candidate.distrist <= 17">{{ candidate.name }}</td>
                         </tr>
                     </tbody>
 
                 </table>
+                <table v-if="selectedCity == '民進黨' || selectedCity == '國民黨' || selectedCity == '民眾黨'">
+                    <thead>
+                        <tr>
+                            <th>排序</th>
+                            <th>姓名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]   "
+                            :key="index">
+                            <td v-if="candidate.distrist > 17">{{ candidate.distrist }}</td>
+                            <td v-if="candidate.distrist > 17">
+                                <h3>{{ candidate.name }}</h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table v-if="selectedCity == '其他政黨'">
+                    <thead>
+                        <tr>
+                            <th>排序</th>
+                            <th>政黨</th>
+                            <th>姓名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(   candidate, index   ) in    electionData[selectedRegion][selectedCity]  "
+                            :key="index">
+                            <td>{{ candidate.distrist }}</td>
+                            <td>
+                                <img class="partyicon"
+                                    :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + candidate.party + '.jpg'"
+                                    :alt="candidate.party">
+                                <h3>{{ candidate.party }}</h3>
+                            </td>
+                            <td>
+                                <h3>{{ candidate.name }}</h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </div>
+        </div>
+
+        <div>
+            <br>
+            <p style="display:flex;justify-content:end;width: 100%;">資訊來源：中選會</p>
         </div>
     </div>
 </template>
@@ -208,10 +317,35 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "張斯綱"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "臺灣雙語無法黨",
+                            "name": "陳執中"
                         }, {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "侯漢廷"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "許盛鋒"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "人民最大黨",
+                            "name": "張臺勝"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "人民最大黨",
+                            "name": "胡金城"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "人民民主黨",
+                            "name": "賴宗育"
                         },
                         {
                             "distrist": 2,
@@ -220,12 +354,27 @@ export default {
                         },
                         {
                             "distrist": 2,
-                            "party": "台灣麻將最大黨",
-                            "name": "謝尚衡"
-                        }, {
-                            "distrist": 2,
                             "party": "國民黨",
                             "name": "游淑慧"
+                        }, {
+                            "distrist": 2,
+                            "party": "統促黨",
+                            "name": "郭啟源"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "無黨籍",
+                            "name": "藍信祺"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "人民最大黨",
+                            "name": "何梅娟"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "制度救世島",
+                            "name": "熊嘉玲"
                         },
                         {
                             "distrist": 3,
@@ -236,6 +385,30 @@ export default {
                             "distrist": 3,
                             "party": "國民黨",
                             "name": "王鴻薇"
+                        }, {
+                            "distrist": 3,
+                            "party": "無黨籍",
+                            "name": "陳源發"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "臺灣雙語無法黨",
+                            "name": "陳一郎"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "人民最大黨",
+                            "name": "余新造"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "台灣維新",
+                            "name": "楊時睿"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "制度救世島",
+                            "name": "高士恩"
                         },
                         {
                             "distrist": 4,
@@ -251,6 +424,15 @@ export default {
                             "distrist": 4,
                             "party": "基進黨",
                             "name": "吳欣岱"
+                        }, {
+                            "distrist": 4,
+                            "party": "台灣整復師聯盟工黨",
+                            "name": "林秋彤"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "制度救世島",
+                            "name": "黃啟彬"
                         },
                         {
                             "distrist": 5,
@@ -264,13 +446,42 @@ export default {
                         },
                         {
                             "distrist": 5,
+                            "party": "台灣麻將最大黨",
+                            "name": "張華特"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "司法改革黨",
+                            "name": "李慧曦"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "經濟黨 ",
+                            "name": "蘇諍"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "合一行動聯盟",
+                            "name": "許敬民"
+                        }, {
+                            "distrist": 5,
+                            "party": "無黨籍",
+                            "name": "林志成"
+                        },
+                        {
+                            "distrist": 5,
                             "party": "無黨籍",
                             "name": "于美人"
                         },
                         {
                             "distrist": 5,
-                            "party": "台灣麻將最大黨",
-                            "name": "張華特"
+                            "party": "無黨籍",
+                            "name": "陳燕玉"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "無黨籍",
+                            "name": "孫智麗"
                         },
                         {
                             "distrist": 6,
@@ -281,6 +492,20 @@ export default {
                             "distrist": 6,
                             "party": "國民黨",
                             "name": "羅智強"
+                        }, {
+                            "distrist": 6,
+                            "party": "臺灣雙語無法黨",
+                            "name": "崔建章"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "台灣維新",
+                            "name": "朱翊銘"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "制度救世島",
+                            "name": "張雪卿"
                         },
                         {
                             "distrist": 7,
@@ -291,11 +516,20 @@ export default {
                             "distrist": 7,
                             "party": "國民黨",
                             "name": "徐巧芯"
+                        }, {
+                            "distrist": 7,
+                            "party": "中華愛國同心黨",
+                            "name": "李承龍"
                         },
                         {
                             "distrist": 7,
-                            "party": "台灣麻將最大黨",
-                            "name": "方定瑜"
+                            "party": "無黨籍",
+                            "name": "陳韋安"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "台灣維新",
+                            "name": "羅丹"
                         },
                         {
                             "distrist": 8,
@@ -311,6 +545,30 @@ export default {
                             "distrist": 8,
                             "party": "民眾黨",
                             "name": "張其祿"
+                        }, {
+                            "distrist": 8,
+                            "party": "無黨籍",
+                            "name": "夏萬浪"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "興中同盟會",
+                            "name": "胡之壯"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "小歐盟",
+                            "name": "賴宣任"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "台灣維新",
+                            "name": "劉佩玲"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "無黨籍",
+                            "name": "張維學"
                         }
                     ],
                     "新北市": [
@@ -323,6 +581,20 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "洪孟楷"
+                        }, {
+                            "distrist": 1,
+                            "party": "統促黨",
+                            "name": "翁藤原"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣維新",
+                            "name": "徐百弟"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "制度救世島",
+                            "name": "游清池"
                         },
                         {
                             "distrist": 2,
@@ -333,6 +605,10 @@ export default {
                             "distrist": 2,
                             "party": "民眾黨",
                             "name": "李有宜"
+                        }, {
+                            "distrist": 2,
+                            "party": "統促黨",
+                            "name": "何淯笙"
                         },
                         {
                             "distrist": 3,
@@ -343,6 +619,15 @@ export default {
                             "distrist": 3,
                             "party": "國民黨",
                             "name": "蔡明堂"
+                        }, {
+                            "distrist": 3,
+                            "party": "無黨籍",
+                            "name": "陳東雲"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "無黨籍",
+                            "name": "蘇卿彥"
                         },
                         {
                             "distrist": 4,
@@ -353,6 +638,20 @@ export default {
                             "distrist": 4,
                             "party": "國民黨",
                             "name": "蔣欣璋"
+                        }, {
+                            "distrist": 4,
+                            "party": "無黨籍",
+                            "name": "蘇輝湟"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "制度救世島",
+                            "name": "邱吉均"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "無黨籍",
+                            "name": "洪懿馥"
                         },
                         {
                             "distrist": 5,
@@ -373,6 +672,10 @@ export default {
                             "distrist": 6,
                             "party": "國民黨",
                             "name": "林國春"
+                        }, {
+                            "distrist": 6,
+                            "party": "司法改革黨",
+                            "name": "黃淑珍"
                         },
                         {
                             "distrist": 7,
@@ -383,6 +686,15 @@ export default {
                             "distrist": 7,
                             "party": "國民黨",
                             "name": "葉元之"
+                        }, {
+                            "distrist": 7,
+                            "party": "小歐盟",
+                            "name": "劉書婷"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "台灣維新",
+                            "name": "陳愷寧"
                         },
                         {
                             "distrist": 8,
@@ -418,16 +730,39 @@ export default {
                             "distrist": 10,
                             "party": "國民黨",
                             "name": "林金結"
+                        }, {
+                            "distrist": 10,
+                            "party": "復康聯盟黨",
+                            "name": "袁興"
                         },
                         {
                             "distrist": 10,
-                            "party": "台灣麻將最大黨",
-                            "name": "張哲源"
+                            "party": "人民最大黨",
+                            "name": "孟藹倫"
                         },
                         {
                             "distrist": 11,
                             "party": "民進黨",
                             "name": "曾柏瑜"
+                        }, {
+                            "distrist": 11,
+                            "party": "中華婦女黨",
+                            "name": "陳聖"
+                        },
+                        {
+                            "distrist": 11,
+                            "party": "無黨籍",
+                            "name": "鄭添泉"
+                        },
+                        {
+                            "distrist": 11,
+                            "party": "人民最大黨",
+                            "name": "張家榛"
+                        },
+                        {
+                            "distrist": 11,
+                            "party": "制度救世島",
+                            "name": "魏趨安"
                         },
                         {
                             "distrist": 11,
@@ -443,6 +778,25 @@ export default {
                             "distrist": 12,
                             "party": "國民黨",
                             "name": "廖先翔"
+                        }, {
+                            "distrist": 12,
+                            "party": "臺灣雙語無法黨",
+                            "name": "李佳蒨"
+                        },
+                        {
+                            "distrist": 12,
+                            "party": "無黨籍",
+                            "name": "黃瑞傳"
+                        },
+                        {
+                            "distrist": 12,
+                            "party": "台灣維新",
+                            "name": "陳長志"
+                        },
+                        {
+                            "distrist": 12,
+                            "party": "無黨籍",
+                            "name": "楊木火"
                         }
                     ],
                     "基隆市": [
@@ -460,11 +814,20 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "王醒之"
+                        }, {
+                            "distrist": 1,
+                            "party": "家庭基本收入",
+                            "name": "邱紹祐"
                         },
                         {
                             "distrist": 1,
-                            "party": "台灣麻將最大黨",
-                            "name": "張世昌"
+                            "party": "無黨籍",
+                            "name": "黃傑陽"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "小歐盟",
+                            "name": "謝海菁"
                         }
                     ],
                     "桃園市": [
@@ -480,8 +843,8 @@ export default {
                         },
                         {
                             "distrist": 1,
-                            "party": "時代力量",
-                            "name": "徐鈺雯"
+                            "party": "無黨籍",
+                            "name": "馬治薇"
                         },
                         {
                             "distrist": 2,
@@ -492,6 +855,15 @@ export default {
                             "distrist": 2,
                             "party": "國民黨",
                             "name": "涂權吉"
+                        }, {
+                            "distrist": 2,
+                            "party": "統促黨",
+                            "name": "陳志豪"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "無黨籍",
+                            "name": "王思玟"
                         },
                         {
                             "distrist": 3,
@@ -502,6 +874,20 @@ export default {
                             "distrist": 3,
                             "party": "國民黨",
                             "name": "魯明哲"
+                        }, {
+                            "distrist": 3,
+                            "party": "新黨",
+                            "name": "游智彬"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "小歐盟",
+                            "name": "徐鶯慈"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "制度救世島",
+                            "name": "戴浙"
                         },
                         {
                             "distrist": 4,
@@ -515,7 +901,7 @@ export default {
                         },
                         {
                             "distrist": 4,
-                            "party": "公民黨",
+                            "party": "台灣國民黨",
                             "name": "甘乃迪"
                         },
                         {
@@ -547,6 +933,40 @@ export default {
                             "distrist": 6,
                             "party": "民眾黨",
                             "name": "李慕妍"
+                        }, {
+                            "distrist": 4,
+                            "party": "無黨籍",
+                            "name": "黃明莉"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "司法改革黨",
+                            "name": "易乃文"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "無黨籍",
+                            "name": "趙正宇"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "無黨籍",
+                            "name": "葉堂宇"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "復康聯盟黨",
+                            "name": "劉睿宸"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "人民最大黨",
+                            "name": "翁紹庭"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "民眾黨",
+                            "name": "李慕妍"
                         }
                     ],
                     "新竹市": [
@@ -569,6 +989,20 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "柯美蘭"
+                        }, {
+                            "distrist": 1,
+                            "party": "制度救世島",
+                            "name": "趙福龍"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "司法改革黨",
+                            "name": "楊清華"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "王榮德"
                         }
                     ],
                     "新竹縣": [
@@ -586,6 +1020,20 @@ export default {
                             "distrist": 1,
                             "party": "綠黨",
                             "name": "余筱菁"
+                        }, {
+                            "distrist": 1,
+                            "party": "小歐盟",
+                            "name": "劉台穠"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣維新",
+                            "name": "劉復嵐"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "無黨籍",
+                            "name": "黃秀龍"
                         },
                         {
                             "distrist": 2,
@@ -623,6 +1071,15 @@ export default {
                             "distrist": 1,
                             "party": "基進黨",
                             "name": "林意評"
+                        }, {
+                            "distrist": 1,
+                            "party": "制度救世島",
+                            "name": "邱介勲"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "林錦坤"
                         }
                     ]
                 },
@@ -642,6 +1099,10 @@ export default {
                             "distrist": 1,
                             "party": "民眾黨",
                             "name": "蔡壁如"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "賴信全"
                         },
                         {
                             "distrist": 2,
@@ -652,6 +1113,15 @@ export default {
                             "distrist": 2,
                             "party": "國民黨",
                             "name": "顏寬恒"
+                        }, {
+                            "distrist": 2,
+                            "party": "無黨籍",
+                            "name": "紀銘修"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "司法正義黨",
+                            "name": "洪麗華"
                         },
                         {
                             "distrist": 3,
@@ -662,11 +1132,29 @@ export default {
                             "distrist": 3,
                             "party": "國民黨",
                             "name": "楊瓊瓔"
+                        }, {
+                            "distrist": 3,
+                            "party": "司法改革黨",
+                            "name": "張烱春"
                         },
                         {
                             "distrist": 4,
                             "party": "民進黨",
                             "name": "張廖萬堅"
+                        }, {
+                            "distrist": 4,
+                            "party": "臺灣雙語無法黨",
+                            "name": "李海碩"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "臺灣雙語無法黨",
+                            "name": "林中翊"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "無黨籍",
+                            "name": "陳志彬"
                         },
                         {
                             "distrist": 4,
@@ -682,6 +1170,35 @@ export default {
                             "distrist": 5,
                             "party": "國民黨",
                             "name": "黃健豪"
+                        }, {
+                            "distrist": 5,
+                            "party": "無黨籍",
+                            "name": "苗豐隆"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "臺灣雙語無法黨",
+                            "name": "謝旻汎"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "司法改革黨",
+                            "name": "彭振芳"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "小歐盟",
+                            "name": "蔡善雯"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "統促黨",
+                            "name": "林澤培"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "無黨籍",
+                            "name": "陳維新"
                         },
                         {
                             "distrist": 6,
@@ -692,6 +1209,20 @@ export default {
                             "distrist": 6,
                             "party": "國民黨",
                             "name": "羅廷瑋"
+                        }, {
+                            "distrist": 6,
+                            "party": "無黨籍",
+                            "name": "賀姿華"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "無黨籍",
+                            "name": "紀文清"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "統促黨",
+                            "name": "黃千庭"
                         },
                         {
                             "distrist": 7,
@@ -702,8 +1233,26 @@ export default {
                             "distrist": 7,
                             "party": "國民黨",
                             "name": "林家興"
+                        }, {
+                            "distrist": 7,
+                            "party": "國民黨",
+                            "name": "林家興"
                         },
                         {
+                            "distrist": 7,
+                            "party": "司法改革黨",
+                            "name": "林振東"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "民進黨",
+                            "name": "謝志忠"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "國民黨",
+                            "name": "江啟臣"
+                        }, {
                             "distrist": 8,
                             "party": "民進黨",
                             "name": "謝志忠"
@@ -724,11 +1273,6 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "陳超明"
-                        },
-                        {
-                            "distrist": 1,
-                            "party": "台灣麻將最大黨",
-                            "name": "洪鈺翔"
                         },
                         {
                             "distrist": 2,
@@ -753,6 +1297,11 @@ export default {
                             "name": "阮厚爵"
                         },
                         {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "蘇群傑"
+                        },
+                        {
                             "distrist": 2,
                             "party": "民進黨",
                             "name": "黃秀芳"
@@ -763,11 +1312,6 @@ export default {
                             "name": "陽曜聰"
                         },
                         {
-                            "distrist": 2,
-                            "party": "台灣麻將最大黨",
-                            "name": "鄒伊忠"
-                        },
-                        {
                             "distrist": 3,
                             "party": "民進黨",
                             "name": "吳音寧"
@@ -776,6 +1320,15 @@ export default {
                             "distrist": 3,
                             "party": "國民黨",
                             "name": "謝衣鳯"
+                        }, {
+                            "distrist": 3,
+                            "party": "無黨籍",
+                            "name": "洪建興"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "統促黨",
+                            "name": "桂麗娜"
                         },
                         {
                             "distrist": 4,
@@ -786,6 +1339,15 @@ export default {
                             "distrist": 4,
                             "party": "國民黨",
                             "name": "鄭俊雄"
+                        }, {
+                            "distrist": 4,
+                            "party": "中華文化共和黨",
+                            "name": "蔡念諶"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "臺灣雙語無法黨",
+                            "name": "鄭錫懋"
                         }
                     ],
                     "南投縣": [
@@ -803,6 +1365,15 @@ export default {
                             "distrist": 1,
                             "party": "勞動黨",
                             "name": "許文忠"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "林金潭"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "小歐盟",
+                            "name": "李圓恩"
                         },
                         {
                             "distrist": 2,
@@ -813,6 +1384,10 @@ export default {
                             "distrist": 2,
                             "party": "國民黨",
                             "name": "游顥"
+                        }, {
+                            "distrist": 2,
+                            "party": "無黨籍",
+                            "name": "陳癸佑"
                         }
                     ],
                     "雲林縣": [
@@ -830,6 +1405,20 @@ export default {
                             "distrist": 1,
                             "party": "台灣革命黨",
                             "name": "李昭儀"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "吳炳輝"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "統促黨",
+                            "name": "郭炳宏"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "陳俊龍"
                         },
                         {
                             "distrist": 2,
@@ -859,6 +1448,15 @@ export default {
                             "distrist": 1,
                             "party": "民眾黨",
                             "name": "曾尹儷"
+                        }, {
+                            "distrist": 1,
+                            "party": "人民最大黨",
+                            "name": "劉承智"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "林義迪"
                         },
                         {
                             "distrist": 2,
@@ -884,6 +1482,15 @@ export default {
                             "distrist": 3,
                             "party": "台灣麻將最大黨",
                             "name": "郭璽"
+                        }, {
+                            "distrist": 3,
+                            "party": "無黨籍",
+                            "name": "張正達"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "無黨籍",
+                            "name": "陳銓霖"
                         },
                         {
                             "distrist": 4,
@@ -904,6 +1511,15 @@ export default {
                             "distrist": 5,
                             "party": "國民黨",
                             "name": "黃柏霖"
+                        }, {
+                            "distrist": 5,
+                            "party": "無黨籍",
+                            "name": "楊椒喬"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "小歐盟",
+                            "name": "張芳愉"
                         },
                         {
                             "distrist": 6,
@@ -933,6 +1549,30 @@ export default {
                             "distrist": 7,
                             "party": "無黨籍",
                             "name": "洪啟修 "
+                        }, {
+                            "distrist": 7,
+                            "party": "司法改革黨",
+                            "name": "王和平統一"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "無黨籍",
+                            "name": "朱磊"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "國民黨",
+                            "name": "鍾易仲"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "民進黨",
+                            "name": "許智傑"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "無黨籍",
+                            "name": "洪啟修"
                         },
                         {
                             "distrist": 8,
@@ -943,6 +1583,15 @@ export default {
                             "distrist": 8,
                             "party": "國民黨",
                             "name": "李明璇"
+                        }, {
+                            "distrist": 8,
+                            "party": "勞動黨",
+                            "name": "湛秀英"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "司法改革黨",
+                            "name": "李政憲"
                         }
                     ],
                     "臺南市": [
@@ -960,6 +1609,20 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "魏耀乾"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "侯陸太"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "統促黨",
+                            "name": "林芳竹"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "復康聯盟黨",
+                            "name": "蔡承攸"
                         },
                         {
                             "distrist": 2,
@@ -970,6 +1633,10 @@ export default {
                             "distrist": 2,
                             "party": "無黨籍",
                             "name": "陳昆和"
+                        }, {
+                            "distrist": 2,
+                            "party": "人民最大黨",
+                            "name": "詹秋嫻"
                         },
                         {
                             "distrist": 3,
@@ -990,11 +1657,10 @@ export default {
                             "distrist": 4,
                             "party": "無黨籍",
                             "name": "李全教"
-                        },
-                        {
+                        }, {
                             "distrist": 4,
-                            "party": "台灣麻將最大黨",
-                            "name": "何力弘"
+                            "party": "司法改革黨",
+                            "name": "劉清田"
                         },
                         {
                             "distrist": 5,
@@ -1005,6 +1671,10 @@ export default {
                             "distrist": 5,
                             "party": "國民黨",
                             "name": "王家貞"
+                        }, {
+                            "distrist": 5,
+                            "party": "臺灣雙語無法黨",
+                            "name": "蕭燐洪"
                         },
                         {
                             "distrist": 6,
@@ -1036,12 +1706,21 @@ export default {
                         {
                             "distrist": 1,
                             "party": "無黨籍",
+                            "name": "簡明廉"
+                        }, {
+                            "distrist": 1,
+                            "party": "復康聯盟黨",
                             "name": "蔡松益"
                         },
                         {
                             "distrist": 1,
-                            "party": "公民黨",
-                            "name": "簡明廉"
+                            "party": "臺灣雙語無法黨",
+                            "name": "林智勲"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "小歐盟",
+                            "name": "陳玥妗"
                         }
                     ],
                     "嘉義縣": [
@@ -1064,6 +1743,20 @@ export default {
                             "distrist": 2,
                             "party": "無黨籍",
                             "name": "林國慶"
+                        }, {
+                            "distrist": 2,
+                            "party": "台灣維新",
+                            "name": "黃一哲"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "無黨籍",
+                            "name": "廖昱婧"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "制度救世島",
+                            "name": "簡銘傑"
                         }
                     ],
                     "屏東縣": [
@@ -1086,6 +1779,39 @@ export default {
                             "distrist": 2,
                             "party": "民進黨",
                             "name": "徐富癸"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "蔣月惠"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "統促黨",
+                            "name": "李孟翰"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣維新",
+                            "name": "張庭源"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "鄭清原"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "曾鈺庭"
+                        }, {
+                            "distrist": 2,
+                            "party": "中華聯合黨",
+                            "name": "吳媚宮"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "人民最大黨",
+                            "name": "何秋葺"
                         }
                     ],
                     "澎湖縣": [
@@ -1098,6 +1824,10 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "吳政杰"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "陳慧娟"
                         }
                     ]
                 },
@@ -1112,6 +1842,10 @@ export default {
                             "distrist": 1,
                             "party": "國民黨",
                             "name": "傅崐萁"
+                        }, {
+                            "distrist": 1,
+                            "party": "制度救世島",
+                            "name": "周玉梅"
                         }
                     ],
                     "台東縣": [
@@ -1129,6 +1863,20 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "劉櫂豪"
+                        }, {
+                            "distrist": 1,
+                            "party": "小歐盟",
+                            "name": "黃婉茹"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "許瑞貴"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "陳長宏"
                         }
                     ]
                 },
@@ -1143,6 +1891,15 @@ export default {
                             "distrist": 1,
                             "party": "民眾黨",
                             "name": "尚文凱"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "洪和成"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "歐陽儀雄"
                         }
                     ],
                     "連江縣": [
@@ -1160,11 +1917,6 @@ export default {
                             "distrist": 1,
                             "party": "民眾黨",
                             "name": "曹爾凱"
-                        },
-                        {
-                            "distrist": 1,
-                            "party": "公民黨",
-                            "name": "李克焜"
                         }
                     ]
                 },
@@ -1178,7 +1930,7 @@ export default {
                         {
                             "distrist": 1,
                             "party": "國民黨",
-                            "name": "鄭天財"
+                            "name": "鄭天財 Sra‧Kacaw"
                         },
                         {
                             "distrist": 1,
@@ -1189,18 +1941,42 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "陳政宗"
+                        }, {
+                            "distrist": 1,
+                            "party": "台灣維新",
+                            "name": "陳國榮"
                         },
                         {
                             "distrist": 1,
-                            "party": "台灣麻將最大黨",
-                            "name": "潘彥睿"
+                            "party": "新黨",
+                            "name": "米甘幹．理佛克"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "忠仁．達祿斯"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "吳建智咖啡哥"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "統促黨",
+                            "name": "洪曹純明"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "高美珠"
                         }
                     ],
                     "山地原住民": [
                         {
                             "distrist": 1,
                             "party": "民進黨",
-                            "name": "伍麗華"
+                            "name": "伍麗華 Saidhai．Tahovecahe"
                         },
                         {
                             "distrist": 1,
@@ -1226,6 +2002,30 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "撒丰安·瓦林及那"
+                        }, {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "李我要單列族名我的布農族名字是SavungazValincinan"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "司法改革黨",
+                            "name": "高畹芯"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "林果"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "林世偉"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "無黨籍",
+                            "name": "張子孝"
                         }
                     ]
                 },
@@ -1573,7 +2373,8 @@ export default {
                             "party": "國民黨",
                             "name": "康晉瑜"
                         },
-                    ], "民眾黨": [
+                    ],
+                    "民眾黨": [
                         {
                             "distrist": 1,
                             "party": "民眾黨",
@@ -1592,74 +2393,210 @@ export default {
                         {
                             "distrist": 4,
                             "party": "民眾黨",
-                            "name": "麥玉珍"
+                            "name": "吳春城"
                         },
                         {
                             "distrist": 5,
                             "party": "民眾黨",
-                            "name": "林憶君"
+                            "name": "麥玉珍"
                         },
                         {
                             "distrist": 6,
                             "party": "民眾黨",
-                            "name": "吳春城"
+                            "name": "林國成"
                         },
                         {
                             "distrist": 7,
                             "party": "民眾黨",
-                            "name": "林國城"
+                            "name": "林憶君"
                         },
                         {
                             "distrist": 8,
                             "party": "民眾黨",
-                            "name": "張啟楷"
+                            "name": "張啓楷"
                         },
                         {
                             "distrist": 9,
                             "party": "民眾黨",
-                            "name": "賴淑芬"
+                            "name": "劉書彬"
                         },
                         {
                             "distrist": 10,
                             "party": "民眾黨",
-                            "name": "蔡春綢"
+                            "name": "洪毓祥"
                         },
                         {
                             "distrist": 11,
                             "party": "民眾黨",
-                            "name": "劉書彬"
+                            "name": "蔡春綢"
                         },
                         {
                             "distrist": 12,
                             "party": "民眾黨",
-                            "name": "李貞秀"
+                            "name": "王安祥"
                         },
                         {
                             "distrist": 13,
                             "party": "民眾黨",
-                            "name": "洪毓祥"
+                            "name": "邱慧洳"
                         },
                         {
                             "distrist": 14,
                             "party": "民眾黨",
-                            "name": "王安祥"
+                            "name": "陳清龍"
                         },
                         {
                             "distrist": 15,
                             "party": "民眾黨",
-                            "name": "陳清龍"
+                            "name": "李貞秀"
                         },
                         {
                             "distrist": 16,
                             "party": "民眾黨",
                             "name": "許忠信"
-                        }
-                    ], "親民黨": [
-                        {
-                            "distrist": "",
-                            "party": "目前無資料！",
-                            "name": "尚未公布名單"
                         },
+                        {
+                            "distrist": 17,
+                            "party": "民眾黨",
+                            "name": "徐瑞希"
+                        },
+                        {
+                            "distrist": 18,
+                            "party": "民眾黨",
+                            "name": "楊弘意"
+                        },
+                        {
+                            "distrist": 19,
+                            "party": "民眾黨",
+                            "name": "陳智菡"
+                        },
+                        {
+                            "distrist": 20,
+                            "party": "民眾黨",
+                            "name": "莊貽量"
+                        },
+                        {
+                            "distrist": 21,
+                            "party": "民眾黨",
+                            "name": "林筱淇"
+                        },
+                        {
+                            "distrist": 22,
+                            "party": "民眾黨",
+                            "name": "蔡豐州"
+                        },
+                        {
+                            "distrist": 23,
+                            "party": "民眾黨",
+                            "name": "張雪如"
+                        },
+                        {
+                            "distrist": 24,
+                            "party": "民眾黨",
+                            "name": "湯宏正"
+                        },
+                        {
+                            "distrist": 25,
+                            "party": "民眾黨",
+                            "name": "林淑芬"
+                        },
+                        {
+                            "distrist": 26,
+                            "party": "民眾黨",
+                            "name": "梁明輝"
+                        },
+                        {
+                            "distrist": 27,
+                            "party": "民眾黨",
+                            "name": "廖維欣"
+                        },
+                        {
+                            "distrist": 28,
+                            "party": "民眾黨",
+                            "name": "馮啟彥"
+                        },
+                        {
+                            "distrist": 29,
+                            "party": "民眾黨",
+                            "name": "林子宇"
+                        },
+                        {
+                            "distrist": 30,
+                            "party": "民眾黨",
+                            "name": "張清俊"
+                        },
+                        {
+                            "distrist": 31,
+                            "party": "民眾黨",
+                            "name": "林治華"
+                        },
+                        {
+                            "distrist": 32,
+                            "party": "民眾黨",
+                            "name": "李家豪"
+                        },
+                        {
+                            "distrist": 33,
+                            "party": "民眾黨",
+                            "name": "邱于珊"
+                        },
+                        {
+                            "distrist": 34,
+                            "party": "民眾黨",
+                            "name": "周榆修"
+                        },
+                    ],
+                    "親民黨": [
+                        {
+                            "distrist": 1,
+                            "party": "親民黨",
+                            "name": "李桐豪"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "親民黨",
+                            "name": "陳怡潔"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "親民黨",
+                            "name": "曲兆祥"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "親民黨",
+                            "name": "何偉真"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "親民黨",
+                            "name": "簡泰河"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "親民黨",
+                            "name": "藍志玟"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "親民黨",
+                            "name": "吳建德"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "親民黨",
+                            "name": "黎淑慧"
+                        },
+                        {
+                            "distrist": 9,
+                            "party": "親民黨",
+                            "name": "孫信君"
+                        },
+                        {
+                            "distrist": 10,
+                            "party": "親民黨",
+                            "name": "黎建南"
+                        }
                     ],
                     "基進黨": [
                         {
@@ -1740,55 +2677,105 @@ export default {
                             "name": "鄭侑青"
                         }
                     ],
-                    "公民黨": [
+                    "親民黨": [
                         {
                             "distrist": 1,
-                            "party": "公民黨",
-                            "name": "高國慶"
+                            "party": "親民黨",
+                            "name": "李桐豪"
                         },
                         {
                             "distrist": 2,
-                            "party": "公民黨",
-                            "name": "楊秀蘭"
+                            "party": "親民黨",
+                            "name": "陳怡潔"
                         },
                         {
                             "distrist": 3,
-                            "party": "公民黨",
-                            "name": "錢彙穎"
+                            "party": "親民黨",
+                            "name": "曲兆祥"
                         },
                         {
                             "distrist": 4,
-                            "party": "公民黨",
-                            "name": "高絃騰"
+                            "party": "親民黨",
+                            "name": "何偉真"
                         },
                         {
                             "distrist": 5,
-                            "party": "公民黨",
-                            "name": "張心彤"
+                            "party": "親民黨",
+                            "name": "簡泰河"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "親民黨",
+                            "name": "藍志玟"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "親民黨",
+                            "name": "吳建德"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "親民黨",
+                            "name": "黎淑慧"
+                        },
+                        {
+                            "distrist": 9,
+                            "party": "親民黨",
+                            "name": "孫信君"
+                        },
+                        {
+                            "distrist": 10,
+                            "party": "親民黨",
+                            "name": "黎建南"
                         }
                     ],
-                    "台灣麻將最大黨": [
+                    "新黨": [
                         {
                             "distrist": 1,
-                            "party": "台灣麻將最大黨",
-                            "name": "盧建璋"
+                            "party": "新黨",
+                            "name": "王建煊"
                         },
                         {
                             "distrist": 2,
-                            "party": "台灣麻將最大黨",
-                            "name": "張嘉玲"
+                            "party": "新黨",
+                            "name": "仉桂美"
                         },
                         {
                             "distrist": 3,
-                            "party": "台灣麻將最大黨",
-                            "name": "吳庭萱"
+                            "party": "新黨",
+                            "name": "吳成典"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "新黨",
+                            "name": "賀樺"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "新黨",
+                            "name": "林易陞"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "新黨",
+                            "name": "陳麗玲"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "新黨",
+                            "name": "戴德滿"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "新黨",
+                            "name": "王子芩"
                         }
                     ],
-                    "綠黨": [
+                    "其他政黨": [
                         {
                             "distrist": 1,
                             "party": "綠黨",
-                            "name": "林莉棻"
+                            "name": "鍾寶珠"
                         },
                         {
                             "distrist": 2,
@@ -1798,9 +2785,207 @@ export default {
                         {
                             "distrist": 3,
                             "party": "綠黨",
+                            "name": "黃柔嘉"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "綠黨",
                             "name": "吳伊婷"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "綠黨",
+                            "name": "希婻·瑪飛洑"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "綠黨",
+                            "name": "林莉棻"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "綠黨",
+                            "name": "黃慧芬"
+                        }, {
+                            "distrist": 8,
+                            "party": "綠黨",
+                            "name": "張竹芩"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台聯黨",
+                            "name": "周倪安"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "台聯黨",
+                            "name": "劉一德"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "台聯黨",
+                            "name": "歐陽瑞蓮"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "台聯黨",
+                            "name": "王思棠"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "台聯黨",
+                            "name": "張登凱"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "台聯黨",
+                            "name": "吳家慶"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "統促黨",
+                            "name": "丁炳仁"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "統促黨",
+                            "name": "黃妙如"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "統促黨",
+                            "name": "肖云霞"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "統促黨",
+                            "name": "張安樂"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "小歐盟",
+                            "name": "高芸婷"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "小歐盟",
+                            "name": "林詩涵"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "小歐盟",
+                            "name": "閔柏陵"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "台灣維新",
+                            "name": "蘇煥智"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "台灣維新",
+                            "name": "劉亦恩"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "台灣維新",
+                            "name": "張幸松"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "台灣維新",
+                            "name": "江映瑤"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "司法改革黨",
+                            "name": "戴翊如"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "司法改革黨",
+                            "name": "張靜"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "司法改革黨",
+                            "name": "李柏融"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "司法改革黨",
+                            "name": "尤瑞敏"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "司法改革黨",
+                            "name": "賴伯琦"
+                        },
+                        {
+                            "distrist": 6,
+                            "party": "司法改革黨",
+                            "name": "吳振橐"
+                        },
+                        {
+                            "distrist": 7,
+                            "party": "司法改革黨",
+                            "name": "晏揚清"
+                        },
+                        {
+                            "distrist": 8,
+                            "party": "司法改革黨",
+                            "name": "許韶珍"
+                        },
+                        {
+                            "distrist": 9,
+                            "party": "司法改革黨",
+                            "name": "楊啓珊"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "人民最大黨",
+                            "name": "林東雄"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "人民最大黨",
+                            "name": "賴方靜靜"
+                        }, {
+                            "distrist": 1,
+                            "party": "臺灣雙語無法黨",
+                            "name": "陳亭諭"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "臺灣雙語無法黨",
+                            "name": "蕭文乾"
+                        },
+                        {
+                            "distrist": 1,
+                            "party": "制度救世島",
+                            "name": "林麗容"
+                        },
+                        {
+                            "distrist": 2,
+                            "party": "制度救世島",
+                            "name": "石人仁"
+                        },
+                        {
+                            "distrist": 3,
+                            "party": "制度救世島",
+                            "name": "張怡菁"
+                        },
+                        {
+                            "distrist": 4,
+                            "party": "制度救世島",
+                            "name": "古文發"
+                        },
+                        {
+                            "distrist": 5,
+                            "party": "制度救世島",
+                            "name": "黃千明"
                         }
-                    ]
+                    ],
                 }
             }
         };
@@ -1845,7 +3030,7 @@ export default {
 .partyicon {
     width: 30px !important;
     border-radius: 100px;
-    margin-right: 1rem;
+    margin-right: .5em;
     height: 30px !important;
 }
 
