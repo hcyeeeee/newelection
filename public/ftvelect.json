@@ -5,24 +5,24 @@
     "tickets": [
       {
         "candNo": 1,
-        "candName": "賴清德",
-        "party": "民進黨",
-        "ticket": 222100,
+        "candName": "柯文哲",
+        "party": "民眾黨",
+        "ticket": 122320,
         "winner": ""
       },
       {
         "candNo": 2,
-        "candName": "侯友宜",
-        "party": "國民黨",
-        "ticket": 1200,
-        "winner": "*"
+        "candName": "賴清德",
+        "party": "民進黨",
+        "ticket": 221200,
+        "winner": ""
       },
       {
         "candNo": 3,
-        "candName": "柯文哲",
-        "party": "民進黨",
-        "ticket": 103330,
-        "winner": ""
+        "candName": "侯友宜",
+        "party": "國民黨",
+        "ticket": 122200,
+        "winner": "*"
       }
     ]
   },
@@ -42,22 +42,169 @@
                 "candNo": 1,
                 "candName": "賴清德1",
                 "party": "民進黨",
-                "ticket": 1000,
+                "ticket": 100011,
                 "winner": "*"
               },
               {
                 "candNo": 2,
                 "candName": "賴清德2",
                 "party": "民進黨",
-                "ticket": 1022222,
+                "ticket": 10222,
                 "winner": ""
               },
               {
                 "candNo": 3,
                 "candName": "賴清德3",
                 "party": "民進黨",
-                "ticket": 1020,
+                "ticket": 221020,
                 "winner": "*"
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "賴清德4",
+                "party": "民進黨",
+                "ticket": 1000,
+                "winner": ""
               },
               {
                 "candNo": 4,
@@ -782,27 +929,48 @@
         "areas": [
           {
             "areaNo": "1",
-            "areaName": "第十三選區",
+            "areaName": "第十四選區",
             "tickets": [
               {
                 "candNo": 1,
-                "candName": "平地原住民立委",
+                "candName": "陳瑩",
                 "party": "民進黨",
-                "ticket": 100,
-                "winner": ""
-              },
-              {
-                "candNo": 2,
-                "candName": "平地原住民立委",
-                "party": "民進黨",
-                "ticket": 100,
+                "ticket": 13300,
                 "winner": "*"
               },
               {
+                "candNo": 2,
+                "candName": "鄭天財 Sra‧Kacaw",
+                "party": "國民黨",
+                "ticket": 22200,
+                "winner": ""
+              },
+              {
                 "candNo": 3,
-                "candName": "平地原住民立委",
-                "party": "民進黨",
-                "ticket": 100,
+                "candName": "黃仁",
+                "party": "國民黨",
+                "ticket": 10110,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "米甘幹．理佛克",
+                "party": "新黨",
+                "ticket": 10550,
+                "winner": ""
+              },
+              {
+                "candNo": 5,
+                "candName": "忠仁．達祿斯",
+                "party": "無黨籍",
+                "ticket": 10110,
+                "winner": ""
+              },
+              {
+                "candNo": 6,
+                "candName": "吳建智咖啡哥",
+                "party": "無黨籍",
+                "ticket": 10550,
                 "winner": ""
               }
             ]
@@ -815,55 +983,21 @@
         "areas": [
           {
             "areaNo": "1",
-            "areaName": "第十四選區",
+            "areaName": "第十五選區",
             "tickets": [
               {
                 "candNo": 1,
-                "candName": "平地原住民立委1",
-                "party": "民進黨",
+                "candName": "撒丰安·瓦林及那",
+                "party": "無黨籍",
                 "ticket": 100,
                 "winner": ""
               },
               {
                 "candNo": 2,
-                "candName": "平地原住民立委2",
-                "party": "民進黨",
+                "candName": "吳建智咖啡哥",
+                "party": "無黨籍",
                 "ticket": 100,
                 "winner": ""
-              }
-            ]
-          },
-          {
-            "areaNo": "2",
-            "areaName": "第二選區",
-            "tickets": [
-              {
-                "candNo": 1,
-                "candName": "賴清德",
-                "party": "民進黨",
-                "ticket": 100,
-                "winner": ""
-              },
-              {
-                "candNo": 2,
-                "candName": "賴清德",
-                "party": "民進黨",
-                "ticket": 100,
-                "winner": ""
-              },
-              {
-                "candNo": 3,
-                "candName": "賴清德",
-                "party": "民進黨",
-                "ticket": 100,
-                "winner": ""
-              },
-              {
-                "candNo": 4,
-                "candName": "賴清德",
-                "party": "民進黨",
-                "ticket": 100,
-                "winner": "*"
               }
             ]
           }
@@ -885,16 +1019,30 @@
             "tickets": [
               {
                 "candNo": 1,
-                "candName": "山地原住民立委",
+                "candName": "山地麗華 Saidhai．Tahovecahe",
                 "party": "民進黨",
-                "ticket": 100,
+                "ticket": 13300,
                 "winner": "*"
               },
               {
                 "candNo": 2,
-                "candName": "山地原住民立委",
-                "party": "民進黨",
-                "ticket": 100,
+                "candName": "孔文吉",
+                "party": "國民黨",
+                "ticket": 22200,
+                "winner": ""
+              },
+              {
+                "candNo": 3,
+                "candName": "盧縣一",
+                "party": "國民黨",
+                "ticket": 10110,
+                "winner": ""
+              },
+              {
+                "candNo": 4,
+                "candName": "胡黃慶文",
+                "party": "民眾黨",
+                "ticket": 10550,
                 "winner": ""
               }
             ]
@@ -911,15 +1059,15 @@
             "tickets": [
               {
                 "candNo": 1,
-                "candName": "山地原住民立委2",
-                "party": "民進黨",
+                "candName": "山地撒丰安·瓦林及那",
+                "party": "無黨籍",
                 "ticket": 100,
                 "winner": ""
               },
               {
                 "candNo": 2,
-                "candName": "山地原住民立委德2",
-                "party": "民進黨",
+                "candName": "李我要單列族名我的布農族名字是SavungazValincinan",
+                "party": "無黨籍",
                 "ticket": 100,
                 "winner": ""
               }
@@ -935,25 +1083,25 @@
     "detail": [
       {
         "partyNo": "01",
-        "cityName": "AAAA黨",
+        "cityName": "民進黨",
         "tickets": 2000,
         "ticketsRate": 15.45
       },
       {
         "partyNo": "02",
-        "cityName": "BBBB黨",
+        "cityName": "民進黨",
         "tickets": 2000,
         "ticketsRate": 15.45
       },
       {
         "partyNo": "03",
-        "cityName": "CCCC黨",
+        "cityName": "民進黨",
         "tickets": 2000,
         "ticketsRate": 15.45
       },
       {
         "partyNo": "04",
-        "cityName": "DDDD黨",
+        "cityName": "民進黨",
         "tickets": 2000,
         "ticketsRate": 15.45
       }

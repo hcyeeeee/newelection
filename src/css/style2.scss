@@ -401,15 +401,19 @@ body {
   }
   .calender_content {
     display: flex;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0.2rem;
     flex-direction: column;
     gap: $gap-sm;
-    width: 120px;
+    width: 130px;
     overflow: hidden;
 
     .calender-inner {
       border-bottom: 1px solid rgba(246, 184, 123, 0.4);
-      padding-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0rem;
+      }
     }
     div {
       text-align: center;
@@ -713,7 +717,6 @@ body {
     }
     @include big {
       gap: 1.5rem;
-      width: 90%;
     }
     li {
       width: fit-content;
@@ -807,7 +810,6 @@ table {
         align-items: center;
         @include pad {
           padding: 0.3rem;
-          margin: 0.5rem;
           font-size: $font-md;
           font-weight: normal;
         }
@@ -1316,7 +1318,8 @@ p {
 
 .Region-navtab_mb,
 .select_mb {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   @include pad {
     display: none;
   }

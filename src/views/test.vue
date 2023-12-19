@@ -1,45 +1,37 @@
 <template>
-  <div class="views">
+  <div class="home">
     <TheMarquee />
-    <TheBanner />
-    <LegislatorTab />
-    <LegislatorList />
-    <LegislatorNews />
-
+    <sectionBanner />
+    <!-- <TheMarqueeMB /> -->
+    <VotePresi />
+    <VoteLegis />
+    <HomePresi />
+    <HomeLegis />
+    <HomeVideo />
 
   </div>
 </template>
-
-<script >
-import TheBanner from '../components/TheBanner.vue'
-import LegislatorTab from '../components/LegislatorTab.vue'
-import LegislatorList from '../components/LegislatorList.vue'
-import LegislatorNews from '../components/LegislatorNews.vue'
+<script>
+import sectionBanner from '../components/TheBanner.vue'
 import TheMarquee from '../components/TheMarquee.vue'
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
+import VotePresi from '../components/VotePresi.vue'
+import VoteLegis from '../components/VoteLegis.vue'
+import HomeLegis from '../components/HomeLegis.vue'
+import HomePresi from '../components/HomePresi.vue'
+import HomeVideo from '../components/HomeVideo.vue'
 
 export default {
   components: {
+    sectionBanner,
     TheMarquee,
-    TheBanner,
-    LegislatorNews,
-    LegislatorTab,
-    LegislatorList,
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    return {
-      modules: [Autoplay, Pagination, Navigation],
-    };
-  },
-}
-</script>
-<style></style>
+    VotePresi,
+    VoteLegis,
+    HomeLegis,
+    HomePresi,
+    HomeVideo,
 
+  }
+};
+
+</script>
 

@@ -76,24 +76,23 @@ export default {
     },
     data() {
         return {
-
             modules: [Autoplay, Pagination, Navigation],
             candidates: [
                 {
                     index: "1",
                     name: {
-                        blue: "吳崢",
-                        green: " vs 張智倫",
-                        other: " vs 邱臣遠",
+                        blue: "蔡銘軒",
+                        green: " vs 馬文君",
+                        other: "",
                     },
                     responseData: '',
                 },
                 {
                     index: "2",
                     name: {
-                        blue: "吳沛憶",
-                        green: " vs 鍾小平",
-                        other: " vs 于美人",
+                        blue: "吳崢",
+                        green: " vs 張智倫",
+                        other: " vs 邱臣遠",
                     },
                     responseData: '',
                 },
@@ -109,13 +108,45 @@ export default {
                 {
                     index: "4",
                     name: {
+                        blue: "林靜儀",
+                        green: " vs 顏寬恆",
+                        other: "",
+                    },
+                    responseData: '',
+                },
+                {
+                    index: "5",
+                    name: {
+                        blue: "吳音寧",
+                        green: " vs 謝衣鳳",
+                        other: "",
+                    },
+                    responseData: '',
+                }, {
+                    index: "6",
+                    name: {
+                        blue: "王定宇",
+                        green: " vs 陳以信",
+                        other: " vs 陳永和",
+                    },
+                    responseData: '',
+                }, {
+                    index: "7",
+                    name: {
+                        blue: "吳沛憶",
+                        green: " vs 鍾小平",
+                        other: " vs 于美人",
+                    },
+                    responseData: '',
+                }, {
+                    index: "8",
+                    name: {
                         blue: "高嘉瑜",
                         green: " vs 李彥秀",
                         other: " vs 吳欣岱",
                     },
                     responseData: '',
                 },
-
 
             ],
             selectedCandidate: null, // 用于存储当前选中的候选人数据

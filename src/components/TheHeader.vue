@@ -38,6 +38,9 @@
         <a href=" https://www.ftvnews.com.tw/topics/2024election/infographics" @click="closeMenu">歷年版圖</a>
         <router-link to="/question" @click="closeMenu">選舉Q&A</router-link>
         <router-link to="/videos" @click="closeMenu">影音專區</router-link>
+        <router-link to="/game" @click="closeMenu">
+          <div>測驗遊戲</div>
+        </router-link>
         <div class="mobile_share">
           <a
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ftvnews.com.tw%2Ftopics%2F2023taiwantemple%2F&amp;src=sdkpreparse">

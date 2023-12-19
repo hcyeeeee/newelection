@@ -41,7 +41,7 @@ export default {
     methods: {
         startCountdown() {
             const targetDate = new Date("2024/1/13 16:00").getTime();
-            const countdownInterval = setTimeout(() => {
+            const countdownInterval = setInterval(() => {
                 const now = new Date().getTime();
                 const timeDifference = targetDate - now;
 

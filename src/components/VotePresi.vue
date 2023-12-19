@@ -25,32 +25,33 @@
                     <div class="vote-num-inner">
                         <div class="up">
                             <div class="num"> {{ item.candNo }}</div>
-                            <div class="name"> {{ item.candName }}/ {{ item.candName }}</div>
+                            <div class="name">{{ item.candName }}/{{ item.candName.replace(/柯文哲/g, '吳欣盈').replace(/賴清德/g,
+                                '蕭美琴').replace(/侯友宜/g, '趙少康') }}</div>
 
-                            <div class="tickets" :style="{ color: ticketColor }">{{
-                                item.ticket.toString().replace(/\B(?=(\d{4})+(?!\d))/g, '萬') }}
+                            <div class="tickets" :style="{ color: ticketColor }">
+                                <count-up :end-val="item.ticket" :options="options"></count-up>票
                             </div>
+
                             <img v-if="item.winner == '*'" src="../assets/pass.png" alt="pass" class="pass"
-                                style="z-index: 99999;">
+                                style="z-index: 999;">
+
                         </div>
                     </div>
+
+                    <div class="ticketspc" :style="{ color: ticketColor }"> <count-up :end-val="item.ticket"
+                            :options="options"></count-up>票
+                    </div>
                     <div style="width: 100%">
-                        <LvProgressBar :value="item.ticket / 10000" :showValue="showValue" />
-                        {{ item.ticket }}
+                        <LvProgressBar :value="item.ticket / 10000" :showValue="false" />
 
                     </div>
-                    <hr>
                 </div>
             </div>
-            <!-- <h3>a的值是:{{ numbers.a }}</h3>
-            <button @click="numbers.a++">點我+1</button>
-            <h3>b的值是:{{ numbers.b }}</h3>
-            <button @click="numbers = { a: 111, b: 555 }">點我+1</button> -->
-
         </div>
     </div>
 </template>
 <script>
+import CountUp from "vue-countup-v3";
 import axios from 'axios';
 import LvProgressBar from 'lightvue/progress-bar';
 export default {
@@ -59,11 +60,14 @@ export default {
             ticketColor: 'black', // Default color
             news3: [],
             value: 0,
-            all: 2000000,
             showValue: false,
-            numbers: {
-                a: 1,
-                b: 1
+            options: {
+                useEasing: true,
+                useGrouping: true,
+                separator: ",",
+                decimal: ",",
+                prefix: "",
+                suffix: "",
             },
         };
     },
@@ -83,7 +87,7 @@ export default {
             this.interval = null;
         }, getPresi() {
             axios
-                .get("/ftvelect.json")
+                .get("./ftvelect.json")
                 .then((response) => {
                     this.news3 = response.data.T1;
                     console.log(this.news3)
@@ -105,24 +109,77 @@ export default {
     },
     components: {
         LvProgressBar: LvProgressBar,
-    },
+        CountUp,
+    }
 };
 </script>
 
 <style lang="scss" scoped>
+@mixin phone {
+    @media (min-width: 550px) {
+        @content;
+    }
+}
+
 @mixin pad {
-    @media (min-width: 768px) {
+    @media (min-width: 821px) {
+        @content;
+    }
+}
+
+
+@mixin web {
+    @media (min-width: 1000px) {
+        @content;
+    }
+}
+
+@mixin big {
+    @media (min-width: 1400px) {
         @content;
     }
 }
 
 .vote-list {
     display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 1rem;
-    height: 150px;
-    width: 90%;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0rem;
+    height: 120px;
+    width: 100%;
     margin: auto;
+
+    @include phone {
+        grid-template-columns: 1fr 2fr;
+        width: 95%;
+        gap: 1rem;
+        height: 150px;
+    }
+
+    @include pad {
+        grid-template-columns: 1fr 1.5fr;
+        width: 95%;
+        gap: 1rem;
+        height: 150px;
+    }
+
+
+    @include web {
+        grid-template-columns: 1fr 2fr;
+
+    }
+
+    @include big {
+        grid-template-columns: 1fr 3fr;
+    }
+
+
+}
+
+
+
+.vote-pic {
+    position: relative;
+    display: flex;
 
     img {
         position: absolute;
@@ -134,57 +191,94 @@ export default {
     }
 }
 
-.vote-pic {
-    display: flex;
-    width: 100%;
-    justify-content: start;
-}
-
 .vote-num {
     display: flex;
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    gap: 1rem;
     width: 100%;
-    margin: auto;
+    gap: 0.5rem;
+    position: relative;
+
+    @include pad {
+        gap: 1rem;
+        top: 1rem;
+    }
 }
 
 .party {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 
     img {
         margin: auto;
-        width: 50px;
+        width: 30px;
         z-index: 4;
+        position: absolute;
+        top: 1rem;
+        left: -1%;
+        z-index: 10;
 
+        @include phone {
+            width: 50px;
+
+        }
     }
 }
 
 .pic {
-    position: relative;
+    position: absolute;
     left: 5%;
-
+    filter: drop-shadow(1.95px 1.95px 2.6px rgba(0, 0, 0, 0.15));
+    z-index: 9;
 
     img {
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
+        top: 1rem;
         object-fit: cover;
         z-index: 3;
+
+        @include phone {
+            width: 100px;
+            height: 100px;
+        }
+
+        @include pad {
+            width: 120px;
+            height: 120px;
+            left: 10%;
+        }
+
     }
 }
 
 .pic2 {
-    position: relative;
-    left: 45%;
-    top: 1rem;
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+
+    filter: drop-shadow(1.95px 1.95px 2.6px rgba(0, 0, 0, 0.15));
+
+
 
     img {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
         object-fit: cover;
+        z-index: 3;
+
+        @include phone {
+            width: 80px;
+            height: 80px;
+        }
+
+        @include pad {
+            width: 100px;
+            height: 100px;
+        }
     }
 }
 
@@ -192,16 +286,26 @@ export default {
     border-radius: 100px;
     border: 2px solid;
     width: fit-content;
-    padding: 0rem .5rem;
-    color: orange;
+    color: #FF7A00;
+    font-weight: 500;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 1.4rem;
 }
 
 .name {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    margin: auto;
 
+    @include phone {
+        font-size: 1.5rem;
+    }
 }
 
-.vote-num {}
 
 .up {
     display: flex;
@@ -209,26 +313,52 @@ export default {
 }
 
 .tickets {
-    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    justify-content: end;
+    display: none;
+    margin: auto;
+
+    @include phone {
+        display: flex;
+        font-size: 1.5rem;
+    }
+}
+
+.ticketspc {
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 500;
     display: flex;
     justify-content: end;
+
+    @include phone {
+        display: none;
+    }
 }
 
 .pass {
     width: 30px !important;
     height: 30px;
-    position: relative !important;
-    border-radius: 1000px;
-    fill: none;
-    border: none;
-    filter: none;
+    border-radius: 100px;
+    right: 10px;
 
     @include pad {
-        width: 40px !important;
-        height: 40px;
+        width: 30px !important;
+        height: 30px;
     }
+}
+
+.vote-list {
+    border-bottom: 2px solid rgba(255, 122, 0, 0.25);
+    background: #FFF;
+
+}
+
+.vote-list {
+    border-bottom: 2px solid rgba(255, 122, 0, 0.25);
+    background: #FFF;
+
 }
 </style>
 

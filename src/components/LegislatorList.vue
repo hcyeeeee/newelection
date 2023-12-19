@@ -363,11 +363,6 @@ export default {
                         },
                         {
                             "distrist": 2,
-                            "party": "無黨籍",
-                            "name": "藍信祺"
-                        },
-                        {
-                            "distrist": 2,
                             "party": "人民最大黨",
                             "name": "何梅娟"
                         },
@@ -1032,11 +1027,6 @@ export default {
                         },
                         {
                             "distrist": 2,
-                            "party": "無黨籍",
-                            "name": "黃秀龍"
-                        },
-                        {
-                            "distrist": 2,
                             "party": "國民黨",
                             "name": "林思銘"
                         },
@@ -1556,11 +1546,6 @@ export default {
                         },
                         {
                             "distrist": 7,
-                            "party": "無黨籍",
-                            "name": "朱磊"
-                        },
-                        {
-                            "distrist": 7,
                             "party": "國民黨",
                             "name": "鍾易仲"
                         },
@@ -1666,11 +1651,6 @@ export default {
                             "distrist": 5,
                             "party": "民進黨",
                             "name": "林俊憲"
-                        },
-                        {
-                            "distrist": 5,
-                            "party": "國民黨",
-                            "name": "王家貞"
                         }, {
                             "distrist": 5,
                             "party": "臺灣雙語無法黨",
@@ -1797,11 +1777,6 @@ export default {
                         {
                             "distrist": 1,
                             "party": "無黨籍",
-                            "name": "鄭清原"
-                        },
-                        {
-                            "distrist": 1,
-                            "party": "無黨籍",
                             "name": "曾鈺庭"
                         }, {
                             "distrist": 2,
@@ -1895,11 +1870,6 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "洪和成"
-                        },
-                        {
-                            "distrist": 1,
-                            "party": "無黨籍",
-                            "name": "歐陽儀雄"
                         }
                     ],
                     "連江縣": [
@@ -1960,11 +1930,6 @@ export default {
                             "distrist": 1,
                             "party": "無黨籍",
                             "name": "吳建智咖啡哥"
-                        },
-                        {
-                            "distrist": 1,
-                            "party": "統促黨",
-                            "name": "洪曹純明"
                         },
                         {
                             "distrist": 1,
@@ -2887,11 +2852,6 @@ export default {
                             "name": "劉亦恩"
                         },
                         {
-                            "distrist": 3,
-                            "party": "台灣維新",
-                            "name": "張幸松"
-                        },
-                        {
                             "distrist": 4,
                             "party": "台灣維新",
                             "name": "江映瑤"
@@ -3047,9 +3007,7 @@ export default {
     text-align: center;
     justify-content: start;
     font-size: 1.4rem;
-
     margin: auto;
-    margin-top: 1rem;
 
     li {
         background: #f3f3f3;

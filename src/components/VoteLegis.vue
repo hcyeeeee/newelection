@@ -1,32 +1,441 @@
 <template>
-    <div class="layout">
+    <div class="layout vote">
         <div class="icontitle">
             <img src="../assets/LegisList.png" alt="">
-            <h2> {{ selectedCity }}立委即時開票區</h2>
-            <h2 v-if="selectedRegion == '不分區'">
-                {{ selectedCity }}不分區立委參選名單</h2>
+            <h2 v-if="currentTab !== 'tab6' && currentTab !== 'tab7' && currentTab !== 'tab8'"> {{ selectedCity }}立委即時開票區
+            </h2>
+            <h2 v-if="currentTab == 'tab6'">
+                平地原住民即時開票區</h2>
+            <h2 v-if="currentTab == 'tab7'">
+                山地原住民即時開票區</h2>
+            <h2 v-if="currentTab == 'tab8'">
+                政黨票即時開票區</h2>
         </div>
-        <div style="display: grid;grid: 1fr 1fr;grid-template-columns: 1fr 4fr;">
+        <div class="mbtab_content mb">
+            <div v-if="currentTab === 'tab1'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+                        <option value="tab1" :class="{ 'active': selectedArea == '北部地區' }">北部地區</option>
+                        <option value="tab2" :class="{ 'active': selectedArea == '中部地區' }">中部地區</option>
+                        <option value="tab3" :class="{ 'active': selectedArea === '北部地區' }">南部地區</option>
+                        <option value="tab4" :class="{ 'active': selectedArea === '北部地區' }">東部地區</option>
+                        <option value="tab5" :class="{ 'active': selectedArea === '北部地區' }">離島地區</option>
+                        <option value="tab6" :class="{ 'active': selectedArea === '北部地區' }">平地原住民</option>
+                        <option value="tab7" :class="{ 'active': selectedArea === '北部地區' }">山地原住民</option>
+                        <option value="tab8" :class="{ 'active': selectedArea === '北部地區' }">不分區</option>
+                    </select>
+                    <div>
+                        <select v-model="selectedCity" class=" custom-select select_mb">
+                            <template v-for="election in LegisT2.detail">
+                                <option :key="election.id" :value="election.cityName"
+                                    v-if="['台北市', '新北市', '基隆市', '桃園市', '新竹市', '新竹縣', '宜蘭縣'].includes(election.cityName)">
+                                    {{ election.cityName }}
+                                </option>
+                            </template>
+                        </select>
+                    </div>
+                </div>
+
+                <div v-for=" election in LegisT2.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td><img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party"> {{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="currentTab === 'tab2'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                    <select v-model="selectedCity" class=" custom-select select_mb">
+                        <template v-for="election in LegisT2.detail">
+                            <option :key="election.id" :value="election.cityName"
+                                v-if="['台中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣'].includes(election.cityName)">
+                                {{ election.cityName }}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+                <div v-for=" election in LegisT2.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td><img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party">{{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="currentTab === 'tab3'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                    <select v-model="selectedCity" class=" custom-select select_mb">
+                        <template v-for="election in LegisT2.detail">
+                            <option :key="election.id" :value="election.cityName"
+                                v-if="['高雄市', '臺南市', '嘉義市', '嘉義縣', '屏東縣', '澎湖縣'].includes(election.cityName)">
+                                {{ election.cityName }}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+                <div v-for="election in  LegisT2.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td><img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party">{{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="currentTab === 'tab4'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                    <select v-model="selectedCity" class=" custom-select select_mb">
+                        <template v-for="election in LegisT2.detail">
+                            <option :key="election.id" :value="election.cityName"
+                                v-if="['花蓮縣', '台東縣'].includes(election.cityName)">
+                                {{ election.cityName }}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+                <div v-for="election in  LegisT2.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td><img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party"> {{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="currentTab === 'tab5'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                    <select v-model="selectedCity" class=" custom-select select_mb">
+                        <template v-for="election in LegisT2.detail">
+                            <option :key="election.id" :value="election.cityName"
+                                v-if="['連江縣', '金門縣'].includes(election.cityName)">
+                                {{ election.cityName }}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+
+                <div v-for="election in  LegisT2.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td> <img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party">{{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="currentTab === 'tab6'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                    <select v-model="selectedCity" class=" custom-select select_mb">
+                        <template v-for="election in LegisT3.detail">
+                            <option :value="election.cityName">
+                                {{ election.cityName }}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+
+                <div v-for="election in  LegisT3.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td> <img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party">{{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="currentTab === 'tab7'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                    <select v-model="selectedCity" class=" custom-select select_mb">
+                        <template v-for="election in LegisT4.detail">
+                            <option :value="election.cityName">
+                                {{ election.cityName }}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+
+                <div v-for="election in  LegisT4.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ item.areaNo }}</td>
+                                        <td> <img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party">{{ items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div v-if="currentTab === 'tab8'">
+                <div class="Region-navtab_mb">
+                    <select class=" custom-select select_mb" @change="handleTabChange" v-model="currentTab">
+                        <option value="tab1">北部地區</option>
+                        <option value="tab2">中部地區</option>
+                        <option value="tab3">南部地區</option>
+                        <option value="tab4">東部地區</option>
+                        <option value="tab5">離島地區</option>
+                        <option value="tab6">平地原住民</option>
+                        <option value="tab7">山地原住民</option>
+                        <option value="tab8">不分區</option>
+                    </select>
+                </div>
+                <h2>{{ LegisT5.typeName }}</h2>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>號次</th>
+                                <th>政黨</th>
+                                <th>票數</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="items in LegisT5.detail" :key="items.index">
+                                <td>{{ items.partyNo }}</td>
+                                <td><img class="partyicon"
+                                        :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.cityName + '.jpg'"
+                                        :alt="items.party">{{ items.cityName }}</td>
+                                <td> <count-up :end-val="items.tickets" :options="options"></count-up>票</td>
+                                <td> {{ items.ticketsRate }}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="pctab pc">
             <ul class="Region-navtab pc">
                 <li style="background: transparent; color: #c1c1c1; box-shadow: none;">地區/縣市</li>
-                <li @click="showTab('tab1')">北部地區</li>
-                <li @click="showTab('tab2')">中部地區</li>
-                <li @click="showTab('tab3')">南部地區</li>
-                <li @click="showTab('tab4')">東部地區</li>
-                <li @click="showTab('tab5')">離島地區</li>
-                <li @click="showTab('tab6')">山地原住民</li>
-                <li @click="showTab('tab7')">不分區</li>
-
+                <li @click="showTab('tab1')" :class="{ 'active': currentTab === 'tab1' }">北部地區</li>
+                <li @click="showTab('tab2')" :class="{ 'active': currentTab === 'tab2' }">中部地區</li>
+                <li @click="showTab('tab3')" :class="{ 'active': currentTab === 'tab3' }">南部地區</li>
+                <li @click="showTab('tab4')" :class="{ 'active': currentTab === 'tab4' }">東部地區</li>
+                <li @click="showTab('tab5')" :class="{ 'active': currentTab === 'tab5' }">離島地區</li>
+                <li @click="showTab('tab6')" :class="{ 'active': currentTab === 'tab6' }">平地原住民</li>
+                <li @click="showTab('tab7')" :class="{ 'active': currentTab === 'tab7' }">山地原住民</li>
+                <li @click="showTab('tab8')" :class="{ 'active': currentTab === 'tab8' }">不分區</li>
             </ul>
-
             <!-- Tab 內容 -->
             <div v-show="currentTab === 'tab1'">
-                <ul>
+                <ul class="pc">
                     <li @click="selectCity(election.cityName)" v-for="election in  LegisT2.detail" :key="election.id">
                         <h3 v-show="election.cityName == '台北市' || election.cityName == '新北市' || election.cityName == '基隆市'
                             || election.cityName == '桃園市' || election.cityName == '新竹市' || election.cityName == '新竹縣' ||
-                            election.cityName == '宜蘭縣'" :class="{ 'active1': selectedCity === election.cityName }">{{
-        election.cityName }}</h3>
+                            election.cityName == '宜蘭縣'" :class="{ 'active1': selectedCity === election.cityName }">
+                            {{
+                                election.cityName }}</h3>
                     </li>
                 </ul>
                 <div v-for=" election in LegisT2.detail" :key="election.id">
@@ -49,7 +458,7 @@
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
-                                        <td> {{ items.ticket }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
                                         <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
                                                 style="z-index: 99999; width: 30px;">
                                         </td>
@@ -89,7 +498,7 @@
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
-                                        <td> {{ items.ticket }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
                                         <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
                                                 style="z-index: 99999; width: 30px;">
                                         </td>
@@ -112,7 +521,6 @@
                             {{ election.cityName }}</h3>
                     </li>
                 </ul>
-
                 <div v-for="election in  LegisT2.detail" :key="election.id">
                     <div>
                         <div>
@@ -133,7 +541,7 @@
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
-                                        <td> {{ items.ticket }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
                                         <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
                                                 style="z-index: 99999; width: 30px;">
                                         </td>
@@ -172,7 +580,7 @@
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
-                                        <td> {{ items.ticket }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
                                         <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
                                                 style="z-index: 99999; width: 30px;">
                                         </td>
@@ -211,7 +619,7 @@
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
-                                        <td> {{ items.ticket }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
                                         <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
                                                 style="z-index: 99999; width: 30px;">
                                         </td>
@@ -223,83 +631,118 @@
                 </div>
             </div>
             <div v-show="currentTab === 'tab6'">
-                <h2>{{ LegisT3.typeName }}</h2>
+                <ul>
+                    <li @click="selectCity(election.cityName)" v-for="election in  LegisT3.detail" :key="election.id">
+                        <h3 :class="{ 'active1': selectedCity === election.cityName }">
+                            {{ election.cityName }}</h3>
+                    </li>
+                </ul>
                 <div v-for="election in  LegisT3.detail" :key="election.id">
-                    <table>
-                        <thead>
-                            <tr v-if="election.cityNo == 1">
-                                <th>選區</th>
-                                <th>政黨</th>
-                                <th>姓名</th>
-                                <th>票數</th>
-                                <th>當選註記</th>
-                            </tr>
-                        </thead>
-                        <tbody v-for="item in election.areas" :key="item.index">
-                            <tr v-for="items in item.tickets" :key="items.index">
-                                <td> {{ election.cityName }}</td>
-                                <td><img class="partyicon"
-                                        :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
-                                        :alt="items.party">{{ items.party }}</td>
-                                <td> {{ items.candName }}</td>
-                                <td> {{ items.ticket }}</td>
-                                <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                        style="z-index: 99999; width: 30px;">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th>姓名</th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td> {{ election.cityName }}</td>
+                                        <td style="white-space:wrap; max-height:fit-content; justify-content: start;"><img
+                                                class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party"> {{
+                                                    items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div v-if="LegisT4.typeName == '山地原住民立委'">
-                    <h2>{{ LegisT4.typeName }}</h2>
-                    <div v-for="election in  LegisT4.detail" :key="election.id">
-                        <table>
-                            <thead>
-                                <tr v-if="election.cityNo == 1">
-                                    <th>選區</th>
-                                    <th>政黨</th>
-                                    <th>姓名</th>
-                                    <th>票數</th>
-                                    <th>當選註記</th>
-                                </tr>
-                            </thead>
-                            <tbody v-for="item in election.areas" :key="item.index">
-                                <tr v-for="items in item.tickets" :key="items.index">
-                                    <td> {{ election.cityName }}</td>
-                                    <td><img class="partyicon"
-                                            :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
-                                            :alt="items.party">{{ items.party }}</td>
-                                    <td> {{ items.candName }}</td>
-                                    <td> {{ items.ticket }}</td>
-                                    <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                            style="z-index: 99999; width: 30px;">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+            </div>
+            <div v-show="currentTab === 'tab7'">
+                <ul>
+                    <li @click="selectCity(election.cityName)" v-for="election in  LegisT4.detail" :key="election.id">
+                        <h3 :class="{ 'active1': selectedCity === election.cityName }">
+                            {{ election.cityName }}</h3>
+                    </li>
+                </ul>
+                <div v-for="election in  LegisT4.detail" :key="election.id">
+                    <div>
+                        <div>
+                            <table v-if="selectedCity === election.cityName">
+                                <thead>
+                                    <tr>
+                                        <th>選區</th>
+                                        <th style="white-space:wrap; max-height:fit-content; justify-content: center;">姓名
+                                        </th>
+                                        <th>票數</th>
+                                        <th>當選註記</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="item in election.areas" :key="item.index">
+                                    <tr v-for="items in item.tickets" :key="items.index" style="max-height:70px;">
+                                        <td> {{ election.cityName }}</td>
+                                        <td style="white-space:wrap;   justify-content: start;"><img class="partyicon"
+                                                :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
+                                                :alt="items.party"> {{
+                                                    items.candName }}</td>
+                                        <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
+                                                style="z-index: 99999; width: 30px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div v-show="currentTab === 'tab7'">
+            <div v-show="currentTab === 'tab8'">
                 <h2>{{ LegisT5.typeName }}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>號次</th>
+                            <th>政黨</th>
+                            <th>票數</th>
+                            <th>比例</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="items in LegisT5.detail" :key="items.index">
+                            <td>{{ items.partyNo }}</td>
+                            <td><img class="partyicon"
+                                    :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.cityName + '.jpg'"
+                                    :alt="items.party">{{ items.cityName }}</td>
+                            <td> <count-up :end-val="items.tickets" :options="options"></count-up>票</td>
+                            <td> {{ items.ticketsRate }}</td>
 
-                <div v-for=" picdata in LegisT5.detail" :key="picdata.id">
-                    {{ picdata }}
-                </div>
-
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </template>
 <script>
-import axios from 'axios';
-
+import axios from 'axios'
+import CountUp from "vue-countup-v3";
 export default {
-    name: 'BarChart',
+
     data() {
         return {
             selectedArea: null,
-            selectedCity: null,
+            selectedCity: '',
             LegisT2: [],
             LegisT3: [],
             LegisT4: [],
@@ -307,12 +750,23 @@ export default {
             CityNo: null,
             currentTab: 'tab1',
             loaded: false,
-            chartdata: null
+            options: {
+                duration: 0.5,
+                useEasing: true,
+                useGrouping: true,
+                separator: ",",
+                decimal: ",",
+                prefix: "",
+                suffix: "",
+            },
         };
     }, methods: {
+        handleTabChange(event) {
+            const selectedTab = event.target.value;
+            this.showTab(selectedTab);
+        },
         showTab(tab) {
             this.currentTab = tab;
-            // Set the default selected city based on the region
             switch (tab) {
                 case 'tab1':
                     this.selectedCity = '台北市';
@@ -329,14 +783,13 @@ export default {
                 case 'tab5':
                     this.selectedCity = '連江縣';
                     break;
-                // Add cases for other tabs as needed
                 default:
                     this.selectedCity = '台北市';
             }
         },
         getLegis() {
             axios
-                .get("/ftvelect.json")
+                .get("./ftvelect.json")
                 .then((response) => {
                     this.LegisT2 = response.data.T2;
                     this.LegisT3 = response.data.T3;
@@ -346,21 +799,21 @@ export default {
                 .catch((error) => {
                     console.log("error" + error);
                 });
-
         },
         selectCity(cityName) {
             this.selectedCity = cityName;
         },
     },
     mounted() {
-        this.selectedArea = '北部地區'
-        this.selectedCity = '台北市'
+        this.selectedArea = '北部地區';
+        this.selectedCity = '台北市';
         this.getLegis();
-        // setInterval(() => {
-        //     this.getLegis()
-        // }, 8000);
+        setInterval(() => {
+            this.getLegis();
+        }, 10000);
+    }, components: {
+        CountUp,
     }
-
 }
 
 </script>
@@ -375,15 +828,14 @@ export default {
 .partyicon {
     width: 30px !important;
     border-radius: 100px;
-    margin-right: 1rem;
+    margin-right: .5rem;
     height: 30px !important;
+
+    @include pad {
+        margin-right: 1rem;
+    }
 }
 
-.dddd {
-    display: grid;
-    grid-template-columns: 2fr 9fr;
-
-}
 
 .Region-navtab {
     display: flex;
@@ -392,9 +844,8 @@ export default {
     text-align: center;
     justify-content: start;
     font-size: 1.4rem;
-
     margin: auto;
-    margin-top: 1rem;
+
 
     li {
         background: #f3f3f3;
@@ -422,6 +873,7 @@ export default {
     border-bottom: 2px solid #dedede;
     display: flex;
 
+
     .active {
         color: black !important;
         border-bottom: 2px solid orange;
@@ -447,13 +899,7 @@ export default {
     }
 }
 
-.pc {
-    display: none;
 
-    @include pad {
-        display: flex;
-    }
-}
 
 .pass {
     width: 30px;
@@ -474,14 +920,99 @@ ul {
         h3 {
             margin: 1rem;
             padding: .5rem;
-            border-radius: 100px;
-            background: lightgray;
+            border-radius: 20px;
+            background: rgba(217, 217, 217, 0.35);
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            cursor: pointer;
+            margin-top: 0rem;
         }
     }
 }
 
 .active1 {
-    border-radius: 100px;
+    border-radius: 20px;
+    background: rgba(255, 122, 0, 0.20);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+
+
+.pctab {
+
+    display: none;
+
+    @include pad {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+}
+
+.mbtab {
+    display: flex;
+    width: 100px;
+}
+
+
+tr {
+    max-height: 45px;
+    height: fit-content;
+    display: flex;
+
+    th {
+        &:first-child {
+            width: 60%;
+
+            @include pad {}
+        }
+
+        &:nth-child(4) {
+            width: 60%;
+        }
+    }
+
+    td {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        @include pad {}
+
+        &:first-child {
+            width: 60%;
+
+            @include pad {}
+        }
+
+        &:nth-child(2) {
+            white-space: wrap;
+
+            @include pad {
+                white-space: nowrap;
+            }
+        }
+
+        &:nth-child(4) {
+            width: 60%;
+        }
+    }
+}
+
+table {
+    margin-top: 1rem;
+
+    @include pad {
+        margin-top: 0rem;
+    }
+}
+
+.Region-navtab_mb {
+    gap: 1rem
+}
+
+.active {
+    color: rgb(255, 255, 255) !important;
+    border-bottom: 2px solid orange;
     background: rgba(255, 122, 0, 0.20);
 }
 </style>

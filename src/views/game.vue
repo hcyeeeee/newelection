@@ -1,0 +1,156 @@
+<template>
+  <div class="views">
+    <TheMarquee />
+    <TheBanner />
+    <div v-html="typeformEmbedCode">
+    </div>
+    <h2 style="margin:1rem auto 1rem; display:flex; justify-content:center">選舉測驗－您的理念最接近哪位總統候選人？</h2>
+
+    <img src="https://www.ftvnews.com.tw/topics/2024election/game.jpg" alt=""
+      style="margin:1rem auto 1rem; display:flex; justify-content:center">
+
+    <div class="lds-spinner">
+
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+
+    </div>
+
+
+
+  </div>
+</template>
+
+<script >
+import TheBanner from '../components/TheBanner.vue'
+import TheMarquee from '../components/TheMarquee.vue'
+
+export default {
+  components: {
+    TheMarquee,
+    TheBanner,
+  },
+  data() {
+    return {
+      typeformEmbedCode: ''
+    };
+  },
+  created() {
+    // 在组件加载完成后，插入Typeform的嵌入代码
+    this.typeformEmbedCode = '<div data-tf-live="01HHGP37CJGFWJN9SDYF49J81J"></div>';
+    // 动态加载Typeform的embed.js
+    const script = document.createElement('script');
+    script.src = '//embed.typeform.com/next/embed.js';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+};
+</script>
+<style>
+.lds-spinner {
+  color: official;
+  display: flex;
+  position: relative;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  top: -16rem;
+}
+
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: #f18e0c;
+}
+
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+</style>
