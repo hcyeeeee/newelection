@@ -2,6 +2,7 @@
 <template >
   <TheHeader />
   <div class="all">
+    <canvas id="myChart" width="400" height="400"></canvas>
     <TheSidebar />
     <router-view></router-view>
     <TheCalender />
@@ -16,18 +17,53 @@ import { RouterLink, RouterView } from 'vue-router'
 import TheHeader from './components/TheHeader.vue'
 import TheCalender from './components/TheCalender.vue'
 import TheSidebar from './components/TheSidebar.vue'
-import BottomNav from './components/BottomNav.vue'
 import ScrollUp from './components/ScrollUp.vue'
 export default {
   components: {
     TheHeader,
     TheCalender,
     TheSidebar,
-    BottomNav,
     ScrollUp
   },
   created() {
-    AOS.init()
+    AOS.init();
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
   }
 }
 </script>
@@ -242,12 +278,21 @@ h2 {
   }
 }
 
+
+
+
 .lv-progressbar {
   border: 0 none;
-  height: 1.5rem;
+  height: 1.5rem !important;
   background: #F3EEE8 !important;
   border-radius: 3px;
   border-radius: 2rem !important;
+}
+
+@media screen and (max-width: 500px) {
+  .lv-progressbar {
+    height: 1rem !important;
+  }
 }
 </style>
 

@@ -66,11 +66,6 @@ const router = createRouter({
       meta: {
         title:
           "2024誰當家》選舉測驗－您的理念最接近哪位總統候選人？｜民視新聞網",
-        ogUrl: "https://www.ftvnews.com.tw/topics/2024election/game",
-        ogTitle:
-          "2024誰當家》選舉測驗－您的理念最接近哪位總統候選人？｜民視新聞網",
-        ogImage: "https://www.ftvnews.com.tw/topics/2024election/game.jpg",
-        ogDescription: "Your New OG Description",
       },
     },
   ],

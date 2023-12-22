@@ -49,14 +49,15 @@
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
                                         <td><img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party"> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -91,6 +92,7 @@
                     <div>
                         <div>
                             <table v-if="selectedCity === election.cityName">
+                                {{ election.cityName }}
                                 <thead>
                                     <tr>
                                         <th>選區</th>
@@ -100,14 +102,15 @@
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
                                         <td><img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -150,14 +153,15 @@
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
                                         <td><img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -201,14 +205,15 @@
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
                                         <td><img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party"> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -253,14 +258,15 @@
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
                                         <td> <img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -300,18 +306,20 @@
                                         <th>選區</th>
                                         <th>姓名</th>
                                         <th>票數</th>
-                                        <th>當選註記</th>
+                                        <th style="width:50%; max-height:fit-content; justify-content: center;">當選註記</th>
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
-                                        <td> <img class="partyicon"
+                                        <td style="justify-content:start; min-width:130px;"> <img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party">{{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td style="width:50%; max-height:fit-content; justify-content: center;"> <img
+                                                v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -351,18 +359,23 @@
                                         <th>選區</th>
                                         <th>姓名</th>
                                         <th>票數</th>
-                                        <th>當選註記</th>
+                                        <th style="width:50%; max-height:fit-content; justify-content: center;">當選註記</th>
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
+                                    <!-- <tr>{{ item.areaName }}</tr> -->
                                     <tr v-for="items in item.tickets" :key="items.index">
                                         <td> {{ item.areaNo }}</td>
-                                        <td> <img class="partyicon"
+                                        <td
+                                            style="justify-content:start; margin-left: 10px;  max-width:150px;white-space: wrap;">
+                                            <img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
-                                                :alt="items.party">{{ items.candName }}</td>
+                                                :alt="items.party">{{ items.candName }}
+                                        </td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td style="width:50%; max-height:fit-content; justify-content: center;"> <img
+                                                v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -441,6 +454,7 @@
                 <div v-for=" election in LegisT2.detail" :key="election.id">
                     <div>
                         <div>
+
                             <table v-if="selectedCity === election.cityName">
                                 <thead>
                                     <tr>
@@ -459,8 +473,8 @@
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -499,8 +513,8 @@
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -542,8 +556,8 @@
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -581,8 +595,8 @@
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -620,8 +634,8 @@
                                                 :alt="items.party">{{ items.party }}</td>
                                         <td> {{ items.candName }}</td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -643,23 +657,29 @@
                             <table v-if="selectedCity === election.cityName">
                                 <thead>
                                     <tr>
-                                        <th>選區</th>
+                                        <th style="width:50%; max-height:fit-content; justify-content:center;">選區</th>
                                         <th>姓名</th>
                                         <th>票數</th>
-                                        <th>當選註記</th>
+                                        <th
+                                            style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
+                                            當選註記</th>
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
                                     <tr v-for="items in item.tickets" :key="items.index">
-                                        <td> {{ election.cityName }}</td>
-                                        <td style="white-space:wrap; max-height:fit-content; justify-content: start;"><img
-                                                class="partyicon"
+                                        <td style="width:50%; max-height:fit-content; justify-content:center;"> {{
+                                            election.cityName }}</td>
+                                        <td
+                                            style="width:120%; white-space:wrap; max-height:fit-content; justify-content: start;">
+                                            <img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party"> {{
-                                                    items.candName }}</td>
+                                                    items.candName }}
+                                        </td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td style="width:20%; max-height:fit-content; justify-content: center;"> <img
+                                                v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -682,23 +702,29 @@
                             <table v-if="selectedCity === election.cityName">
                                 <thead>
                                     <tr>
-                                        <th>選區</th>
-                                        <th style="white-space:wrap; max-height:fit-content; justify-content: center;">姓名
-                                        </th>
+                                        <th style="width:50%; max-height:fit-content; justify-content:center;">選區</th>
+                                        <th>姓名</th>
                                         <th>票數</th>
-                                        <th>當選註記</th>
+                                        <th
+                                            style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
+                                            當選註記</th>
                                     </tr>
                                 </thead>
                                 <tbody v-for="item in election.areas" :key="item.index">
-                                    <tr v-for="items in item.tickets" :key="items.index" style="max-height:70px;">
-                                        <td> {{ election.cityName }}</td>
-                                        <td style="white-space:wrap;   justify-content: start;"><img class="partyicon"
+                                    <tr v-for="items in item.tickets" :key="items.index">
+                                        <td style="width:50%; max-height:fit-content; justify-content:center;"> {{
+                                            election.cityName }}</td>
+                                        <td
+                                            style="width:120%; white-space:wrap; max-height:fit-content; justify-content: start;">
+                                            <img class="partyicon"
                                                 :src="'https://www.ftvnews.com.tw/topics/2024election/images/partyicon/' + items.party + '.jpg'"
                                                 :alt="items.party"> {{
-                                                    items.candName }}</td>
+                                                    items.candName }}
+                                        </td>
                                         <td><count-up :end-val="items.ticket" :options="options"></count-up>票</td>
-                                        <td> <img v-if="items.winner == '*'" src="../assets/pass.png" alt=""
-                                                style="z-index: 99999; width: 30px;">
+                                        <td style="width:20%; max-height:fit-content; justify-content: center;"> <img
+                                                v-if="items.winner == '*'" src="../assets/pass.png" alt="pass"
+                                                style="z-index: 99;" class="pass">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -738,7 +764,6 @@
 import axios from 'axios'
 import CountUp from "vue-countup-v3";
 export default {
-
     data() {
         return {
             selectedArea: null,
@@ -815,7 +840,6 @@ export default {
         CountUp,
     }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -832,7 +856,7 @@ export default {
     height: 30px !important;
 
     @include pad {
-        margin-right: 1rem;
+        margin-right: .5rem;
     }
 }
 
@@ -844,7 +868,7 @@ export default {
     text-align: center;
     justify-content: start;
     font-size: 1.4rem;
-    margin: auto;
+    margin: 0 auto;
 
 
     li {
@@ -902,12 +926,12 @@ export default {
 
 
 .pass {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 
     @include pad {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -954,19 +978,33 @@ ul {
 
 
 tr {
-    max-height: 45px;
+    max-height: fit-content !important;
     height: fit-content;
     display: flex;
 
+
     th {
         &:first-child {
-            width: 60%;
+            width: 30%;
 
-            @include pad {}
+            @include pad {
+                width: 40%;
+            }
         }
 
-        &:nth-child(4) {
-            width: 60%;
+        &:nth-child(3) {
+            @include pad {
+                width: 100%;
+                min-width: 100px;
+            }
+        }
+
+
+        &:nth-child(5) {
+            width: 30%;
+            max-width: 50px;
+            white-space: wrap;
+            font-size: .9rem;
         }
     }
 
@@ -978,23 +1016,39 @@ tr {
 
         @include pad {}
 
+
         &:first-child {
-            width: 60%;
-
-            @include pad {}
-        }
-
-        &:nth-child(2) {
-            white-space: wrap;
+            width: 30%;
 
             @include pad {
-                white-space: nowrap;
+                width: 40%;
             }
         }
 
-        &:nth-child(4) {
-            width: 60%;
+        &:nth-child(2) {
+            white-space: nowrap;
+            justify-content: center;
+
+            @include pad {
+                width: 100%;
+                min-width: 100px;
+            }
         }
+
+        &:nth-child(3) {
+            @include pad {
+                width: 100%;
+                min-width: 100px;
+            }
+        }
+
+        &:nth-child(5) {
+            @include pad {
+                width: 30%;
+                max-width: 120px;
+            }
+        }
+
     }
 }
 

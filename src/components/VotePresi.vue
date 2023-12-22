@@ -32,18 +32,19 @@
                                 <count-up :end-val="item.ticket" :options="options"></count-up>票
                             </div>
 
-                            <img v-if="item.winner == '*'" src="../assets/pass.png" alt="pass" class="pass"
-                                style="z-index: 999;">
+                            <img v-if="item.winner == '*'" src="../assets/pass.png" alt="pass" class="pass pc"
+                                style="z-index: 9;">
 
                         </div>
                     </div>
-
                     <div class="ticketspc" :style="{ color: ticketColor }"> <count-up :end-val="item.ticket"
                             :options="options"></count-up>票
+                        <img v-if="item.winner == '*'" src="../assets/pass.png" alt="pass" class="pass"
+                            style="z-index: 9; margin-left:1rem;">
                     </div>
-                    <div style="width: 100%">
-                        <LvProgressBar :value="item.ticket / 10000" :showValue="false" />
 
+                    <div style="width: 100%">
+                        <LvProgressBar :value="item.ticket / 100000" :showValue="false" />
                     </div>
                 </div>
             </div>
@@ -288,13 +289,13 @@ export default {
     width: fit-content;
     color: #FF7A00;
     font-weight: 500;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     text-align: center;
     display: flex;
     justify-content: center;
-    align-content: center;
-    font-size: 1.4rem;
+    align-items: center;
+    font-size: 1.1rem;
 }
 
 .name {
@@ -319,6 +320,7 @@ export default {
     display: none;
     margin: auto;
 
+
     @include phone {
         display: flex;
         font-size: 1.5rem;
@@ -326,7 +328,7 @@ export default {
 }
 
 .ticketspc {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-style: normal;
     font-weight: 500;
     display: flex;
@@ -338,8 +340,8 @@ export default {
 }
 
 .pass {
-    width: 30px !important;
-    height: 30px;
+    width: 25px !important;
+    height: 25px;
     border-radius: 100px;
     right: 10px;
 
@@ -350,14 +352,12 @@ export default {
 }
 
 .vote-list {
-    border-bottom: 2px solid rgba(255, 122, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 122, 0, 0.25);
     background: #FFF;
 
-}
-
-.vote-list {
-    border-bottom: 2px solid rgba(255, 122, 0, 0.25);
-    background: #FFF;
+    &:last-child {
+        border-bottom: transparent;
+    }
 
 }
 </style>

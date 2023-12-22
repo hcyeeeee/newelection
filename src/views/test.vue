@@ -2,13 +2,10 @@
   <div class="home">
     <TheMarquee />
     <sectionBanner />
-    <!-- <TheMarqueeMB /> -->
     <VotePresi />
     <VoteLegis />
     <HomePresi />
     <HomeLegis />
-    <HomeVideo />
-
   </div>
 </template>
 <script>

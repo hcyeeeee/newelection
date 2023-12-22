@@ -26,16 +26,18 @@
         <img src="../assets/bell.png" alt="" style="width: 35px;"> {{ tabs[currentTab].content }}
       </div>
     </div>
+    <homevideo />
   </div>
 </template>
 <script>
 import TheBanner from '../components/TheBanner.vue'
 import TheMarquee from '../components/TheMarquee.vue'
-
+import homevideo from '../components/HomeVideo.vue'
 export default {
   components: {
     TheMarquee,
     TheBanner,
+    homevideo,
   },
   data() {
     return {

@@ -439,11 +439,12 @@ body {
 
 .layout {
   border-radius: 1.25rem;
-  margin: 1.25rem auto;
+  margin: 0rem auto 1.25rem;
   background: #fff;
   padding: 0.5rem;
   box-shadow: $Bg-Shadow;
   @include pad {
+    margin: 1.25rem auto;
     padding: 1rem;
   }
   img {
@@ -767,6 +768,7 @@ table {
         padding: 0.5rem;
         background: #f3eee8;
         justify-content: center;
+        align-items: center;
         width: 100%;
         font-size: $font-sm;
         @include pad {
@@ -782,6 +784,13 @@ table {
         }
         &:nth-child(2) {
           justify-content: center;
+        }
+        &:nth-child(5) {
+          @include pad {
+            width: 40%;
+            max-width: 120px;
+            white-space: wrap;
+          }
         }
       }
     }
@@ -800,16 +809,18 @@ table {
       &:nth-child(even) {
         background: #f8f8f8;
       }
+
       td {
         display: flex;
         width: 100%;
         justify-content: center;
         padding: 0.3rem;
-        margin: 0.2rem;
+        margin: 0rem;
         font-size: $font-sm;
         align-items: center;
         @include pad {
           padding: 0.3rem;
+          margin: 0.2rem;
           font-size: $font-md;
           font-weight: normal;
         }
@@ -825,6 +836,12 @@ table {
           @include pad {
             width: 100%;
             min-width: 100px;
+          }
+        }
+        &:nth-child(5) {
+          @include pad {
+            width: 50%;
+            max-width: 120px;
           }
         }
       }
@@ -901,7 +918,7 @@ table {
   position: relative;
   width: 100%;
   margin: auto;
-}
+}ㄔㄩㄛ 
 
 .marquee_layout {
   width: 95%;

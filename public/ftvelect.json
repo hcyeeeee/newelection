@@ -15,14 +15,14 @@
         "candName": "賴清德",
         "party": "民進黨",
         "ticket": 221200,
-        "winner": ""
+        "winner": "*"
       },
       {
         "candNo": 3,
         "candName": "侯友宜",
         "party": "國民黨",
         "ticket": 122200,
-        "winner": "*"
+        "winner": ""
       }
     ]
   },
