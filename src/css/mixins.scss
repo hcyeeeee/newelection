@@ -1,0 +1,29 @@
+// ✅ 全域共用斷點 mixin
+$phone: 500px;
+$pad: 821px;
+$web: 1024px;
+$big: 1440px;
+
+@mixin phone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media (min-width: #{$pad}) {
+    @content;
+  }
+}
+
+@mixin web {
+  @media (min-width: #{$web}) {
+    @content;
+  }
+}
+
+@mixin big {
+  @media (min-width: #{$big}) {
+    @content;
+  }
+}

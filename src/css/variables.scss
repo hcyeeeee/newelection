@@ -1,23 +1,5 @@
-@mixin phone {
-  @media (min-width: 500px) {
-    @content;
-  }
-}
-@mixin pad {
-  @media (min-width: 821px) {
-    @content;
-  }
-}
-@mixin web {
-  @media (min-width: 1000px) {
-    @content;
-  }
-}
-@mixin big {
-  @media (min-width: 1400px) {
-    @content;
-  }
-}
+
+
 
 // Colors
 $orange: #f08308;
@@ -28,8 +10,6 @@ $Bg-Shadow: 1.95px 1.95px 2.6px 0px rgba(0, 0, 0, 0.15);
 $orangeLiner: (
   linear-gradient(115deg, #f07708 30.73%, #ff9823 32.81%, #f04e08 100%)
 );
-
-// Typography
 $letter: 0.1rem;
 $font-sm: 1rem;
 $font-md: 1.2rem;

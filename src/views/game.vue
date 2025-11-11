@@ -41,9 +41,9 @@ export default {
     };
   },
   created() {
-    // 在组件加载完成后，插入Typeform的嵌入代码
+
     this.typeformEmbedCode = '<div data-tf-live="01HHGP37CJGFWJN9SDYF49J81J"></div>';
-    // 动态加载Typeform的embed.js
+
     const script = document.createElement('script');
     script.src = '//embed.typeform.com/next/embed.js';
     script.async = true;

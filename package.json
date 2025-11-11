@@ -20,6 +20,7 @@
     "bootstrap-vue": "^2.23.1",
     "chart.js": "^4.4.1",
     "lightvue": "^1.5.1",
+    "pinia": "^3.0.4",
     "requirejs": "^2.3.6",
     "swiper": "^10.2.0",
     "vue": "^3.3.13",
