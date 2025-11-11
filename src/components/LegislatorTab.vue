@@ -1,7 +1,7 @@
 <template>
     <div class="layout Legislator-tab">
         <div class="icontitle">
-            <img src="../assets/HomeLegis.png" alt="">
+            <img loading="lazy" srcset="../assets/HomeLegis.png" alt="">
             <h2>立委激戰最新動態</h2>
         </div>
         <div class="Legislator pc">
@@ -17,35 +17,37 @@
 
             <swiper v-if="selectedCandidate" :slidesPerView="3" :loop="true" :spaceBetween="20"
                 :pagination="{ clickable: true, }" :navigation="{
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                }" :modules="modules" class="mySwiper">
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                }" :modules="modules" class="mySwiper">
 
                 <swiper-slide class="out" v-for="item in selectedCandidate.responseData" :key="item.index"> <a
                         :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
-                        <img loading="lazy" :src="item.Image" :alt="item.ID">
+                        <img loading="lazy" :srcset="item.Image" :alt="item.ID">
                         <h3 class="title">{{ item.Title.replace("快新聞／", " ") }}</h3>
                     </a>
                 </swiper-slide>
 
             </swiper>
             <div class="arrow">
-                <div class="swiper-button-next"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="swiper-button-prev"><i class="fa-solid fa-arrow-left "></i></div>
+                <div class="swiper-button-next"> <font-awesome-icon icon="fa-solid fa-arrow-right" style="width: 15px;" />
+                </div>
+                <div class="swiper-button-prev"> <font-awesome-icon icon="fa-solid fa-arrow-left" style="width: 15px;" />
+                </div>
             </div>
         </div>
         <div class="mb">
             <select class="mySelect custom-select" v-model="selectedCandidate" @change="selectCandidate(selectedCandidate)">
                 <option value="">請選擇候選人</option>
                 <option v-for="(candidate, index) in candidates" :key="index" :value="candidate">{{ candidate.name.blue +
-                    candidate.name.green + candidate.name.other }}</option>
+                                    candidate.name.green + candidate.name.other }}</option>
             </select>
             <div class="Legislator">
                 <div v-if="selectedCandidate">
                     <div class="out">
                         <a v-for="(item, index) in selectedCandidate.responseData" :key="index" data-aos="fade-up"
                             :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link2">
-                            <img loading="lazy" :src="item.Image" :alt="item.ID">
+                            <img loading="lazy" :srcset="item.Image" :alt="item.ID">
                             <div class="inner">
                                 <p class="title">{{ item.Title.replace("快新聞／", " ") }}</p>
                                 <div class="time">{{ item.CreateDate }}</div>

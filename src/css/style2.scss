@@ -156,10 +156,13 @@ body {
       margin-bottom: 10px;
       letter-spacing: 1px;
       @include phone {
-        height: 200px;
+        height: 160px;
         margin-bottom: 0px;
       }
-
+      @include big {
+        height: 180px;
+        margin-bottom: 0px;
+      }
       h1 {
         font-size: $font-md;
         line-height: 1.5;
@@ -245,21 +248,24 @@ body {
     display: flex;
     justify-content: space-between;
     margin: auto;
-    max-width: 1400px;
-    width: 100%;
+    max-width: 1330px;
+    width: 90%;
     background: $white;
   }
   .logo {
     width: 13rem;
     margin: auto;
-    margin-left: 0rem;
+    margin-left: -1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include pad {
+      width: 12.5rem;
+    }
   }
   .share {
     display: flex;
-    gap: $gap-md;
+    gap: $gap-sm;
     width: 150px;
     margin: auto;
     margin-right: 0rem;
@@ -285,10 +291,9 @@ body {
 
   .bars {
     z-index: 999;
-    padding: 1rem auto;
     position: fixed;
     top: 0rem;
-    right: 1rem;
+    right: 0rem;
     color: white;
     font-size: 1.5rem;
 
@@ -297,13 +302,12 @@ body {
     }
     .fa-bars {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem 0.5rem;
       background: $orangeLiner;
+      width: 50px;
+      padding: 1rem 0rem;
     }
     .fa-xmark {
+      margin-right: 0.5rem;
       padding: 1rem 0.5rem;
       color: #00000066;
       font-weight: 350;
@@ -320,7 +324,7 @@ body {
   .mobile_menu {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     width: 80vw;
     position: fixed;
     padding: 1rem;
@@ -351,7 +355,7 @@ body {
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     a {
       display: flex;
       gap: $gap-sm;
@@ -374,7 +378,7 @@ body {
     background: $white;
     box-shadow: $Bg-Shadow;
     position: sticky;
-    top: 0rem;
+    top: 4rem;
     padding: 0rem 0.5rem 1.25rem;
     border-radius: 1.25rem;
     margin-top: 4.5rem;
@@ -633,7 +637,7 @@ body {
     margin: auto;
     p {
       color: $white;
-      margin: auto;
+      margin: auto 0;
     }
     a {
       color: $white;
@@ -740,6 +744,7 @@ body {
   font-weight: 400;
   line-height: normal;
   text-align: center;
+  font-display: swap;
 }
 .mb {
   display: block;
@@ -787,7 +792,7 @@ table {
         }
         &:nth-child(5) {
           @include pad {
-            width: 40%;
+            width: 30%;
             max-width: 120px;
             white-space: wrap;
           }
@@ -802,7 +807,6 @@ table {
     height: fit-content;
     gap: 0 0.5rem;
     tr {
-      max-height: 45px;
       height: fit-content;
       display: flex;
 
@@ -831,7 +835,6 @@ table {
           }
         }
         &:nth-child(2) {
-          white-space: nowrap;
           justify-content: center;
           @include pad {
             width: 100%;
@@ -911,15 +914,16 @@ table {
 }
 .Regionbtn {
   width: fit-content;
-  padding: 8px 16px;
+  padding: 8px;
+  text-align: center;
+  align-items: center;
 }
 
 .s {
   position: relative;
   width: 100%;
   margin: auto;
-}ㄔㄩㄛ 
-
+}
 .marquee_layout {
   width: 95%;
   margin: auto;
@@ -927,6 +931,7 @@ table {
   max-width: 1400px;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  overflow: hidden;
 
   @include pad {
     width: 100%;
@@ -1130,18 +1135,18 @@ p {
 
 .arrow {
   position: relative;
-  width: 25%;
+  width: 30%;
   margin: 0rem auto;
   top: -0px;
   top: -25px;
-  min-width: 180px;
+  min-width: 220px;
+
   @include pad {
     position: relative;
     width: 25%;
     margin: 1rem auto;
-    top: -28px;
     top: -34px;
-    min-width: 180px;
+    min-width: 220px;
   }
 }
 
@@ -1149,16 +1154,16 @@ p {
 .fa-arrow-right {
   color: $orange;
   padding: 0.3rem 0.4rem;
-  font-size: 15px;
   &:hover,
   &:active {
     color: $orange;
-    border-radius: 100px;
     border: 2px solid;
+    border-radius: 100px;
+    height: 20px;
   }
   @include pad {
-    padding: 0.5rem 0.6rem;
-    font-size: 20px;
+    height: 10px;
+    padding: -0.1rem 0.8rem;
   }
 }
 
@@ -1332,11 +1337,11 @@ p {
     margin: -0.5rem auto;
   }
 }
-
-.Region-navtab_mb,
+s .Region-navtab_mb,
 .select_mb {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
   @include pad {
     display: none;
   }
@@ -1456,4 +1461,10 @@ p {
 .swiper-slide-shadow-right {
   background-image: none !important;
   box-shadow: none !important;
+}
+
+hr {
+  color: #f08308;
+  width: 100%;
+  border: 1px solid #f3eee8;
 }

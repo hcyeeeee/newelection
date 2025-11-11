@@ -6,11 +6,10 @@
     </div>
     <h2 style="margin:1rem auto 1rem; display:flex; justify-content:center">選舉測驗－您的理念最接近哪位總統候選人？</h2>
 
-    <img src="https://www.ftvnews.com.tw/topics/2024election/game.jpg" alt=""
+    <img loading="lazy" srcset="https://www.ftvnews.com.tw/topics/2024election/game.jpg" alt=""
       style="margin:1rem auto 1rem; display:flex; justify-content:center">
 
     <div class="lds-spinner">
-
       <div></div>
       <div></div>
       <div></div>
@@ -23,17 +22,13 @@
       <div></div>
       <div></div>
       <div></div>
-
     </div>
-
-
-
   </div>
 </template>
 
-<script >
+<script>
 import TheBanner from '../components/TheBanner.vue'
-import TheMarquee from '../components/TheMarquee.vue'
+import TheMarquee from '../components/VoteMarquee.vue'
 
 export default {
   components: {

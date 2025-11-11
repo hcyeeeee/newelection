@@ -2,7 +2,7 @@
     <div>
         <div class="layout mb">
             <div class="icontitle">
-                <img src="../assets/video.png" alt="">
+                <img loading="lazy" srcset="../assets/video.png" alt="">
                 <h2>Live直播</h2>
             </div>
             <div class="video-container">
@@ -19,7 +19,7 @@
         <div class="home-video">
             <div class="layout2">
                 <div class="icontitle">
-                    <img src="../assets/video.png" alt="">
+                    <img loading="lazy" srcset="../assets/video.png" alt="">
                     <h2>精彩影音</h2>
                 </div>
                 <ul class="video_tab">

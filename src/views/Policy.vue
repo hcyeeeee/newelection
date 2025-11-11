@@ -17,7 +17,7 @@
       </ul>
       <br>
       <div class="tab-content">
-        <div v-for="(tab, index) in   tabs1 " :key="index" v-show="activeTab === index">
+        <div v-for="(tab, index) in tabs1" :key="index" v-show="activeTab === index">
           <a v-if="activeTab !== 1" :href="tab.link" :alt="tab.title" target="_blank" class="policynews"
             :title="tab.title">
             <img :src="tab.imglink" class="policyimg">
@@ -31,9 +31,9 @@
         </div>
       </div>
 
-      <div v-for="(tab, index) in   tabs1 " :key="index" v-show="activeTab === index">
+      <div v-for="(tab, index) in tabs1" :key="index" v-show="activeTab === index">
         <h2 style="margin:1rem; ">· {{ tab.title }}</h2>
-        <div data-aos="fade-down" v-for="(item, itemIndex) in   tab.list " :key="itemIndex" class="policylist">
+        <div data-aos="fade-down" v-for="(item, itemIndex) in tab.list" :key="itemIndex" class="policylist">
           <img :src="'https://www.ftvnews.com.tw/topics/2024election/' + item.img + '.jpg'" alt="圖片">
           <div class="policyinner">
             <h3>{{ item.img }} : {{ item.subtitle }}</h3>
@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import TheBanner from '../components/TheBanner.vue'
-import TheMarquee from '../components/TheMarquee.vue'
+import TheBanner from '../components/VoteBanner.vue'
+import TheMarquee from '../components/VoteMarquee.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
@@ -84,12 +84,6 @@ export default {
           imglink: 'https://cdn.ftvnews.com.tw/manasystem/FileData/News/1aa72c4d-00ac-4d48-8752-5a45fbfb9e2e.jpg',
           list: [
             {
-              subtitle: '落實永續長照，有國家罩！',
-              content: '「主張一：長照再升級，照顧更全面，包含開辦長照保險、提高重度失能者給付額度、增加重度失能者住宿型機構補助，且推動長照＋，提供重度失能家庭多元全時(24h)照顧服務。\n\n主張二：住院有看護，家屬負擔減實施住院「全責照護」，看護由醫院統聘，解決看護尋找困難，減家屬負擔。\n\n主張三：支持照顧者，經濟減壓力，包含擴大長期照顧與高齡養護特別扣除額、發放「重度失能家庭照顧者津貼」每月5千元及提供失能家庭全職照顧者於照顧5年以上，增加國民年金給付金額每月5千元。',
-              time: '2023.10.13 三大長照政策',
-              img: '侯友宜'
-            },
-            {
               subtitle: '推動健保永續 打造「健康台灣」',
               content: '「強化重度失能者照顧、優化住宿式服務機構」新增居家社區晚間到宅照顧，並建立24小時重度失能者住宿式服務且補助方案單月最高1萬5千元、一年最高18萬元。\n「照顧不離職、照顧有喘息」提高一對多的社區照顧服務比例, 提供家庭照顧「喘息服務」, 改善巴氏量表, 依照年齡、中風等不同類別條件建立多元標準。\n「提高長照服務涵蓋率，加強照顧服務功能」加強社區式服務據點「照顧服務」功能, 運用照顧科技創新, 提供雲端數位化診療。\n「打造居家、社區、機構、醫療、社福的一體式服務」建立以長照社區整體照顧體系為基礎的共生社區, 落實居家醫療與長照接軌, 擴大並補助老舊寓增設電梯與升降梯等設備。',
               time: '2023.09.21「國家希望工程」國政願景記者會',
@@ -111,8 +105,9 @@ export default {
               subtitle: '八十歲以上長者廢除巴氏量表 直接申請看護移工減輕家屬負擔',
               content: '八十歲以上長者不用巴氏量表，可直接申請外籍看護工；其次，看護移工一定要跟長照資源和訓練結合，提升照護品質；第三，就業安定基金直接補助雇主聘用台灣看護，提升薪資及工作環境，並提高台灣勞工就業競爭力，減輕家屬負擔；第四，釋放家庭勞動力，減輕家庭照顧者的壓力與負擔，讓婦女重回職場。「70至79歲患有癌症二期以上長者，亦可取消巴氏量表」促進長者健康、釋放家庭勞動力。',
               time: '2023.08.29 日間照顧中心四大長照政見',
-              img: '侯友宜'
+              img: '賴清德'
             },
+
             {
               subtitle: '全民納保設長照保險局 用2300億建立長照服務鍊',
               content: '開辦長照保險，由政府、雇主、人民共同負擔，每人每月繳健保費1/4 - 1/5的錢，未來就能用國家提供的長照保障。包含居家服務、夜間照顧、家庭托顧、居家護理、居家及社區復健，聘用外籍看護者同樣受惠。住宿型機構補助應依照失能等級、物價調整評估補助最高增加至3倍，並提供家庭照顧者現金補助、喘息服務。以GDP的1%為目標，用2300億建立長照服務鍊，及PAC(急性後期照顧)制度。',
@@ -144,6 +139,12 @@ export default {
               time: '2023.07.15　侯友宜FB',
               img: '侯友宜'
             },
+            // {
+            //   subtitle: '開一家社會住宅公司　讓年輕人有地方住',
+            //   content: '社宅是窮人維他命，年輕人買不起房，可以先以社宅讓年輕人有地方住，之後在往高端發展，他願意以公益性質、不與民爭利德方式，找建商開發商合作，開一家社會住宅公司，以板橋開始作為示範點。',
+            //   time: '2023.07.21董事長開講粉絲見面會',
+            //   img: '郭台銘'
+            // },
             {
               subtitle: '強化非典型就業勞工權益　⽀持青年創新創業',
               content: '全力推動「居住三對策」，推動「囤房稅 2.0」、「協助百萬租屋家⼾」計畫、精進「青年安心成家優惠貸款」。擴大未來世代公共參與的機會、透過支持返鄉及移居青年，建立從個人、群體到團隊的地方創生支持體系。',
@@ -232,6 +233,7 @@ export default {
               time: '2022.08.01　高雄補教協會演講',
               img: '柯文哲'
             },
+
             {
               subtitle: '提升公托補助　引入彈性育嬰假制度',
               content: '宣布「0~22歲投資未來世代」政策，公托補助提高至7,000元、第二胎8,000元、第三胎9,000元。準公共托嬰或保母服務，補助由8,500元提高至13,000元。此外，更要增進托育品質，提升教保員薪資，調整師生比例，推動彈性育嬰假制度，鼓勵企業建立托育設施。',
@@ -260,6 +262,7 @@ export default {
               time: '2023.04.12　民進黨總統候選人提名記者會',
               img: '賴清德'
             },
+
             {
               subtitle: '以網軍威嚇　警告中共不要侵略',
               content: '網軍會是第一優先，以後每年選一天挑題目告訴中國說，例如10月1日中共國慶，今年把中國高鐵系統全部癱瘓、明年改把ATM癱瘓，告訴他們你要小心，我是有能力把你癱瘓的，別亂動，真的動就搞你。',
@@ -290,6 +293,18 @@ export default {
               time: '2023.08.06　柯文哲官方臉書',
               img: '柯文哲'
             },
+            // {
+            //   subtitle: '無人載具　千里制敵',
+            //   content: '我認為能自動或半自動執行任務的人造機器裝置，無疑會是台灣極需發展的方向，在兵力、武器的相對弱勢下，千里制敵才能減輕我軍傷亡，而無人機與機器人的開發、應用，無疑是最好的選項。',
+            //   time: '2023.08.13　郭台銘官方臉書',
+            //   img: '郭台銘'
+            // },
+            // {
+            //   subtitle: '立基金門　推動兩岸和平',
+            //   content: '建立金門為舉辦兩岸定期對話會議的場所；建立兩岸和平戰略研究院，延聘學者專家，組成金門和平倡議的智庫機構；建立新媒體平台，蒐集並傳播全球有利推動兩岸和平的訊息。和平是我們的信仰，《金門和平倡議》將是我們的具體行動。',
+            //   time: '2023.08.22　金門和平倡議',
+            //   img: '郭台銘'
+            // },
             {
               subtitle: '有主權的和平也才是真正的和平',
               content: '台灣有追求和平的決心，有實力才能帶來和平，有主權的和平也才是真正的和平。未來我將透過民主和平四大支柱 －提升台灣的嚇阻防衛能力、強化經濟韌性及確保供應鏈安全、與全世界民主國家建立夥伴關係，以及尊嚴對等進行兩岸對話及合作，以具體且負責任的行動向全世界展現台灣致力於維持現狀、追求台海和平的決心。',
@@ -308,6 +323,7 @@ export default {
               time: '2023.08.25　《年代向錢看》專訪',
               img: '賴清德'
             },
+
             {
               subtitle: '五個互相來兩岸交流',
               content: '主張「五個互相 」互相認識、互相瞭解、互相尊重、互相合作，互相諒解，我相信交流比交惡好、對話比對抗好、友善比仇恨好。',
@@ -616,5 +632,3 @@ hr {
   }
 }
 </style>
-
-

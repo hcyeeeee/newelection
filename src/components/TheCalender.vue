@@ -6,7 +6,7 @@
         <div class="calender_content">
             <div v-for="item in calender" :key="item.id" class="calender-inner">
                 <div style="margin-bottom: .3rem;font-weight: 400;font-size: 0.9rem;color: rgb(21, 21, 21);">
-                    <i :class="'fa-solid fa-' + item.Icon"></i>
+                    <font-awesome-icon :icon="'fa-solid fa-' + item.Icon" />
                     {{ item.startDate }}{{ item.endDate }}
                 </div>
                 <div style="font-weight:350;font-size: 1rem;line-height: 130%;">

@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
         <div class="icontitle">
-            <img src="../assets/News.png" alt="">
+            <img loading="lazy" srcset="../assets/News.png" alt="">
             <h2>立委選戰焦點新聞</h2>
         </div>
         <div class="out legis_out">
@@ -9,7 +9,7 @@
                 <a class="link"
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=Legislator'"
                     target="_blank">
-                    <img loading="lazy" :src="item.Image" class="img" :alt="item.Title">
+                    <img loading="lazy" :srcset="item.Image" class="img" :alt="item.Title">
                     <div class="inner">
                         <h3 class="title">
                             {{ item.Title.replace("快新聞／", "") }}
@@ -30,17 +30,25 @@ export default {
     data() {
         return {
             news: [],
+
         };
     }, methods: {
         fetchNews() {
-            let apiUrl = "https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=立委選戰&Page=1&sp=6";
-            axios.get(apiUrl)
-                .then((response) => {
-                    this.news = response.data.ITEM;
+            var myHeaders = new Headers();
+            myHeaders.append("TokenKey", "z1x2c3v4b5n6m78i9o0pftv8859");
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch("https://ftvapi2.ftvnews.com.tw/API/FtvGetNewsWebV2.aspx?sp=6&Cate=立委選戰", requestOptions)
+                .then(response => response.json())  // Assuming the response is in JSON format
+                .then(result => {
+                    console.log(result);  // Optional: log the result
+                    this.news = result.ITEM;   // Set the data
                 })
-                .catch((error) => {
-                    console.log(error);
-                });
+                .catch(error => console.log('error', error));
         },
     },
     mounted() {

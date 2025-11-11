@@ -40,34 +40,39 @@ export default {
     }
   },
   methods: {
-    get_hotnews() {
-      // eslint-disable-next-line no-undef
-      axios
-        .get("https://ftvnews-api2.azurewebsites.net/API/FtvGetNewsWeb.aspx?Cate=政治&Page=1&sp=6")
-        .then((response) => {
-          this.news = response.data.ITEM;
+    fetchNews() {
+      var myHeaders = new Headers();
+      myHeaders.append("TokenKey", "z1x2c3v4b5n6m78i9o0pftv8859");
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
 
+      fetch("https://ftvapi2.ftvnews.com.tw/API/FtvGetNewsWebV2.aspx?sp=10&Cate=政治", requestOptions)
+        .then(response => response.json())  // Assuming the response is in JSON format
+        .then(result => {
+          console.log(result);  // Optional: log the result
+          this.news = result.ITEM;   // Set the data
         })
-        .catch((error) => {
-          console.log("error" + error);
-        });
+        .catch(error => console.log('error', error));
     },
     startCountdown() {
-      const targetDate = new Date("2024/1/13").getTime();
+      const targetDate = new Date("2024/1/13 08:00").getTime();
       const countdownInterval = setInterval(() => {
         const now = new Date().getTime();
         const timeDifference = targetDate - now;
 
         if (timeDifference <= 0) {
           clearInterval(countdownInterval);
-          this.countdown = "1/13 到了！";
+          this.countdown = "開票中";
         } else {
           const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
           this.countdown = `${days + 1} `;
         }
       }, 1000);
     }
-  }, mounted() {
+  }, fetchNews() {
     this.startCountdown();
     this.get_hotnews();
   },

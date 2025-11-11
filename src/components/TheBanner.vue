@@ -17,9 +17,9 @@
                 <span> {{ mins }}</span>
                 <p class="count-text">分</p>
             </div>
-            <!-- <div class="count">
+            <div class="count">
                 <span> {{ countdown }}</span>
-            </div> -->
+            </div>
         </div>
         <iframe width="100%" height="100%"
             src="https://www.youtube.com/embed/ylYJSBUgaMA?autoplay=1&mute=1&si=GDtC43iZq4uLNHqf"
@@ -40,7 +40,8 @@ export default {
     },
     methods: {
         startCountdown() {
-            const targetDate = new Date("2024/1/13 16:00").getTime();
+            //檢查
+            const targetDate = new Date("2024/1/13 08:00").getTime();
             const countdownInterval = setInterval(() => {
                 const now = new Date().getTime();
                 const timeDifference = targetDate - now;

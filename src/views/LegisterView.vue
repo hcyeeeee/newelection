@@ -2,8 +2,9 @@
   <div class="views">
     <TheMarquee />
     <TheBanner />
-    <LegislatorTab />
-    <LegislatorList />
+    <!-- <LegislatorTab /> -->
+    <VoteLegis />
+    <VoteLegisMb />
     <LegislatorNews />
 
 
@@ -11,11 +12,13 @@
 </template>
 
 <script >
-import TheBanner from '../components/TheBanner.vue'
-import LegislatorTab from '../components/LegislatorTab.vue'
+import TheBanner from '../components/VoteBanner.vue'
+// import LegislatorTab from '../components/LegislatorTab.vue'
 import LegislatorList from '../components/LegislatorList.vue'
+import VoteLegis from '../components/VoteLegis.vue'
+import VoteLegisMb from '../components/VoteLegisMb.vue'
 import LegislatorNews from '../components/LegislatorNews.vue'
-import TheMarquee from '../components/TheMarquee.vue'
+import TheMarquee from '../components/VoteMarquee.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -28,8 +31,10 @@ export default {
     TheMarquee,
     TheBanner,
     LegislatorNews,
-    LegislatorTab,
+    // LegislatorTab,
     LegislatorList,
+    VoteLegis,
+    VoteLegisMb,
     Swiper,
     SwiperSlide,
   },

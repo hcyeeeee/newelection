@@ -2,7 +2,7 @@
     <div class="scrollup">
         <Transition name="fade">
             <div v-show="scrollY > 100 && !reachedBottom">
-                <img class="up" src="../assets/up.png" @click="scrollTop" loading="lazy" alt="up">
+                <img loading="lazy" class="up" srcset="../assets/up.png" @click="scrollTop" alt="up">
             </div>
         </Transition>
     </div>

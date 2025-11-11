@@ -2,25 +2,26 @@
   <div class="views">
     <TheMarquee />
     <TheBanner />
-    <PresidentInfo />
+    <VotePresi />
+    <!-- <PresidentInfo /> -->
     <PresidentNews />
   </div>
 </template>
-<script >
-import TheBanner from '../components/TheBanner.vue'
-import PresidentInfo from '../components/PresidentInfo.vue'
+<script>
+import TheBanner from '../components/VoteBanner.vue'
+import VotePresi from '../components/VotePresi.vue'
+// import PresidentInfo from '../components/PresidentInfo.vue'
 import PresidentNews from '../components/PresidentNews.vue'
 import TheHeader from '../components/TheHeader.vue'
-import TheMarquee from '../components/TheMarquee.vue'
+import TheMarquee from '../components/VoteMarquee.vue'
 export default {
   components: {
     TheMarquee,
     TheBanner,
     TheHeader,
-    PresidentInfo,
+    VotePresi,
+    // PresidentInfo,
     PresidentNews
   }
 }
 </script>
-
-

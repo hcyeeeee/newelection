@@ -1,12 +1,12 @@
 <template>
-    <div class="layout ">
+    <div class="layout " style="border-radius: 0   0 1.25rem 1.25rem;">
         <div class="">
             <div class="icontitle">
-                <img src="../assets/HomePresi.png" alt="">
+                <img loading="lazy" srcset="../assets/HomePresi.png" alt="">
                 <h2>總統激戰區</h2>
             </div>
             <router-link to="/president">
-                <img src="../assets/HomePresi.jpeg" alt="總統激戰區">
+                <img loading="lazy" srcset="../assets/HomePresi.jpeg" alt="總統激戰區">
             </router-link>
         </div>
         <div class="pc">
@@ -23,7 +23,7 @@
 }" :modules="modules" class="mySwiper" :loop="true">
                 <swiper-slide class="out" v-for="item in news2" :key="item.id">
                     <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID" target="_blank" class="link">
-                        <img loading="lazy" :src="item.Image" :alt="item.ID">
+                        <img loading="lazy" :srcset="item.Image" :alt="item.ID">
                         <div class="inner">
                             <h3 class="title">{{ item.Title.replace("快新聞／", " ") }}</h3>
                             <div class="time">{{ item.CreateDate }}</div>
@@ -32,8 +32,10 @@
                 </swiper-slide>
             </swiper>
             <div class="arrow">
-                <div class="swiper-button-next"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="swiper-button-prev"><i class="fa-solid fa-arrow-left "></i></div>
+                <div class="swiper-button-next"> <font-awesome-icon icon="fa-solid fa-arrow-right" style="width: 15px;" />
+                </div>
+                <div class="swiper-button-prev"> <font-awesome-icon icon="fa-solid fa-arrow-left" style="width: 15px;" />
+                </div>
             </div>
         </div>
         <div class="mb">
@@ -41,7 +43,7 @@
                 <a class="link2"
                     :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"
                     target="_blank">
-                    <img loading="lazy" :src="item.Image" class="img" alt="新聞照片">
+                    <img loading="lazy" :srcset="item.Image" class="img" alt="新聞照片">
                     <div class="inner">
                         <h3 class="title">
                             {{ item.Title.replace("快新聞／", "") }}
@@ -52,7 +54,7 @@
             </div>
         </div>
         <div class="more">
-            <a href="https://www.ftvnews.com.tw/tag/總統大選">看更多相關新聞<i class="fa-solid fa-angles-right"></i></a>
+            <a href="https://www.ftvnews.com.tw/tag/總統大選">看更多相關新聞<font-awesome-icon icon="fa-solid fa-angles-right" /></a>
         </div>
 
     </div>

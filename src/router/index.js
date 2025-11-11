@@ -6,7 +6,6 @@ import Beef from "../views/Policy.vue";
 import Question from "../views/Question.vue";
 import infographics from "../views/infographics.vue";
 import videos from "../views/Videos.vue";
-import test from "../views/test.vue";
 import game from "../views/game.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +14,9 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      meta: {
+        title: "最新》2024台灣總統、立委大選開票結果專區｜民視新聞網",
+      },
     },
     {
       path: "/president",
@@ -25,6 +27,9 @@ const router = createRouter({
       path: "/Legislator",
       name: "Legislator",
       component: LegisterView,
+      meta: {
+        title: "最新》2024立委、不分區立委名單一次看｜民視新聞網",
+      },
     },
     {
       path: "/Policy",
@@ -38,26 +43,23 @@ const router = createRouter({
       path: "/Question",
       name: "Question",
       component: Question,
+      meta: {
+        title: "2024誰當家》投票帶什麼？投票QA懶人包　一次看！ ｜民視新聞網",
+      },
     },
     {
       path: "/infographics",
       name: "infographics",
       component: infographics,
+      meta: {
+        title:
+          "2024誰當家》歷屆正副總統得票數、立委席次變化圖表一次看 ｜民視新聞網",
+      },
     },
     {
       path: "/videos",
       name: "videos",
       component: videos,
-    },
-    {
-      path: "/test",
-      name: "test",
-      component: test,
-    },
-    {
-      path: "/test",
-      name: "test",
-      component: test,
     },
     {
       path: "/game",

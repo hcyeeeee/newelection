@@ -4,8 +4,8 @@
     <TheBanner />
     <div class="layout">
       <div class="icontitle">
-        <img src="../assets/map.png" alt="">
-        <h2>歷屆總統副總統選舉得票數</h2>
+        <img loading="lazy" srcset="../assets/map.png" alt="">
+        <h2>各縣市總統得票數</h2>
       </div>
       <ul>
         <li v-for="(tab, index) in tabs" :key="index" @click="activateTab(index)"
@@ -22,7 +22,7 @@
     </div>
     <div class="layout">
       <div class="icontitle">
-        <img src="../assets/HomeLegis.png" alt="">
+        <img loading="lazy" srcset="../assets/HomeLegis.png" alt="">
         <h2>歷屆立委席次變化</h2>
       </div>
       <div class="flourish-embed flourish-parliament" :data-src=flourishSrc>
@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import TheBanner from '../components/TheBanner.vue'
-import TheMarquee from '../components/TheMarquee.vue'
+import TheBanner from '../components/VoteBanner.vue'
+import TheMarquee from '../components/VoteMarquee.vue'
 
 export default {
   components: {
@@ -43,9 +43,10 @@ export default {
   data() {
     return {
       tabs: [
-        { label: '2012年', link: '4c8f7092-a088-4e47-ba62-1856495110b8' },
-        { label: '2016年', link: '0ee18735-d808-4d4e-b00c-bca4b906ce8a' },
+        { label: '2024年', link: '25e7c20b-854a-4e37-99de-f8423d9b93f8' },
         { label: '2020年', link: '0ed95ff8-d441-4d6a-b74f-3f5f05f9b76e' },
+        { label: '2016年', link: '0ee18735-d808-4d4e-b00c-bca4b906ce8a' },
+        { label: '2012年', link: '4c8f7092-a088-4e47-ba62-1856495110b8' },
       ],
       flourishSrc: "visualisation/14873406",
       activeTab: 0,
@@ -127,6 +128,11 @@ ul {
       border-bottom: 2px solid #ffa500;
     }
   }
+}
+
+.active {
+  background: rgba(255, 122, 0, 0.20);
+  border-bottom: 2px solid #f08308 !important;
 }
 </style>
 
