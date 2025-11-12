@@ -4,6 +4,7 @@
     <sectionBanner />
     <VotePresi />
     <VoteLegis />
+    <VoteLegis2 />
     <VoteLegisMb />
   </div>
 </template>
@@ -11,6 +12,7 @@
 import sectionBanner from '../components/VoteBanner.vue'
 import TheMarquee from '../components/VoteMarquee.vue'
 import VotePresi from '../components/VotePresi.vue'
+import VoteLegis2 from '../components/VoteLegis2.vue'
 import VoteLegis from '../components/VoteLegis.vue'
 import VoteLegisMb from '../components/VoteLegisMb.vue'
 
@@ -20,6 +22,7 @@ export default {
     sectionBanner,
     TheMarquee,
     VotePresi,
+    VoteLegis2,
     VoteLegis,
     VoteLegisMb,
   }

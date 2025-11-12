@@ -41,9 +41,7 @@ export default {
     };
   },
   created() {
-
     this.typeformEmbedCode = '<div data-tf-live="01HHGP37CJGFWJN9SDYF49J81J"></div>';
-
     const script = document.createElement('script');
     script.src = '//embed.typeform.com/next/embed.js';
     script.async = true;
@@ -51,15 +49,36 @@ export default {
   }
 };
 </script>
-<style>
-.lds-spinner {
-  color: official;
+
+<style scoped>
+.views {
   display: flex;
-  position: relative;
-  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.quiz-title {
+  margin: 1rem auto;
+}
+
+.quiz-img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+
+
+/* loading 動畫 */
+.lds-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
-  top: -16rem;
+  margin: 3rem auto;
+  position: relative;
 }
 
 .lds-spinner div {
@@ -68,7 +87,7 @@ export default {
 }
 
 .lds-spinner div:after {
-  content: " ";
+  content: "";
   display: block;
   position: absolute;
   top: 3px;
