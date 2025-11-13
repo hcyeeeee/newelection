@@ -1,66 +1,3 @@
-<script setup>
-
-import { ref, onMounted } from 'vue'
-const showButton = ref(false);
-const navigatorSupport = ref(!!navigator.share)
-import fightImg from "@/assets/fight.png"
-import presiImg from "@/assets/homepresi.png"
-import legisImg from "@/assets/homelegis.png"
-import policyImg from "@/assets/policy.png"
-import mapImg from "@/assets/map.png"
-import qaImg from "@/assets/qa.png"
-import videoImg from "@/assets/video.png"
-import gameImg from "@/assets/game1.png"
-
-const links = [
-    { name: "開票結果", href: "https://www.ftvnews.com.tw/topics/2024election/", icon: fightImg },
-    { name: "總統大選", href: "https://www.ftvnews.com.tw/topics/2024election/president", icon: presiImg },
-    { name: "立委選戰", to: "/Legislator", icon: legisImg },
-    { name: "政策牛肉", to: "/policy", icon: policyImg },
-    { name: "歷年版圖", href: "https://www.ftvnews.com.tw/topics/2024election/infographics", icon: mapImg },
-    { name: "選舉Q&A", to: "/Question", icon: qaImg },
-    { name: "影音專區", to: "/videos", icon: videoImg },
-    { name: "測驗遊戲", href: "https://www.ftvnews.com.tw/topics/2024election/game", icon: gameImg },
-]
-function getLocalUrl() {
-    let e = document.createElement('input'),
-        t = window.location.href + '?utm_source=2024election&utm_medium=copybutton'
-    document.body.appendChild(e),
-        (e.value = t),
-        e.select(),
-        document.execCommand('copy'),
-        document.body.removeChild(e),
-        alert('網址複製成功，立刻分享給你的好友吧，一起來看開票吧!')
-}
-
-function webShareAPI(header, description, link) {
-    navigator
-        .share({
-            title: header,
-            text: description,
-            url: link,
-        })
-        .then(() => console.log("Successful share"))
-        .catch((error) => console.log("Error sharing", error));
-}
-
-
-function shareContent() {
-    webShareAPI(
-        "2024總統大選、立委開票結果專區｜民視新聞網",
-        "",
-        "https://lihi2.com/9uaUy"
-    )
-}
-
-onMounted(() => {
-    if (navigatorSupport.value) {
-        showButton.value = true
-    } else {
-        console.error("Your Browser doesn't support Web Share API")
-    }
-})
-</script>
 <template>
     <nav class="navbar">
         <template v-for="link in links" :key="link.name">
@@ -76,6 +13,39 @@ onMounted(() => {
         </template>
     </nav>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+const showButton = ref(false);
+const navigatorSupport = ref(!!navigator.share)
+import fightImg from "@/assets/fight.png"
+import presiImg from "@/assets/homepresi.png"
+import legisImg from "@/assets/homelegis.png"
+import policyImg from "@/assets/policy.png"
+import mapImg from "@/assets/map.png"
+import qaImg from "@/assets/qa.png"
+import videoImg from "@/assets/video.png"
+import gameImg from "@/assets/game1.png"
+
+const links = [
+    { name: "開票結果", to: "/", icon: fightImg },
+    { name: "總統大選", to: "/president", icon: presiImg },
+    { name: "立委選戰", to: "/Legislator", icon: legisImg },
+    { name: "政策牛肉", to: "/policy", icon: policyImg },
+    { name: "歷年版圖", to: "/infographics", icon: mapImg },
+    { name: "選舉Q&A", to: "/Question", icon: qaImg },
+    { name: "影音專區", to: "/videos", icon: videoImg },
+    { name: "測驗遊戲", to: "/game", icon: gameImg },
+]
+
+onMounted(() => {
+    if (navigatorSupport.value) {
+        showButton.value = true
+    } else {
+        console.error("Your Browser doesn't support Web Share API")
+    }
+})
+</script>
 
 <style lang="scss" scoped>
 .navbar {

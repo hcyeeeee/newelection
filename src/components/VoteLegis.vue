@@ -149,11 +149,11 @@ const tabList = [
     { id: 'tab7', name: '山地原住民' },
 ]
 const regionMap = {
-    tab1: ['北市', '新北', '基隆', '桃園', '新竹', '竹縣', '宜蘭'], // 北部
-    tab2: ['台中', '苗縣', '彰化', '南投', '雲林'],              // 中部
-    tab3: ['高雄', '台南', '嘉義', '嘉縣', '屏東', '澎湖'],       // 南部
-    tab4: ['花蓮', '台東'],                                     // 東部
-    tab5: ['金門', '連江']                                      // 離島
+    tab1: ['北市', '新北', '基隆', '桃園', '新竹', '竹縣', '宜蘭'],
+    tab2: ['台中', '苗縣', '彰化', '南投', '雲林'],
+    tab3: ['高雄', '台南', '嘉義', '嘉縣', '屏東', '澎湖'],
+    tab4: ['花蓮', '台東'],
+    tab5: ['金門', '連江']
 }
 const currentCities = computed(() => {
     return regionMap[currentTab.value] || []
@@ -254,7 +254,7 @@ onMounted(() => {
                 <div v-show="regionMap[currentTab]">
                     <ul class="pc">
                         <li v-for="election in LegisT2.detail.filter(e => currentCities.includes(e.cityName))"
-                            :key="election.id" @click="selectCity(election.cityName)">
+                            :key="election.id" @click="selectCity(election.cityName)" style="display: flex;">
                             <h3 :class="{ active1: selectedCity === election.cityName }">
                                 {{ formatCity(election.cityName) }}
                             </h3>
@@ -294,8 +294,7 @@ onMounted(() => {
                 </div>
                 <div v-show="currentTab === 'tab6'">
                     <ul>
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT3.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT3.detail" :key="election.id">
                             <h3 :class="{ 'active1': selectedCity === election.cityName }">
                                 {{ election.cityName }}</h3>
                         </li>
@@ -308,8 +307,7 @@ onMounted(() => {
                                     <th>政黨</th>
                                     <th>姓名</th>
                                     <th>票數</th>
-                                    <th
-                                        style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
+                                    <th style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
                                     </th>
                                 </tr>
                             </thead>
@@ -343,8 +341,7 @@ onMounted(() => {
                                     <th style="justify-content:center;">政黨</th>
                                     <th>姓名</th>
                                     <th>票數</th>
-                                    <th
-                                        style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
+                                    <th style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
                                     </th>
 
                                 </tr>
@@ -360,7 +357,7 @@ onMounted(() => {
                                                 "無黨籍").replace(/台灣雙語無黨籍法黨/g,
                                                     "台灣雙語無法黨") }}</td>
                                     <td style="max-height:fit-content; justify-content:center;"> {{ election.candName
-                                        }}</td>
+                                    }}</td>
                                     <td><count-up :end-val="election.ticket" :options="options"></count-up>票</td>
                                     <td style="width:20%; max-height:fit-content; justify-content: center;"> <img
                                             v-if="election.winner == '*'" srcset="../assets/pass.png" alt="pass"
@@ -384,8 +381,7 @@ onMounted(() => {
                 <!-- Tab 內容 -->
                 <div v-show="currentTab === 'tab1'">
                     <ul class="pc">
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail" :key="election.id">
                             <h3 v-show="election.cityName == '北市' || election.cityName == '新北' || election.cityName == '基隆'
                                 || election.cityName == '桃園' || election.cityName == '新竹' || election.cityName == '竹縣' ||
                                 election.cityName == '宜蘭'" :class="{ 'active1': selectedCity === election.cityName }">
@@ -421,9 +417,9 @@ onMounted(() => {
                                             <td v-if="items.winner == '*'"> {{ items.candName }}</td>
                                             <td v-if="items.winner == '*'"><count-up :end-val="items.ticket"
                                                     :options="options"></count-up>票</td>
-                                            <td v-if="items.winner == '*'"> <img loading="lazy"
-                                                    v-if="items.winner == '*'" srcset="../assets/pass.png" alt="pass"
-                                                    style="z-index: 12;" class="pass">
+                                            <td v-if="items.winner == '*'"> <img loading="lazy" v-if="items.winner == '*'"
+                                                    srcset="../assets/pass.png" alt="pass" style="z-index: 12;"
+                                                    class="pass">
                                             </td>
                                         </tr>
                                         <hr>
@@ -435,8 +431,7 @@ onMounted(() => {
                 </div>
                 <div v-show="currentTab === 'tab2'">
                     <ul>
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail" :key="election.id">
                             <h3 v-show="election.cityName == '台中' || election.cityName == '苗縣' || election.cityName == '彰化'
                                 || election.cityName == '南投' || election.cityName == '雲林'"
                                 :class="{ 'active1': selectedCity === election.cityName }">
@@ -469,9 +464,9 @@ onMounted(() => {
                                             <td v-if="items.winner == '*'"> {{ items.candName }}</td>
                                             <td v-if="items.winner == '*'"><count-up :end-val="items.ticket"
                                                     :options="options"></count-up>票</td>
-                                            <td v-if="items.winner == '*'"> <img loading="lazy"
-                                                    v-if="items.winner == '*'" srcset="../assets/pass.png" alt="pass"
-                                                    style="z-index: 12;" class="pass">
+                                            <td v-if="items.winner == '*'"> <img loading="lazy" v-if="items.winner == '*'"
+                                                    srcset="../assets/pass.png" alt="pass" style="z-index: 12;"
+                                                    class="pass">
                                             </td>
                                         </tr>
                                         <hr>
@@ -483,8 +478,7 @@ onMounted(() => {
                 </div>
                 <div v-show="currentTab === 'tab3'">
                     <ul>
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail" :key="election.id">
                             <h3 v-show="election.cityName == '高雄' ||
                                 election.cityName == '台南' ||
                                 election.cityName == '嘉義' ||
@@ -520,9 +514,9 @@ onMounted(() => {
                                             <td v-if="items.winner == '*'"> {{ items.candName }}</td>
                                             <td v-if="items.winner == '*'"><count-up :end-val="items.ticket"
                                                     :options="options"></count-up>票</td>
-                                            <td v-if="items.winner == '*'"> <img loading="lazy"
-                                                    v-if="items.winner == '*'" srcset="../assets/pass.png" alt="pass"
-                                                    style="z-index: 12;" class="pass">
+                                            <td v-if="items.winner == '*'"> <img loading="lazy" v-if="items.winner == '*'"
+                                                    srcset="../assets/pass.png" alt="pass" style="z-index: 12;"
+                                                    class="pass">
                                             </td>
                                         </tr>
                                         <hr>
@@ -534,8 +528,7 @@ onMounted(() => {
                 </div>
                 <div v-show="currentTab === 'tab4'">
                     <ul>
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail" :key="election.id">
                             <h3 v-show="election.cityName == '花蓮' || election.cityName == '台東'"
                                 :class="{ 'active1': selectedCity === election.cityName }">
                                 {{ election.cityName.replace("花蓮", "花蓮縣").replace("台東", "台東縣") }}</h3>
@@ -565,9 +558,9 @@ onMounted(() => {
                                             <td v-if="items.winner == '*'"> {{ items.candName }}</td>
                                             <td v-if="items.winner == '*'"><count-up :end-val="items.ticket"
                                                     :options="options"></count-up>票</td>
-                                            <td v-if="items.winner == '*'"> <img loading="lazy"
-                                                    v-if="items.winner == '*'" srcset="../assets/pass.png" alt="pass"
-                                                    style="z-index: 12;" class="pass">
+                                            <td v-if="items.winner == '*'"> <img loading="lazy" v-if="items.winner == '*'"
+                                                    srcset="../assets/pass.png" alt="pass" style="z-index: 12;"
+                                                    class="pass">
                                             </td>
                                         </tr>
                                         <hr>
@@ -580,8 +573,7 @@ onMounted(() => {
                 </div>
                 <div v-show="currentTab === 'tab5'">
                     <ul>
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT2.detail" :key="election.id">
                             <h3 v-show="election.cityName == '金門' || election.cityName == '連江'"
                                 :class="{ 'active1': selectedCity === election.cityName }">
                                 {{ election.cityName.replace("金門", "金門縣").replace("連江", "連江縣") }}</h3>
@@ -611,9 +603,9 @@ onMounted(() => {
                                             <td v-if="items.winner == '*'"> {{ items.candName }}</td>
                                             <td v-if="items.winner == '*'"><count-up :end-val="items.ticket"
                                                     :options="options"></count-up>票</td>
-                                            <td v-if="items.winner == '*'"> <img loading="lazy"
-                                                    v-if="items.winner == '*'" srcset="../assets/pass.png" alt="pass"
-                                                    style="z-index: 12;" class="pass">
+                                            <td v-if="items.winner == '*'"> <img loading="lazy" v-if="items.winner == '*'"
+                                                    srcset="../assets/pass.png" alt="pass" style="z-index: 12;"
+                                                    class="pass">
                                             </td>
                                         </tr>
                                         <hr>
@@ -625,8 +617,7 @@ onMounted(() => {
                 </div>
                 <div v-show="currentTab === 'tab6'">
                     <ul>
-                        <li @click="selectCity(election.cityName)" v-for="election in LegisT3.detail"
-                            :key="election.id">
+                        <li @click="selectCity(election.cityName)" v-for="election in LegisT3.detail" :key="election.id">
                             <h3 :class="{ 'active1': selectedCity === election.cityName }">
                                 {{ election.cityName }}</h3>
                         </li>
@@ -639,8 +630,7 @@ onMounted(() => {
                                     <th>政黨</th>
                                     <th>姓名</th>
                                     <th>票數</th>
-                                    <th
-                                        style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
+                                    <th style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
                                     </th>
 
                                 </tr>
@@ -680,8 +670,7 @@ onMounted(() => {
                                     <th style="justify-content:center;">政黨</th>
                                     <th>姓名</th>
                                     <th>票數</th>
-                                    <th
-                                        style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
+                                    <th style="width:20%; font-size:1rem; max-height:fit-content; justify-content:center;">
                                     </th>
 
                                 </tr>
@@ -806,6 +795,13 @@ ul {
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             cursor: pointer;
             margin-top: 4px;
+
+
+        }
+
+        .active1 {
+            background: orange;
+            color: white;
         }
     }
 }
@@ -919,5 +915,12 @@ table {
 
 ul {
     flex-wrap: wrap;
+}
+
+
+.Region-navtab {
+    .active {
+        background: orange;
+    }
 }
 </style>

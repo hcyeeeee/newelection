@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <!-- 🟢 精彩影音 -->
+        <!-- 精彩影音 -->
         <div class="home-video">
             <div class="layout2">
                 <div class="icontitle">
@@ -37,8 +37,8 @@
                 <!-- Video container -->
                 <div class="video-menu">
                     <div class="video-container">
-                        <iframe width="100%" height="100%" :src="videoTabs[currentVideo].url"
-                            title="YouTube video player" frameborder="0" name="video-frame"
+                        <iframe width="100%" height="100%" :src="videoTabs[currentVideo].url" title="YouTube video player"
+                            frameborder="0" name="video-frame"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
                     </div>
@@ -50,9 +50,7 @@
 
 <script setup>
 import { ref } from 'vue'
-
 const currentVideo = ref(0)
-
 const videoTabs = ref([
     {
         title: "總統大選",

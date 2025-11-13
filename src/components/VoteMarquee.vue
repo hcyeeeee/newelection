@@ -4,78 +4,35 @@
       <div class="marquee_title">
         <p>快訊</p>
       </div>
-      <swiper :autoplay="{ delay: 2500, disableOnInteraction: false }" :modules="modules" class="mySwiper">
-        <swiper-slide class="marquee" v-for="item in news" :key="item.id">
-          <a :href="'https://www.ftvnews.com.tw/news/detail/' + item.ID + '?utm_source=2024election&utm_medium=homepage'"
-            target="_blank" rel="noopener noreferrer" :title=item.Title>
-            {{ item.Title.replace("快新聞／", "") }}</a>
+
+      <swiper :modules="modules" :autoplay="{ delay: 2500, disableOnInteraction: false }" class="mySwiper">
+        <swiper-slide v-for="(item, i) in store.marquee" :key="i" class="marquee">
+          <a :href="item.Url" target="_blank" rel="noopener noreferrer">
+            {{ item.Title.replace('快新聞／', '') }}
+          </a>
         </swiper-slide>
       </swiper>
     </div>
   </div>
 </template>
-<script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
+
+<script setup>
+import { ref, onMounted } from "vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
 import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay } from "swiper/modules";
+import { useNewsStore } from '@/stores/news'
 
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  data() {
-    return {
-      modules: [Autoplay],
-      countdown: "",
-      countdown2: "",
-      news: [],
-    }
-  },
-  methods: {
-    fetchNews() {
-      var myHeaders = new Headers();
-      myHeaders.append("TokenKey", "z1x2c3v4b5n6m78i9o0pftv8859");
-      var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-      };
+const modules = [Autoplay];
 
-      fetch("https://ftvapi2.ftvnews.com.tw/API/FtvGetNewsWebV2.aspx?sp=10&Cate=政治", requestOptions)
-        .then(response => response.json())  // Assuming the response is in JSON format
-        .then(result => {
-          console.log(result);  // Optional: log the result
-          this.news = result.ITEM;   // Set the data
-        })
-        .catch(error => console.log('error', error));
-    },
-  }, mounted() {
-    this.fetchNews();
-  },
-};
+// pinia新聞資料
+const store = useNewsStore()
+onMounted(() => {
+  store.fetchAll()
+});
 </script>
 
 <style lang="scss" scoped>
-@mixin phone {
-  @media (min-width: 500px) {
-    @content;
-  }
-}
-
-@mixin pad {
-  @media (min-width: 768px) {
-    @content;
-  }
-}
-
-@mixin web {
-  @media (min-width: 1000px) {
-    @content;
-  }
-}
-
 .marquee_layout {
   width: 100%;
   margin: 1rem auto;
@@ -158,7 +115,6 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    height: 38px;
     overflow: hidden;
     margin: 0 .3rem;
     font-size: 1rem;

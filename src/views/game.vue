@@ -26,28 +26,20 @@
   </div>
 </template>
 
-<script>
-import TheBanner from '../components/TheBanner.vue'
-import TheMarquee from '../components/VoteMarquee.vue'
+<script setup>
+import { ref, onMounted } from "vue";
+import VoteBanner from "../components/VoteBanner.vue";
+import TheMarquee from "../components/VoteMarquee.vue";
 
-export default {
-  components: {
-    TheMarquee,
-    TheBanner,
-  },
-  data() {
-    return {
-      typeformEmbedCode: ''
-    };
-  },
-  created() {
-    this.typeformEmbedCode = '<div data-tf-live="01HHGP37CJGFWJN9SDYF49J81J"></div>';
-    const script = document.createElement('script');
-    script.src = '//embed.typeform.com/next/embed.js';
-    script.async = true;
-    document.head.appendChild(script);
-  }
-};
+const typeformEmbedCode = ref("");
+
+onMounted(() => {
+  typeformEmbedCode.value = `<div data-tf-live="01HHGP37CJGFWJN9SDYF49J81J"></div>`;
+  const script = document.createElement("script");
+  script.src = "//embed.typeform.com/next/embed.js";
+  script.async = true;
+  document.head.appendChild(script);
+});
 </script>
 
 <style scoped>

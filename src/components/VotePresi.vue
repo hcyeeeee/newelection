@@ -53,7 +53,6 @@
                     <div class=" icontitle">
                         <img srcset="../assets/map.png" alt="" style="margin-left: 5px;">
                         <h2> 2024總統選舉政黨版圖</h2>
-
                     </div>
                 </div>
                 <div class="infogram-embed" data-id="25e7c20b-854a-4e37-99de-f8423d9b93f8" data-type="interactive"

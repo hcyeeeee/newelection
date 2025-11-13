@@ -4,107 +4,83 @@
     <TheBanner />
     <div class="layout">
       <div class="icontitle">
-        <img loading="lazy" srcset="../assets/map.png" alt="">
+        <img loading="lazy" src="../assets/map.png" alt="">
         <h2>各縣市總統得票數</h2>
       </div>
       <ul>
-        <li v-for="(tab, index) in tabs" :key="index" @click="activateTab(index)"
-          :class="{ active: activeTab === index }">
+        <li v-for="(tab, index) in tabs" :key="index" @click="activeTab = index" :class="{ active: activeTab === index }">
           <h3>{{ tab.label }}</h3>
         </li>
       </ul>
-
       <div v-for="(tab, index) in tabs" :key="index" v-show="activeTab === index">
-        <div class="infogram-embed" :data-id="tab.link" data-type="interactive" :data-title="'2024大選-' + tab.label">
-        </div>
+        <div class="infogram-embed" :data-id="tab.link" data-type="interactive" :data-title="'2024大選-' + tab.label"></div>
       </div>
-
     </div>
     <div class="layout">
       <div class="icontitle">
-        <img loading="lazy" srcset="../assets/HomeLegis.png" alt="">
+        <img loading="lazy" src="../assets/HomeLegis.png" alt="">
         <h2>歷屆立委席次變化</h2>
       </div>
-      <div class="flourish-embed flourish-parliament" :data-src=flourishSrc>
-      </div>
+      <div class="flourish-embed flourish-parliament" :data-src="flourishSrc"></div>
     </div>
   </div>
 </template>
 
-<script>
-import TheBanner from '../components/VoteBanner.vue'
-import TheMarquee from '../components/VoteMarquee.vue'
+<script setup>
+import { ref, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
+import TheBanner from "../components/VoteBanner.vue";
+import TheMarquee from "../components/VoteMarquee.vue";
 
-export default {
-  components: {
-    TheMarquee,
-    TheBanner,
-  },
-  data() {
-    return {
-      tabs: [
-        { label: '2024年', link: '25e7c20b-854a-4e37-99de-f8423d9b93f8' },
-        { label: '2020年', link: '0ed95ff8-d441-4d6a-b74f-3f5f05f9b76e' },
-        { label: '2016年', link: '0ee18735-d808-4d4e-b00c-bca4b906ce8a' },
-        { label: '2012年', link: '4c8f7092-a088-4e47-ba62-1856495110b8' },
-      ],
-      flourishSrc: "visualisation/14873406",
-      activeTab: 0,
-    };
-  },
-  methods: {
-    activateTab(index) {
-      this.activeTab = index; // 点击选项卡时设置选中的选项卡索引
-    },
-    loadFlourishScript() {
-      const script = document.createElement("script");
-      script.src = "https://public.flourish.studio/resources/embed.js";
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-  },
-  created() {
-    this.activateTab(0);
-    // Infogram 脚本加载
-    !function (e, n, i, s) {
-      var d = "InfogramEmbeds";
-      var o = e.getElementsByTagName(n)[0];
-      if (window[d] && window[d].initialized) {
-        window[d].process && window[d].process();
-      } else if (!e.getElementById(i)) {
-        var r = e.createElement(n);
-        r.async = 1;
-        r.id = i;
-        r.src = s;
-        o.parentNode.insertBefore(r, o);
-      }
-    }(document, "script", "infogram-async", "https://infogram.com/js/dist/embed-loader-min.js");
-  },
-  mounted() {
-    this.loadFlourishScript();
-  },
-  watch: {
-    $route(to, from) {
-      // Infogram 脚本加载
-      !function (e, n, i, s) {
-        var d = "InfogramEmbeds";
-        var o = e.getElementsByTagName(n)[0];
-        if (window[d] && window[d].initialized) {
-          window[d].process && window[d].process();
-        } else if (!e.getElementById(i)) {
-          var r = e.createElement(n);
-          r.async = 1;
-          r.id = i;
-          r.src = s;
-          o.parentNode.insertBefore(r, o);
-        }
-      }(document, "script", "infogram-async", "https://infogram.com/js/dist/embed-loader-min.js");
-    }
-  }
+const route = useRoute();
+const tabs = ref([
+  { label: "2024年", link: "25e7c20b-854a-4e37-99de-f8423d9b93f8" },
+  { label: "2020年", link: "0ed95ff8-d441-4d6a-b74f-3f5f05f9b76e" },
+  { label: "2016年", link: "0ee18735-d808-4d4e-b00c-bca4b906ce8a" },
+  { label: "2012年", link: "4c8f7092-a088-4e47-ba62-1856495110b8" },
+]);
 
+const activeTab = ref(0);
+const flourishSrc = "visualisation/14873406";
+const loadInfogramScript = () => {
+  (function (d, s, id, src) {
+    const name = "InfogramEmbeds";
+    const firstScript = d.getElementsByTagName(s)[0];
+
+    if (window[name] && window[name].initialized) {
+      window[name].process && window[name].process();
+    } else if (!d.getElementById(id)) {
+      const js = d.createElement(s);
+      js.async = 1;
+      js.id = id;
+      js.src = src;
+      firstScript.parentNode.insertBefore(js, firstScript);
+    }
+  })(document, "script", "infogram-async", "https://infogram.com/js/dist/embed-loader-min.js");
 };
+
+//  FlourishScript
+const loadFlourishScript = () => {
+  const script = document.createElement("script");
+  script.src = "https://public.flourish.studio/resources/embed.js";
+  script.async = true;
+  script.defer = true;
+  document.body.appendChild(script);
+};
+
+onMounted(() => {
+  loadInfogramScript();
+  loadFlourishScript();
+});
+
+watch(
+  () => route.fullPath,
+  () => {
+    loadInfogramScript();
+  }
+);
 </script>
+
 <style lang="scss" scoped>
 ul {
   flex-direction: row;

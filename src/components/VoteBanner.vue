@@ -19,62 +19,7 @@
             allowfullscreen></iframe>
     </div>
 </template>
-<script>
-export default {
-    data() {
-        return {
-            countdown: "",
-            day: "",
-            hours: "",
-            mins: "",
-            secs: "",
-        }
-    },
-    methods: {
-        startCountdown() {
-            //檢查
-            const targetDate = new Date("2024/1/13 16:00").getTime();
-            const countdownInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const timeDifference = targetDate - now;
-
-                if (timeDifference <= 0) {
-                    clearInterval(countdownInterval);
-                    this.countdown = "1";
-                    this.day = "";
-                    this.hours = "";
-                    this.mins = "";
-                } else {
-                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-                    this.day = `${days} `;
-                    this.hours = `${hours} `;
-                    this.mins = `${minutes} `;
-                    this.secs = `${seconds} `;
-                    this.countdown = `${hours}時 ` + `${minutes}分 ` + `${seconds}秒 `;
-                }
-            }, 1000);
-        }
-    },
-    created() {
-        setInterval(() => {
-            this.startCountdown();
-        }, 10000);
-        setTimeout(() => {
-            this.startCountdown()
-        }, 1000);
-    }
-};
-</script>
 <style lang="scss" scoped>
-@mixin pad {
-    @media (min-width: 800px) {
-        @content;
-    }
-}
-
 .count {
     display: flex !important;
     gap: 1rem;

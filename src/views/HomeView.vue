@@ -4,38 +4,19 @@
     <sectionBanner />
     <VotePresi />
     <VoteLegis />
-    <VoteLegis2 />
     <VoteLegisMb />
   </div>
 </template>
-<script>
+
+<script setup>
 import sectionBanner from '../components/VoteBanner.vue'
 import TheMarquee from '../components/VoteMarquee.vue'
 import VotePresi from '../components/VotePresi.vue'
-import VoteLegis2 from '../components/VoteLegis2.vue'
 import VoteLegis from '../components/VoteLegis.vue'
 import VoteLegisMb from '../components/VoteLegisMb.vue'
-
-
-export default {
-  components: {
-    sectionBanner,
-    TheMarquee,
-    VotePresi,
-    VoteLegis2,
-    VoteLegis,
-    VoteLegisMb,
-  }
-};
-
 </script>
-<style lang="scss" scoped>
-@mixin pad {
-  @media (min-width: 768px) {
-    @content;
-  }
-}
 
+<style lang="scss" scoped>
 .game {
   width: 110px;
   height: 60px;

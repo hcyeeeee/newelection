@@ -9,11 +9,8 @@ function scrollTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-// 監聽滾動
 function handleScroll() {
     scrollY.value = window.scrollY
-
-    // 檢查是否滾到底
     const bottom =
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 10
     reachedBottom.value = bottom

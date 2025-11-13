@@ -77,55 +77,54 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      scrollY: '',
-      countdown: "",
-      isMobileMenuVisible: false,
-    }
-  },
-  methods: {
-    getLocalUrl() {
-      let e = document.createElement('input'),
-        t = window.location.href + '?utm_source=2024election&utm_medium=copybutton'
-      document.body.appendChild(e),
-        (e.value = t),
-        e.select(),
-        document.execCommand('copy'),
-        document.body.removeChild(e),
-        alert('網址複製成功，立刻分享給你的好友吧！')
-    },
-    toggleMobileMenu() {
-      this.isMobileMenuVisible = !this.isMobileMenuVisible;
-    },
-    closeMenu() {
-      if (this.isMobileMenuVisible) {
-        this.isMobileMenuVisible = false;
-      }
-    },
-    webShareAPI(header, description, link) {
-      navigator
-        .share({
-          title: header,
-          text: description,
-          url: link,
-        })
-        .then(() => console.log("Successful share"))
-        .catch((error) => console.log("Error sharing", error));
-    },
-    shareContent() {
-      this.webShareAPI("2024總統大選、立委開票結果｜民視新聞網", "", "https://lihi2.com/9uaUy");
-    },
-  }, mounted() {
-    if (this.navigatorSupport) {
-      this.showButton = true;
-    } else {
-      console.error("Your Browser doesn't support Web Share API");
-    }
-  },
-}
+<script setup>
+import { ref, onMounted } from "vue";
+
+const isMobileMenuVisible = ref(false);
+
+const toggleMobileMenu = () => {
+  isMobileMenuVisible.value = !isMobileMenuVisible.value;
+};
+
+
+const closeMenu = () => {
+  isMobileMenuVisible.value = false;
+};
+
+
+const getLocalUrl = () => {
+  const input = document.createElement("input");
+  const url = window.location.href + "?utm_source=2024election&utm_medium=copybutton";
+
+  document.body.appendChild(input);
+  input.value = url;
+  input.select();
+  document.execCommand("copy");
+  document.body.removeChild(input);
+
+  alert("網址複製成功，立刻分享給你的好友吧！");
+};
+
+const webShareAPI = (header, description, link) => {
+  navigator
+    .share({ title: header, text: description, url: link })
+    .then(() => console.log("Successful share"))
+    .catch((error) => console.error("Error sharing:", error));
+};
+
+const shareContent = () => {
+  webShareAPI(
+    "2024總統大選、立委開票結果｜民視新聞網",
+    "",
+    "https://lihi2.com/9uaUy"
+  );
+};
+
+onMounted(() => {
+  if (!navigator.share) {
+    console.error("Your Browser doesn't support Web Share API");
+  }
+});
 </script>
 
 

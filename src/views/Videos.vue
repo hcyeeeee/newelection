@@ -1,40 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-import TheBanner from '../components/VoteBanner.vue'
-import TheMarquee from '../components/VoteMarquee.vue'
-import homevideo from '../components/HomeVideo.vue'
-
-const currentTab = ref(0)
-
-const tabs = ref([
-  {
-    title: "台灣最前線",
-    content: "讓《台灣最前線》的許仲江，與來賓共同為您精闢分析每天時事！",
-    si: '_jz4fTxV5-60kG2s',
-    list: 'PLf2VRok0uRO0BrUIa70CS1_PoeAghdM3K'
-  },
-  {
-    title: "台灣向前行",
-    content: "讓《台灣向前行》的張孟琦，與來賓共同為您精闢分析每天時事！",
-    si: 'vTWIskNPFvGW_bl6',
-    list: 'PLf2VRok0uRO0px2iZrtznovVe10LfcfJO'
-  },
-  {
-    title: "全國第一勇",
-    content: "讓《全國第一勇》的徐國勇，與來賓共同為您精闢分析每天時事！",
-    si: '04hEzUmcBl7J8bUW',
-    list: 'PLBXFGXTYyFgAmbYv9Bgq9cxcWcwW6qgJA'
-  },
-  {
-    title: "民視佮你講",
-    content: "時事政治、生活氣象、熱門話題，我們通通佮你講！網友們，快點一起跟主持人聊天吧！",
-    si: 'yNoxUNLhcledJ-AJ',
-    list: 'PLf2VRok0uRO340tZz8twmmwT8k-36Z2O5'
-  }
-])
-</script>
-
-
 <template>
   <div class="views">
     <TheMarquee />
@@ -71,6 +34,41 @@ const tabs = ref([
     <homevideo />
   </div>
 </template>
+<script setup>
+import { ref } from 'vue'
+import TheBanner from '../components/VoteBanner.vue'
+import TheMarquee from '../components/VoteMarquee.vue'
+import homevideo from '../components/HomeVideo.vue'
+
+const currentTab = ref(0)
+
+const tabs = ref([
+  {
+    title: "台灣最前線",
+    content: "讓《台灣最前線》的許仲江，與來賓共同為您精闢分析每天時事！",
+    si: '_jz4fTxV5-60kG2s',
+    list: 'PLf2VRok0uRO0BrUIa70CS1_PoeAghdM3K'
+  },
+  {
+    title: "台灣向前行",
+    content: "讓《台灣向前行》的張孟琦，與來賓共同為您精闢分析每天時事！",
+    si: 'vTWIskNPFvGW_bl6',
+    list: 'PLf2VRok0uRO0px2iZrtznovVe10LfcfJO'
+  },
+  {
+    title: "全國第一勇",
+    content: "讓《全國第一勇》的徐國勇，與來賓共同為您精闢分析每天時事！",
+    si: '04hEzUmcBl7J8bUW',
+    list: 'PLBXFGXTYyFgAmbYv9Bgq9cxcWcwW6qgJA'
+  },
+  {
+    title: "民視佮你講",
+    content: "時事政治、生活氣象、熱門話題，我們通通佮你講！網友們，快點一起跟主持人聊天吧！",
+    si: 'yNoxUNLhcledJ-AJ',
+    list: 'PLf2VRok0uRO340tZz8twmmwT8k-36Z2O5'
+  }
+])
+</script>
 
 
 <style lang="scss" scoped>

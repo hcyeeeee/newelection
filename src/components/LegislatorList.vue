@@ -1122,12 +1122,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin pad {
-    @media (min-width: 800px) {
-        @content;
-    }
-}
-
 .partyicon {
     width: 30px !important;
     border-radius: 100px;
